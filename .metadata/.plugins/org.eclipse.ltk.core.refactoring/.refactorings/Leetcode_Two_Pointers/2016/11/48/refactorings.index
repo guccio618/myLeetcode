@@ -1,0 +1,35 @@
+1479606221137	Rename type 'Q159_Longest_Substring_with_At_Most_Two_Distinct_Characters'
+1479606236496	Rename type 'Le159_Longest_Substring_with_At_Most_Two_Distinct_Characters'
+1479607795165	Rename local variable 'n'
+1479661217697	Rename local variable 'smallest'
+1479666198554	Rename type 'Q019_Remove_Nth_Node_From_End_of_List'
+1479666640784	Rename type 'Q026_Remove_Duplicates_from_Sorted_Array'
+1479666901558	Rename type 'Q027_Remove_Element'
+1479667065006	Rename type 'Q028_Implement_strStr'
+1479667445918	Delete element
+1479667453267	Rename type 'Q042_Trapping_Rain_Water'
+1479736228804	Rename type 'Q061_Rotate_List'
+1479762611638	Rename type 'Q075_Sort_Colors'
+1479764825776	Delete element
+1479764839349	Rename type 'Q076_Minimum_Window_Substring'
+1479766716772	Delete element
+1479766726539	Rename type 'Q080_Remove_Duplicates_from_Sorted_Array_II'
+1479767173962	Rename type 'Q086_Partition_List'
+1479767371768	Rename type 'Q088_Merge_Sorted_Array'
+1479767954739	Rename type 'Q125_Valid_Palindrome'
+1479768623085	Rename type 'Q141_Linked_List_Cycle'
+1479768933958	Rename type 'Q142_Linked_List_Cycle_II'
+1479769769119	Rename type 'Q167_Two_Sum_II_Input_array_is_sorted'
+1479770371844	Rename type 'Q259_3Sum_Smaller'
+1479771381478	Delete element
+1479771388533	Rename type 'Q209_Minimum_Size_Subarray_Sum'
+1479772872467	Rename type 'Q234_Palindrome_Linked_List'
+1479775612120	Rename type 'Q283_Move_Zeroes'
+1479777704759	Rename type 'Q344_Reverse_String'
+1479778645742	Rename type 'Q345_Reverse_Vowels_of_a_String'
+1479779687807	Rename type 'Q349_Intersection_of_Two_Arrays'
+1479782475227	Rename type 'Q350_Intersection_of_Two_Arrays_II'
+1479782676634	Rename type 'Q360_Sort_Transformed_Array'
+1479832477388	Rename type 'Q062_Unique_Paths'
+1479833002794	Move compilation unit
+1479833015869	Move compilation unit

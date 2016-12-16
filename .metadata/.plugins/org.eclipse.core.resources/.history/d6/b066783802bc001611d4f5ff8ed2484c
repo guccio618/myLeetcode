@@ -1,0 +1,282 @@
+import java.util.*;
+
+public class Find_K_Nearest_Point {
+	// quick select
+	public Point[] Solution(Point[] array, Point origin, int k) {
+		if(array == null || array.length == 0 || k <= 0){
+			return new Point[0];
+		} else if(k >= array.length) {
+			return array;
+		}
+		
+		int len = array.length;
+		Pair[] myArray = new Pair[len];
+		
+		for(int i = 0; i < len; i++){
+			myArray[i] = new Pair(array[i], findDistance(array[i], origin));
+		}
+		
+		int left = 0, right = len - 1;
+		int index = 0;
+		boolean found = false;
+		
+		while(left < right){
+			index = Partition(myArray, left, right);
+			
+			if(index + 1 < k){
+				left = index + 1;
+			} else if(index + 1 > k){
+				right = index - 1;
+			} else {
+				found = true;
+				break;
+			}
+		}
+		
+		if(found == false){
+			index = left;
+		}
+		
+		Point[] ans = new Point[index + 1];
+		
+		for(int i = 0; i <= index; i++){
+			ans[i] = myArray[i].p;
+		}
+		
+		return ans;
+	}
+	
+	public int Partition(Pair[] myArray, int left, int right){
+		double pivot = myArray[right].distance;
+		int index = left;
+		Pair temp = null;
+		
+		for(int i = left; i < right; i++){
+			if(myArray[i].distance <= pivot){
+				temp = myArray[i];
+				myArray[i] = myArray[index];
+				myArray[index] = temp;
+				index++;
+			}
+		}
+		
+		temp = myArray[index];
+		myArray[index] = myArray[right];
+		myArray[right] = temp;
+		return index;
+	}
+	
+	class Pair{
+		Point p;
+		double distance;
+		
+		public Pair(Point p, double d){
+			this.p = p;
+			distance = d;
+		}
+	}
+	
+	
+	
+	// Quick Sort
+	public Point[] Solution2(Point[] array, Point origin, int k) {
+		if(array == null || array.length == 0){
+			return new Point[0];
+		}
+		
+		int len = array.length;
+		Pair[] arrs = new Pair[len];
+		
+		for(int i = 0; i < len; i++){
+			arrs[i] = new Pair(array[i], getDistance(array[i], origin));
+		}
+		
+		quickSort(arrs, 0, len - 1);
+		Point[] ans = new Point[k];
+		
+		for(int i = 0; i < k; i++){
+			ans[i] = arrs[i].p;
+		}
+		
+		return ans;
+	}
+
+	public void quickSort(Pair[] arrs, int x, int y){
+		if(x < y){
+			int index = Partition(arrs, x, y);
+			quickSort(arrs, x, index - 1);
+			quickSort(arrs, index + 1, y);
+		}
+	}
+
+	public int partition(Pair[] arrs, int left, int right){
+		double pivot = arrs[right].distance;
+		Pair temp = null;
+		int index = left;
+		
+		for(int i = left; i < right; i++){
+			if(arrs[i].distance <= pivot){
+				temp = arrs[i];
+				arrs[i] = arrs[index];
+				arrs[index] = temp;
+				index++;
+			}
+		}
+		
+		temp = arrs[right];
+		arrs[right] = arrs[index];
+		arrs[index] = temp;
+		return index;
+	}
+
+//	public double getDistance(Point a, Point b){
+//		return Math.sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
+//	}
+	
+	
+	
+	
+	
+	// 使用PriorityQueue
+	public Point[] Solution3(Point[] array, Point origin, int k) {
+		if(array == null || array.length == 0 || k <= 0){
+			return new Point[0];
+		}
+		
+		Queue<Point> maxHeap = new PriorityQueue<Point>(k + 1, new Comparator<Point>(){
+			public int compare(Point left, Point right){
+				double distance1 = findDistance(left, origin);
+				double distance2 = findDistance(right, origin);
+				
+				if(distance1 < distance2){
+					return 1;
+				} else if(distance1 > distance2){
+					return -1;
+				} else {
+					return 0;
+				}
+			}
+		}); 
+		
+		for(Point p : array){
+			maxHeap.offer(p);
+			
+			if(maxHeap.size() > k){
+				maxHeap.poll();
+			}
+		}
+		
+		Point[] ans = new Point[k];
+		int index = k - 1;
+		
+		while(!maxHeap.isEmpty()){
+			ans[index--] = maxHeap.poll();
+		}
+		
+		return ans;
+	}
+	
+	public double findDistance(Point a, Point b){
+		return Math.sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	public Point[] Solution4(Point[] array, Point origin, int k) {
+        Point[] rvalue = new Point[k];  
+        int index = 0;
+        PriorityQueue<Point> pq = new PriorityQueue<Point> (k, new Comparator<Point> () {
+            @Override
+            public int compare(Point a, Point b) {
+                return (int) (getDistance(a, origin) - getDistance(b, origin));
+            }
+        });
+
+        for (int i = 0; i < array.length; i++) {
+            pq.offer(array[i]);
+            
+            if (pq.size() > k) {
+                pq.poll();
+            }
+        }
+
+        while (!pq.isEmpty() && index < k) {
+            rvalue[index++] = pq.poll();
+        }
+        
+        return rvalue;
+	}
+
+    private double getDistance(Point a, Point b) {
+        return Math.sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
+    }
+	
+	
+	
+	
+	
+	
+	/**************************************************/
+	public static void main(String[] args){
+		Find_K_Nearest_Point t = new Find_K_Nearest_Point();
+		int n = 5;
+		Point[] array1 = new Point[n];
+		
+//		for(int i = 0; i < 5; i++){
+//			array1[i] = new Point(i + 1, i + 1);
+//		}
+		
+		array1[0] = new Point(3, 3);
+		array1[1] = new Point(5, 5);
+		array1[2] = new Point(2, 2);
+		array1[3] = new Point(1, 1);
+		array1[4] = new Point(4, 4);
+		
+		Point origin = new Point(0, 0);
+		int k = 3;
+		Point[] ans1 = t.Solution(array1, origin, k);
+		
+		for(Point p : ans1){
+			System.out.println(p.x + ", " + p.y);
+		}
+		
+		System.out.println();
+		
+		
+		Point[] array2 = new Point[n];
+		array2[0] = new Point(3, 3);
+		array2[1] = new Point(5, 5);
+		array2[2] = new Point(2, 2);
+		array2[3] = new Point(1, 1);
+		array2[4] = new Point(4, 4);
+		
+//		for(int i = 0; i < 5; i++){
+//			array2[i] = new Point(i + 1, i + 1);
+//		}
+
+		Point[] ans2 = t.Solution2(array2, origin, k);
+		
+		for(Point p : ans2){
+			System.out.println(p.x + ", " + p.y);
+		}
+		System.out.println();
+		
+		
+		Point[] array3 = new Point[n];
+		
+		for(int i = 0; i < 5; i++){
+			array3[i] = new Point(i + 1, i + 1);
+		}
+
+		Point[] ans3 = t.Solution3(array3, origin, k);
+		
+		for(Point p : ans3){
+			System.out.println(p.x + ", " + p.y);
+		}
+	}
+}

@@ -1,0 +1,21 @@
+
+public class Tree_Amplitude {
+	public int Solution(TreeNode root) {
+		if(root == null){
+			return 0;
+		}
+		
+		return helper(root, root.value, root.value);
+	}
+	
+	public int helper(TreeNode node, int min, int max){
+		if(node == null){
+			return max - min;
+		}
+		
+		min = Math.min(min, node.value);
+		max = Math.max(max, node.value);
+		
+		return Math.max(helper(node.left, min, max), helper(node.right, min, max));
+	}
+}

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;zzzz/src/Yiran Li_hw5a_Sorting.java&apos; to &apos;Sorting.java&apos;" description="Rename resource &apos;Yiran Li_hw5a_Sorting.java&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/Yiran Li_hw5a_Sorting.java" name="Sorting.java" stamp="1481833218333" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;zzzz/src/Yiran Li_HW6a_Trie.java&apos; to &apos;Trie.java&apos;" description="Rename resource &apos;Yiran Li_HW6a_Trie.java&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/Yiran Li_HW6a_Trie.java" name="Trie.java" stamp="1481833252116" updateReferences="true"/>
+</session>

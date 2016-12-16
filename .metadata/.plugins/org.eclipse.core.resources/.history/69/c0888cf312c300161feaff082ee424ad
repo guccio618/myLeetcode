@@ -1,0 +1,151 @@
+package com.company;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public List<String> findWords(char[][] board, List<String> words) {
+        boolean[][] visited = new boolean[board.length][board[0].length];
+        HashSet<String> ans = new HashSet<>();
+
+        Trie dic = new Trie();
+        for (String word : words) {
+            dic.insert(word);
+        }
+
+        for (int i = 0 ; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                helper(ans, board, i, j, "", visited, dic.root);
+            }
+        }
+        return new ArrayList<>(ans);
+    }
+    private void helper (HashSet<String> ans, char[][] board, int x, int y, String temp, boolean[][] visited, TrieNode cur) {
+        if (x < 0 || y < 0 || x >= board.length || y >= board[0].length || visited[x][y] || cur.node[board[x][y] - 'a'] == null) {
+            return;
+        }
+        if (cur.node[board[x][y] - 'a'].isWord && temp.length() > 1) {
+            ans.add(temp + board[x][y]);
+        }
+        visited[x][y] = true;
+        helper(ans, board, x + 1, y, temp + board[x][y], visited, cur.node[board[x][y] - 'a']);
+        helper(ans, board, x - 1, y, temp + board[x][y], visited, cur.node[board[x][y] - 'a']);
+        helper(ans, board, x, y + 1, temp + board[x][y], visited, cur.node[board[x][y] - 'a']);
+        helper(ans, board, x, y - 1, temp + board[x][y], visited, cur.node[board[x][y] - 'a']);
+        helper(ans, board, x - 1, y - 1, temp + board[x][y], visited, cur.node[board[x][y] - 'a']);
+        helper(ans, board, x + 1, y + 1, temp + board[x][y], visited, cur.node[board[x][y] - 'a']);
+        helper(ans, board, x + 1, y - 1, temp + board[x][y], visited, cur.node[board[x][y] - 'a']);
+        helper(ans, board, x - 1, y + 1, temp + board[x][y], visited, cur.node[board[x][y] - 'a']);
+        visited[x][y] = false;
+    }
+
+    class TrieNode {
+        boolean isWord;
+        TrieNode[] node;
+        public TrieNode() {
+            isWord = false;
+            node = new TrieNode[26];
+        }
+    }
+    public class Trie {
+        private TrieNode root;
+
+        public Trie() {
+            root = new TrieNode();
+        }
+
+        public void insert(String word) {
+            TrieNode curr = root;
+            for (int i = 0; i < word.length(); i++) {
+                int num = word.charAt(i);
+                if (word.charAt(i) >= 65 && word.charAt(i) <= 90) {
+                    num = word.charAt(i) + 32;
+                }
+                num = num - 97;
+                if (num < 0 || num >25) continue;
+                if (curr.node[num] == null) {
+                    curr.node[num] = new TrieNode();
+                }
+                curr = curr.node[num];
+            }
+            curr.isWord = true;
+        }
+
+//        public boolean contains(String word) {  //this is the contains method, but I do not use it in boggle.
+//            TrieNode curr = root;
+//            for (int i = 0; i < word.length(); i++) {
+//                int num = word.charAt(i);
+//                if (word.charAt(i) >= 65 && word.charAt(i) <= 90) {
+//                    num = word.charAt(i) + 32;
+//                }
+//                num = num - 97;
+//                if (num < 0 || num >25) return false;
+//                if (curr.node[num] == null) {
+//                    return false;
+//                }
+//                curr = curr.node[num];
+//            }
+//            return curr.isWord;
+//        }
+//
+//        public boolean containsPrefix(String word) { //this is the containsPrefix method, but I do not use it in boggle.
+//            TrieNode curr = root;
+//            for (int i = 0; i < word.length(); i++) {
+//                int num = word.charAt(i);
+//                if (word.charAt(i) >= 65 && word.charAt(i) <= 90) {
+//                    num = word.charAt(i) + 32;
+//                }
+//                num = num - 97;
+//                if (num < 0 || num >25) return false;
+//                if (curr.node[num] == null) {
+//                    return false;
+//                }
+//                curr = curr.node[num];
+//            }
+//            return true;
+//        }
+    }
+
+    public List<String> loadDictionary(Scanner s) {
+        List<String> dic = new ArrayList<>();
+        while (s.hasNext()){
+            dic.add(s.next());
+        }
+        return dic;
+    }
+
+    public char[][] LoadBoard(Scanner s) {
+        int size = s.nextInt();
+        char[][] board = new char[size][size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                String str = s.next();
+                board[i][j] = str.charAt(0);
+            }
+        }
+        return board;
+    }
+
+
+    public static void main(String[] args) throws IOException {
+        Main boggle = new Main();
+        Scanner s = new Scanner(new FileReader("boggle.dat"));
+        char[][] myBoard = boggle.LoadBoard(s);
+        s.close();
+        Scanner d = new Scanner(new FileReader("dictionary.txt"));
+        List<String> myDict = boggle.loadDictionary(d);
+        d.close();
+        List<String> myAns = boggle.findWords(myBoard,myDict);
+
+        FileWriter writer = new FileWriter("bogglewords.txt");
+        for(String str: myAns) {
+            writer.write(str+"\n");
+        }
+        writer.close();
+    }
+}

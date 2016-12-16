@@ -1,0 +1,10 @@
+
+public class Data_Structure {
+
+}
+
+class RandomListNode {
+	int label;
+	RandomListNode next, random;
+	RandomListNode(int x) { this.label = x; }
+};

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Q215_Kth_Largest_Element_in_an_Array&apos; to &apos;Le_215_Kth_Largest_Element_in_an_Array&apos;&#x0A;- Original project: &apos;LeetCode_Sort&apos;&#x0A;- Original element: &apos;Q215_Kth_Largest_Element_in_an_Array&apos;&#x0A;- Renamed element: &apos;Le_215_Kth_Largest_Element_in_an_Array&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Q215_Kth_Largest_Element_in_an_Array&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{Q215_Kth_Largest_Element_in_an_Array.java[Q215_Kth_Largest_Element_in_an_Array" matchStrategy="1" name="Le_215_Kth_Largest_Element_in_an_Array" qualified="false" references="true" similarDeclarations="false" stamp="1481559183369" textual="false" version="1.0"/>
+</session>

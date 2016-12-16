@@ -1,0 +1,42 @@
+
+public class Q459_Repeated_Substring_Pattern {
+	public boolean repeatedSubstringPattern(String str) {
+		if(str == null || str.length() == 0) {
+            return false;
+        }
+        
+        int len = str.length();
+        
+        for(int index = 0; index < len/2; index++) {
+            if(len % (index + 1) == 0) {
+                int start = 0;
+                int subLen = index + 1;
+                String substr = str.substring(0, subLen);
+                
+                while(start > -1 && start + subLen < len) {
+                    int nextStart = str.indexOf(substr, start + subLen);
+
+                    if(start + subLen != nextStart) {
+                    	break;
+                    }
+                    
+                    start = nextStart;
+                }
+                
+                if(start + subLen == len) {
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
+	
+	
+	
+	public static void main(String[] args) {
+		Q459_Repeated_Substring_Pattern t = new Q459_Repeated_Substring_Pattern();
+		String str = "aa";
+		System.out.println(t.repeatedSubstringPattern(str));
+	}
+}

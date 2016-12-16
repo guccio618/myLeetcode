@@ -1,0 +1,63 @@
+import java.util.HashMap;
+import java.util.Map;
+
+
+public class Le_146_LRU_Cache {
+	private Map<Integer, Node> map = new HashMap<Integer, Node>();
+    private Node head = new Node(-1, -1);
+    private Node tail = new Node(-1, -1);
+    private int capacity = 0;
+    
+    private class Node{
+        int key, val;
+        Node prev, next;
+        
+        public Node(int k, int v){
+            key = k;
+            val = v;
+            prev = next = null;
+        }
+    }
+    
+    public void moveToTail(Node node){
+        node.next = tail;
+        node.prev = tail.prev;
+        node.prev.next = node;
+        tail.prev = node;
+    }
+    
+    public Le_146_LRU_Cache(int capacity) {
+        this.capacity = capacity;
+        head.next = tail;
+        tail.prev = head;
+    }
+
+    public int get(int key) {
+        if(!map.containsKey(key)){
+            return -1;
+        }
+        
+        Node current = map.get(key);
+        current.prev.next = current.next;
+        current.next.prev = current.prev;
+        moveToTail(current);
+        return current.val;
+    }
+    
+    public void set(int key, int value) {
+        if(get(key) != -1){     // 此处必需用get(key)，而不是直接用map.containsKey(...), 因为需要考虑到moveToTail这个问题
+            map.get(key).val = value;
+            return;
+        }
+        
+        if(map.size() == capacity){
+            map.remove(head.next.key);
+            head.next = head.next.next;
+            head.next.prev = head;
+        }
+        
+        Node insert = new Node(key, value);
+        map.put(key, insert);
+        moveToTail(insert);
+    }
+}

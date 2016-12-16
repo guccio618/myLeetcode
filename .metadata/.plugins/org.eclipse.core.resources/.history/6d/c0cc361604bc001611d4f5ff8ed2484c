@@ -1,0 +1,53 @@
+import java.util.PriorityQueue;
+
+public class High5 {
+	public int[] find (int [][] stu){
+		int [] res = new int[stu.length];
+		
+		for(int i = 0 ; i<stu.length; i++){ // take care of each student one by one
+			PriorityQueue<Integer> minHeap = new PriorityQueue<>(); // this is a min heap
+			
+			for(int j = 0 ; j < stu[i].length; j++){
+				if(minHeap.size() < 5){ // use a minheap which size is 6 to keep hold of the 5 highest number so far 
+					minHeap.add(stu[i][j]);
+				}else{
+					minHeap.add(stu[i][j]);
+					minHeap.poll();
+				}
+			}
+			// poll all five highest score and calculate for average
+			int ave = 0;
+			while(!minHeap.isEmpty()){ 
+				ave += minHeap.poll();
+			}
+			ave /= 5;
+			res[i] = ave;
+		}
+		for(int i : res){
+			System.out.println(i);
+		}
+		return res;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public static void main(String [] args){
+		High5 high5 = new High5();
+		int[][] stu = new int[5][];
+		stu[0] = new int[]{90,80,70,90,98,100,100,100,100,100,20,90};
+		stu[1] = new int[]{90,80,100,90,98,100,20,90};
+		stu[2] = new int[]{90,100,100,20,90};
+		stu[3] = new int[]{90,80,70,90,98,100,100,100};
+		stu[4] = new int[]{90,80,70,90,98,100,100,90};
+		high5.find(stu);
+	}
+}

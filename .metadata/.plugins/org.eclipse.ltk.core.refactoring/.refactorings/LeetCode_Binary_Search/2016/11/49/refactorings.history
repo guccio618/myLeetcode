@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Q392_Is_Subsequence&apos; to &apos;Le_392_Is_Subsequence&apos;&#x0A;- Original project: &apos;LeetCode_Binary_Search&apos;&#x0A;- Original element: &apos;Q392_Is_Subsequence&apos;&#x0A;- Renamed element: &apos;Le_392_Is_Subsequence&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Q392_Is_Subsequence&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{Q392_Is_Subsequence.java[Q392_Is_Subsequence" matchStrategy="1" name="Le_392_Is_Subsequence" qualified="false" references="true" similarDeclarations="false" stamp="1480257986072" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,63 @@
+
+public class Amazon_OA2_Maximum_Minimum_Path {
+	// DFS
+	private int globalMax = Integer.MIN_VALUE;
+	
+	public int solution(int[][] matrix){
+		if(matrix == null || matrix.length == 0 || matrix[0].length == 0){
+			return 0;
+		}
+		
+		DFS(matrix, Integer.MAX_VALUE, 0, 0);
+		return globalMax;
+	}
+	
+	public void DFS(int[][] matrix, int min, int x, int y){
+		if(x >= matrix.length || y >= matrix[0].length){
+			return ;
+		} else if(x == matrix.length - 1 && y == matrix[0].length - 1){
+			min = Math.min(min, matrix[x][y]);
+			globalMax = Math.max(globalMax, min);
+			return ;
+		}
+		
+		min = Math.min(min, matrix[x][y]);
+		DFS(matrix, min, x + 1, y);
+		DFS(matrix, min, x, y + 1);
+	}
+	
+	
+	// DP
+	public int solution2(int[][] matrix) {
+		int[] result = new int[matrix[0].length];
+		result[0] = matrix[0][0];
+		
+		for (int i = 1; i < matrix[0].length; i++) {
+			result[i] = Math.min(result[i - 1], matrix[0][i]);
+		}
+		
+		for (int i = 1; i < matrix.length; i++) {
+			result[0] = Math.min(matrix[i][0], result[0]);
+			
+			for (int j = 1; j < matrix[0].length; j++) {
+				result[j] = (result[j] < matrix[i][j] && result[j - 1] < matrix[i][j]) ? Math.max(result[j - 1], result[j]) : matrix[i][j];
+			}
+		}
+		
+		return result[result.length - 1];
+	}
+	
+	
+	
+	
+	/*******************************************************************************/
+	public static void main(String[] args){
+		Amazon_OA2_Maximum_Minimum_Path t = new Amazon_OA2_Maximum_Minimum_Path();
+		int[][] matrix = {
+				{8, 4, 7},
+				{6, 5, 9}
+		};
+		
+		System.out.println(t.solution(matrix));
+	}
+}

@@ -1,0 +1,30 @@
+import java.util.HashMap;
+
+
+/***********************************************/
+/** 1. Hashmap                                **/
+/** 	(1). Hashmap.get                      **/
+/** 	(2). Hashmap.put                      **/
+/** 	(3). Hashmap.containsKey              **/
+/***********************************************/
+public class Q001_Two_Sum {
+	
+	// solution 2: using hashmap, time is O(n), space(n)
+	public int[] twoSum(int[] nums, int target) {
+        if(nums == null || nums.length <= 1) {
+            return new int[] {-1, -1};
+        }
+        
+        Map<Integer, Integer> map = new HashMap<>();
+        
+        for(int i = 0; i < nums.length; i++) {
+            if(map.containsKey(target - nums[i])) {
+                return new int[] {map.get(target - nums[i]), i};
+            } else {
+                map.put(nums[i], i);
+            }
+        }
+        
+        return new int[] {-1, -1};
+    }
+}

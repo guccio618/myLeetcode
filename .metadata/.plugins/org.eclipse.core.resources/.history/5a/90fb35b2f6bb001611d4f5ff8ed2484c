@@ -1,0 +1,80 @@
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
+
+public class Kclose {
+	public Cpoint[] findKCloseHEAP(Cpoint[] list, int k) {
+		if (list == null || list.length == 0 || k <= 0) {
+			return new Cpoint[0];
+		} else if (k >= list.length) {
+			return list;
+		}
+
+		Cpoint[] res = new Cpoint[k];
+		
+		PriorityQueue<Cpoint> maxHeap = new PriorityQueue<>(k, new Comparator<Cpoint>() {
+			@Override
+			public int compare(Cpoint p1, Cpoint p2) {
+				return -Double.compare(p1.x * p1.x + p1.y * p1.y, p2.x * p2.x + p2.y * p2.y);
+			}
+		});
+
+		for (int i = 0; i < list.length; i++) {
+			maxHeap.offer(list[i]);
+
+			if (maxHeap.size() > k) {
+				maxHeap.poll();
+			}
+		}
+
+		for (int i = res.length - 1; i >= 0; i--) {
+			res[i] = maxHeap.poll();
+		}
+
+		return res;
+	}
+
+	
+	
+	
+	
+	
+	/*******************************************/
+	public static void main(String[] args) {
+		Kclose kclose = new Kclose();
+		Cpoint[] list = new Cpoint[3];
+		 for (int i = 0; i < list.length; i++) {
+			 list[i] = new Cpoint(-i, i);
+		 }
+//		list[0] = new Cpoint(-1, 1);
+//		list[1] = new Cpoint(1, 1);
+//		list[2] = new Cpoint(1, -1);
+		// kclose.findKClose(list, 10);
+		// kclose.findKCloseHEAP(list, 10);
+		Cpoint[] array = kclose.findKCloseHEAP(list, 2);
+		
+		for(Cpoint p : array) {
+			System.out.println(p.toString());
+		}
+		
+		
+//		Double a = (double) 3;
+//		Double b = (double) 5;
+//		System.out.println(Double.compare(a, b));
+	}
+}
+
+class Cpoint {
+	double x;
+	double y;
+
+	public Cpoint(double x, double y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	@Override
+	public String toString() {
+		return "X: " + x + ", Y: " + y;
+	}
+}

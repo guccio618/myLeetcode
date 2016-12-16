@@ -1,0 +1,116 @@
+import java.util.PriorityQueue;
+import java.util.Comparator;
+import java.lang.Math;
+import java.util.Arrays;
+
+public class test {
+	public static Cpoint[] findKClose_Heap(Cpoint[] list, int k) {
+		if(list == null || list.length == 0 || k <= 0 || k > list.length) {
+			return new Cpoint[0];
+		}
+		
+		PriorityQueue<Cpoint> maxHeap = new PriorityQueue<Cpoint>(k, new Comparator<Cpoint>() {
+			@Override
+			public int compare(Cpoint p1, Cpoint p2) {
+				return -Double.compare(Math.sqrt(p1.x*p1.x + p1.y*p1.y), Math.sqrt(p2.x*p2.x + p2.y*p2.y));
+			}
+		});
+		
+		for(Cpoint p : list) {
+			maxHeap.offer(p);
+			
+			if(maxHeap.size() > k) {
+				maxHeap.poll();		
+			}	
+		}
+		
+		Cpoint[] ans = new Cpoint[k];
+		
+		for(int i = k-1; i >= 0; i--) {
+			ans[i] = maxHeap.poll();
+		}
+		
+		return ans;
+	}
+
+	
+	public static Cpoint[] findKClose_Sort(Cpoint[] list, int k) {
+		if(list == null || list.length == 0 || k <= 0 || k > list.length) {
+			return new Cpoint[0];
+		}
+		
+		Cpoint[] tempList = new Cpoint[list.length];
+		
+		for(int i = 0; i < list.length; i++) {
+			tempList[i] = list[i];
+		}
+		
+		Arrays.sort(tempList, new Comparator<Cpoint>() {
+			@Override
+			public int compare(Cpoint p1, Cpoint p2) {
+				return Double.compare(Math.sqrt(p1.x*p1.x + p1.y*p1.y), Math.sqrt(p2.x*p2.x + p2.y*p2.y));
+			}
+		});
+		
+		System.out.println();
+		
+		Cpoint[] ans = new Cpoint[k];
+		
+		for(int i = 0; i < k; i++) {
+			ans[i] = tempList[i];
+		}
+		
+		return ans;
+	}
+	
+
+	public static void main(String[] args) {
+		Cpoint[] list = new Cpoint[7];
+		int k = 3;
+	
+		for (int i = list.length - 1; i >= 0; i--) {
+			list[i] = new Cpoint(-i-1, i+1);
+		}
+		
+		int left = 0, right = list.length - 1;
+		
+		while(left < right) {
+			Cpoint temp = list[left];
+			list[left] = list[right];
+			list[right] = temp;
+			left++;
+			right--;
+		}
+		
+		for(Cpoint p : list) {
+			System.out.println(p.toString());
+		}
+		
+		System.out.println();
+
+		Cpoint[] array = findKClose_Heap(list, k);
+	
+		for(Cpoint p : array) {
+			System.out.println(p.toString());
+		}
+
+		Cpoint[] array2 = findKClose_Sort(list, k);
+		
+		for(Cpoint p : array2) {
+			System.out.println(p.toString());
+		}
+		
+		System.out.println();
+		
+		for(Cpoint p : list) {
+			System.out.println(p.toString());
+		}
+		
+//		String str = "ddabccba";
+//		System.out.println(findKClose_Heap(str));
+//
+//		
+//		String str2 = "ddabcba";
+//		System.out.println(findKClose_Heap(str2));
+	}
+}

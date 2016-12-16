@@ -1,0 +1,32 @@
+import java.util.ArrayList;
+
+public class windowSum {
+	public ArrayList<Integer> windowSumList(ArrayList<Integer> list, int windowSize) {
+		ArrayList<Integer> res = new ArrayList<>();
+		int sum = 0;
+		int j = 0;
+		// 1 2 3 4
+		for (int i = 0; i < list.size(); i++) {
+			if (i < windowSize - 1) {
+				sum += list.get(i);
+			} else {
+				sum += list.get(i);
+				res.add(sum);
+				sum -= list.get(j);
+				j++;
+			}
+		}
+		System.out.println(res);
+		return res;
+	}
+
+	public static void main(String[] args) {
+		windowSum sum = new windowSum();
+		ArrayList<Integer> temp = new ArrayList<>();
+		for(int i = 1 ; i<10 ; i++){
+			temp.add(i);
+		}
+		System.out.println(temp);
+		sum.windowSumList(temp, 2);
+	}
+}

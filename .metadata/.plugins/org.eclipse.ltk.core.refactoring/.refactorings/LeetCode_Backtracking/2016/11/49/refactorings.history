@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Q416_Partition_Equal_Subset_Sum&apos; to &apos;Le_416_Partition_Equal_Subset_Sum&apos;&#x0A;- Original project: &apos;LeetCode_Backtracking&apos;&#x0A;- Original element: &apos;Q416_Partition_Equal_Subset_Sum&apos;&#x0A;- Renamed element: &apos;Le_416_Partition_Equal_Subset_Sum&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Q416_Partition_Equal_Subset_Sum&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{Q416_Partition_Equal_Subset_Sum.java[Q416_Partition_Equal_Subset_Sum" matchStrategy="1" name="Le_416_Partition_Equal_Subset_Sum" qualified="false" references="true" similarDeclarations="false" stamp="1480275360002" textual="false" version="1.0"/>
+</session>

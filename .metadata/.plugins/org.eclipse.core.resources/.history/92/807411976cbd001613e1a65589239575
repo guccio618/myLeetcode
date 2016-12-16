@@ -1,0 +1,56 @@
+import java.util.PriorityQueue;
+import java.util.Comparator;
+
+
+public class test {
+	public static Cpoint[] findKClose_heap(Cpoint[] list, int k) {
+		if(list == null || list.length == 0) {
+			return new Cpoint[0];
+		} else if(k >= list.length) {
+			return list;
+		}
+		
+		Cpoint[] ans = new Cpoint[k];
+		
+		PriorityQueue<Cpoint> maxHeap = new PriorityQueue<Cpoint>(k + 1, new Comparator<Cpoint>() {
+			@Override 
+			public int compare(Cpoint p1, Cpoint p2) {
+				return -Double.compare(Math.sqrt(p1.x*p1.x + p1.y*p1.y), Math.sqrt(p2.x*p2.x + p2.y*p2.y));
+			}
+		});
+		
+		for(Cpoint p : list) {
+			maxHeap.offer(p);
+			
+			if(maxHeap.size() > k) {
+				maxHeap.poll();
+			}
+		}		
+		
+		System.out.println();
+		
+		for(int i = k - 1; i >= 0 && !maxHeap.isEmpty(); i--) {
+			ans[i] = maxHeap.poll();
+			System.out.println(ans[i].toString());
+		}
+		
+		return ans;
+	}
+
+
+
+	public static void main(String[] args) {
+		Cpoint[] list = new Cpoint[7];
+		int k = 3;
+	
+		for (int i = list.length - 1; i >= 0; i--) {
+			list[i] = new Cpoint(-i-1, i+1);
+		}
+
+		Cpoint[] array = findKClose_heap(list, k);
+	
+		for(Cpoint p : array) {
+			System.out.println(p.toString());
+		}
+	}
+}

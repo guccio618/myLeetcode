@@ -1,0 +1,21 @@
+
+public class Amazon_OA2_Tree_Amplitude {
+	public int Solution(TreeNode root) {
+		if(root == null){
+			return 0;
+		}
+		
+		return helper(root, root.val, root.val);
+	}
+	
+	public int helper(TreeNode node, int min, int max){
+		if(node == null){
+			return max - min;
+		}
+		
+		min = Math.min(min, node.val);
+		max = Math.max(max, node.val);
+		
+		return Math.max(helper(node.left, min, max), helper(node.right, min, max));
+	}
+}

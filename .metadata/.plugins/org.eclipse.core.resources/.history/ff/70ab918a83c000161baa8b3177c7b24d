@@ -1,0 +1,24 @@
+/******
+ * 
+ * Q126_Word_Ladder_II*,  Q127_Word_Ladder*,  Q139_Word_Break,  Q140_Word_Break_II*,  Q305_Number_of_Islands_II*,  
+ * 
+ * Q020_Valid_Parentheses(follow up),  Q023_Merge_k_Sorted_Lists,  Q073_Set_Matrix_Zeroes,  Q186_Reverse_Words_in_a_String_II,  
+ * 
+ * */
+
+public class Q000_DataStructure {
+
+}
+
+class TreeNode {
+	int val;
+	TreeNode left;
+	TreeNode right;
+	TreeNode(int x) { val = x; }
+}
+
+class RandomListNode {
+	int label;
+	RandomListNode next, random;
+	RandomListNode(int x) { this.label = x; }
+};
