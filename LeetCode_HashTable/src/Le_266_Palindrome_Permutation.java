@@ -1,20 +1,28 @@
+/********
+ * 
+Given a string, determine if a permutation of the string could form a palindrome.
+
+For example,
+	"code" -> False, "aab" -> True, "carerac" -> True.
+	
+ * 
+ * */
 
 public class Le_266_Palindrome_Permutation {
 	public boolean canPermutePalindrome(String s) {
-        if(s == null || s.length() == 0){
-            return false;
+        if (s == null || s.length() <= 1) {
+            return true;
         }
         
         int[] hash = new int[256];
-        int n = s.length();
         int count = 0;
         
-        for(int i = 0; i < n; i++){
-            hash[s.charAt(i)]++;
+        for (char c : s.toCharArray()) {
+            hash[c]++;
         }
         
-        for(int i = 0; i < 256; i++){
-            if(hash[i] % 2 != 0){
+        for (int i = 0; i < 256; i++) {
+            if (hash[i] % 2 == 1) {
                 count++;
             }
         }

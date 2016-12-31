@@ -61,7 +61,7 @@ public class Q460_LFU_Cache {
 	        treeSet.remove(p);
 	        p.increment();	       
 	        treeSet.add(p);
-	        return map.get(key).value;
+	        return p.value;
 	    }
 	    
 	    public void set(int key, int value) {

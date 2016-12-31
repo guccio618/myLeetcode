@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,7 +54,7 @@ public class Le_305_Number_of_Islands_II {
 	// using Union Find time complexity is O(n^2 + k), space O(n^2)
 	
 	public List<Integer> numIslands2(int m, int n, int[][] positions) {
-        List<Integer> ans = new ArrayList<>();
+        List<Integer> ans = new LinkedList<>();
         
         if (m <=0 || n <= 0) {
             return ans;

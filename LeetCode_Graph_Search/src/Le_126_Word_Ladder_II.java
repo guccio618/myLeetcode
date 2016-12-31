@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -42,7 +41,7 @@ public class Le_126_Word_Ladder_II {
 	
 	// using DFS, BFS
     public List<List<String>> findLadders(String beginWord, String endWord, Set<String> wordList) {
-    	List<List<String>> ans = new ArrayList();
+    	List<List<String>> ans = new LinkedList<>();
     	
     	if(beginWord == null || endWord == null || wordList == null || wordList.size() == 0) {
             return ans;
@@ -50,14 +49,14 @@ public class Le_126_Word_Ladder_II {
             return ans;
         }
     	
-        HashMap<String, List<String>> nextWordMap = new HashMap();
-        Set<String> level1 = new HashSet();
-        Set<String> level2 = new HashSet();
+        HashMap<String, List<String>> nextWordMap = new HashMap<>();
+        Set<String> level1 = new HashSet<>();
+        Set<String> level2 = new HashSet<>();
         level1.add(beginWord); 
         level2.add(endWord);
         BFS(level1, level2, nextWordMap, wordList, true);
 
-        List<String> path = new ArrayList();
+        List<String> path = new LinkedList<>();
         path.add(beginWord);
         
         DFS(beginWord, endWord, nextWordMap, path, ans);
@@ -72,7 +71,7 @@ public class Le_126_Word_Ladder_II {
         
         wordList.removeAll(level1);    // 注意这里需要removeAll, 去除已经访问过的string ！！！
         wordList.removeAll(level2);	   // 注意这里需要removeAll, 去除已经访问过的string ！！！
-        Set<String> nextLevel = new HashSet();
+        Set<String> nextLevel = new HashSet<>();
         boolean connected = false;
         
         for(String word : level1) {
@@ -98,7 +97,7 @@ public class Le_126_Word_Ladder_II {
 
                         String curWord = forward ? word : newWord;
                         String nextWord = forward ? newWord : word;     
-                        List<String> nextList = nextWordMap.getOrDefault(curWord, new ArrayList());
+                        List<String> nextList = nextWordMap.getOrDefault(curWord, new LinkedList<>());
                         nextList.add(nextWord);
                         nextWordMap.put(curWord, nextList);
                     }
@@ -115,8 +114,8 @@ public class Le_126_Word_Ladder_II {
     
     public void DFS(String curWord, String endWord, Map<String, List<String>> nextWordMap, List<String> path, List<List<String>> ans) {
         if(curWord.equals(endWord)) {
-            ans.add(new ArrayList<String>(path));
-            return ;
+            ans.add(new LinkedList<String>(path));
+            return;
         } else if(!nextWordMap.containsKey(curWord)) {
             return;
         }
@@ -145,7 +144,7 @@ public class Le_126_Word_Ladder_II {
     /**************************************************************/
     // by other
     public List<List<String>> findLadders2(String beginWord, String endWord, Set<String> wordList) {
-        List<List<String>> ans = new ArrayList<>();
+        List<List<String>> ans = new LinkedList<>();
         
         if(beginWord == null || endWord == null || wordList == null || wordList.size() == 0) {
             return ans;
@@ -155,7 +154,7 @@ public class Le_126_Word_Ladder_II {
         
         Map<String, List<String>> prevWordMap = new HashMap<>();
         Map<String, Integer> minDistanceMap = new HashMap<>();
-        List<String> path = new ArrayList<>();
+        List<String> path = new LinkedList<>();
         
         BFS(prevWordMap, minDistanceMap, beginWord, wordList);
 		DFS(prevWordMap, minDistanceMap, path, ans, beginWord, endWord);
@@ -168,7 +167,7 @@ public class Le_126_Word_Ladder_II {
         minDistanceMap.put(beginWord, 0);
         
         for(String word : wordList) {
-            prevWordMap.put(word, new ArrayList<String>());
+            prevWordMap.put(word, new LinkedList<String>());
         }
         
         while(!queue.isEmpty()) {
@@ -186,7 +185,7 @@ public class Le_126_Word_Ladder_II {
     }
     
     public List<String> Expends(String word, Set<String> wordList) {
-		List<String> list = new ArrayList<String>();
+		List<String> list = new LinkedList<String>();
 		char[] letters = word.toCharArray();
 		char temp = ' ';
 
@@ -217,7 +216,7 @@ public class Le_126_Word_Ladder_II {
 	    
 	    if(beginWord.equals(curWord)) {
 	        Collections.reverse(path);
-	        ans.add(new ArrayList<String>(path));
+	        ans.add(new LinkedList<String>(path));
 	        Collections.reverse(path);
 	    } else {
 	        for(String prevWord : prevWordMap.get(curWord)) {
@@ -235,9 +234,9 @@ public class Le_126_Word_Ladder_II {
 
 	/**************************************************************/
 	// by other
-	public ArrayList<ArrayList<String>> findLadders3(String beginWord,
+	public List<List<String>> findLadders3(String beginWord,
 			String endWord, Set<String> wordList) {
-		ArrayList<ArrayList<String>> list = new ArrayList<>();
+		List<List<String>> list = new LinkedList<>();
 		int level = 0;
 		boolean found = false; // flag used to stop searching for the next level
 		Queue<TreeNode> q = new LinkedList<>();
@@ -257,7 +256,7 @@ public class Le_126_Word_Ladder_II {
 					found = true; // mark true so it will go on searching until
 									// the end of current level, so all paths
 									// are of the same length.
-					ArrayList<String> ladder = new ArrayList<>();
+					List<String> ladder = new LinkedList<>();
 					while (node != null) {
 						ladder.add(0, node.val);
 						node = node.parent;

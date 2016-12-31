@@ -34,12 +34,10 @@ public class Le_044_Wildcard_Matching {
 	// by other, time complexity O(n^2), space O(n^2)
 	// test case: "" 2
 	public boolean isMatch(String s, String p) {
-        if (s == null || p == null) {
-            if (s == null && p == null) {
-                return true;
-            } else {
-                return false;
-            }
+		if(s == null && p == null) {
+            return true;
+        } else if(s == null || p == null) {
+            return false;
         }
         
         int sLen = s.length();

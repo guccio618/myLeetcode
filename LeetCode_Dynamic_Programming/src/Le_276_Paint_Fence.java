@@ -21,7 +21,7 @@ public class Le_276_Paint_Fence {
 	 * 	Answer:   max(dp[i][j]) ^ 2;
 	 * 
 	 ****************************************************************************************************************/
-	// using DP, space O(n)
+	// solution 1: using DP, space O(n)
 	public int numWays(int n, int k) {
         if(n == 0){
             return 0;
@@ -45,8 +45,9 @@ public class Le_276_Paint_Fence {
 	
 	
 	
-	/***********************************************/
-	// 空间优化过， space O(1)
+	
+	
+	// follow up: 空间优化过， space O(1)
 	public int numWays2(int n, int k) {
         if(n == 0){
             return 0;

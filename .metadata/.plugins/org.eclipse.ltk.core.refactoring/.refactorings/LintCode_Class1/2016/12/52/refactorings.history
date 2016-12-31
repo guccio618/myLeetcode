@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 4 elements from project &apos;LintCode_Class1&apos;&#x0A;- Original project: &apos;LintCode_Class1&apos;&#x0A;- Original elements:&#x0A;     Q055_Compare_Strings.java&#x0A;     Q078_Longest_Common_Prefix.java&#x0A;     Q158_Two_Strings_Are_Anagrams.java&#x0A;     Q171_Anagrams.java" description="Delete elements" element1="/src&lt;{Q078_Longest_Common_Prefix.java" element2="/src&lt;{Q158_Two_Strings_Are_Anagrams.java" element3="/src&lt;{Q171_Anagrams.java" element4="/src&lt;{Q055_Compare_Strings.java" elements="4" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1482448000304" subPackages="false" version="1.0"/>
+</session>

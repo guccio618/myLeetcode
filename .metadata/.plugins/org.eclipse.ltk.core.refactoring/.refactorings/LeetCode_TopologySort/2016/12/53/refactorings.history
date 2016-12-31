@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Q269_Alien_Dictionary&apos; to &apos;Le_269_Alien_Dictionary&apos;&#x0A;- Original project: &apos;LeetCode_TopologySort&apos;&#x0A;- Original element: &apos;Q269_Alien_Dictionary&apos;&#x0A;- Renamed element: &apos;Le_269_Alien_Dictionary&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Q269_Alien_Dictionary&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{Q269_Alien_Dictionary.java[Q269_Alien_Dictionary" matchStrategy="1" name="Le_269_Alien_Dictionary" qualified="false" references="true" similarDeclarations="false" stamp="1483137110365" textual="false" version="1.0"/>
+</session>

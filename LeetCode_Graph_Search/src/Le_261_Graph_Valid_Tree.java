@@ -53,7 +53,7 @@ public class Le_261_Graph_Valid_Tree {
                 
                 visited.add(nextNode);
                 queue.offer(nextNode);
-                graph[nextNode].remove(node);
+                graph[nextNode].remove(node);   // 注意这里是nextNode remove node !!!
             }
         }
         
@@ -61,6 +61,14 @@ public class Le_261_Graph_Valid_Tree {
     }
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	/***********************************************************/
 	
 	// by Jackie using BFS
 	public boolean validTree2(int n, int[][] edges) {

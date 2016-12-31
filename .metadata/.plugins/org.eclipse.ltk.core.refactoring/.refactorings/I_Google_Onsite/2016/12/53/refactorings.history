@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;needTime&apos; in &apos;Factory_Candy.findMinTime_Follow(...)&apos; to &apos;produceTime&apos;&#x0A;- Original project: &apos;I_Google_Onsite&apos;&#x0A;- Original element: &apos;Factory_Candy.findMinTime_Follow(int, int, int[], int[]).needTime&apos;&#x0A;- Renamed element: &apos;needTime&apos;&#x0A;- Update references to refactored element" description="Rename local variable &apos;needTime&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{Factory_Candy.java[Factory_Candy~findMinTime_Follow~I~I~\[I~\[I@needTime!863!876!869!876!\[I!0!true" name="produceTime" references="true" stamp="1483024572816" version="1.0"/>
+</session>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Q474_Ones_and_Zeroes&apos; to &apos;Le_474_Ones_and_Zeroes&apos;&#x0A;- Original project: &apos;LeetCode_Dynamic_Programming&apos;&#x0A;- Original element: &apos;Q474_Ones_and_Zeroes&apos;&#x0A;- Renamed element: &apos;Le_474_Ones_and_Zeroes&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Q474_Ones_and_Zeroes&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{Q474_Ones_and_Zeroes.java[Q474_Ones_and_Zeroes" matchStrategy="1" name="Le_474_Ones_and_Zeroes" qualified="false" references="true" similarDeclarations="false" stamp="1482169691273" textual="false" version="1.0"/>
+</session>

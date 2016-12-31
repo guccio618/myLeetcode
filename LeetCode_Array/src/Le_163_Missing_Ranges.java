@@ -1,52 +1,80 @@
-
-
 import java.util.ArrayList;
 import java.util.List;
-/******************************************************************
- * lower -> nums[0],  nums[i] -> nums[i + 1], nums[n - 1] -> upper
+/********
+ *
+Given a sorted integer array where the range of elements are in the inclusive range [lower, upper], return its missing ranges.
+
+For example, given [0, 1, 3, 50, 75], lower = 0 and upper = 99, return ["2", "4->49", "51->74", "76->99"].
+
  * 
- ******************************************************************/
+ * */
+
 
 public class Le_163_Missing_Ranges {
-	// by other, very faster
+	 /******************************************************************
+	  * lower -> nums[0],  nums[i] -> nums[i + 1], nums[n - 1] -> upper
+	  * 
+	  *******************************************************************/
 	public List<String> findMissingRanges(int[] nums, int lower, int upper) {
-        List<String> ans = new ArrayList<String>();
-        if(upper < lower){
+        List<String> ans = new ArrayList<>();
+        
+        if(lower > upper){
             return ans;
         }
         
-        int len = nums.length;
-        int nextNum = lower;
+        int numNeed = lower;
         
-        for(int i = 0; i < len; i++){
-            if(nums[i] < nextNum){
+        for (int num : nums) {
+            if (num < numNeed) {
                 continue;
-            } else if(nums[i] == nextNum){
-                nextNum++;
-                continue;
+            } else if (num == numNeed) {
+                numNeed++;
             } else {
-                ans.add(getStr(nextNum, nums[i] - 1));
-                nextNum = nums[i] + 1;
+                ans.add(getStr(numNeed, num - 1));
+                
+                if (num == Integer.MAX_VALUE) {    // 防止test case 为 [0, Integer.MAX_VALUE] ！！！
+                    return ans;
+                } else {
+                    numNeed = num + 1;
+                }
             }
         }
         
-        if(nextNum <= upper){
-            ans.add(getStr(nextNum, upper));
+        if (numNeed <= upper) {                    // 注意扫尾 ！！！
+            ans.add(getStr(numNeed, upper));
         }
         
         return ans;
     }
     
-    public String getStr(int num1, int num2){
-        if(num1 == num2){
-            return Integer.toString(num1);
+    public String getStr(int start, int end){
+        StringBuilder builder = new StringBuilder();
+        
+        if(start == end){
+            builder.append(start);
         } else {
-            return String.format("%d->%d", num1, num2);
+            builder.append(start).append("->").append(end);
         }
+        
+        return builder.toString();
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 	
     
-    
+    /****************************************************************************/
     // by Jackie, too complex
 	public List<String> findMissingRanges2(int[] nums, int lower, int upper) {
         List<String> ans = new ArrayList<String>();

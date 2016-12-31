@@ -35,11 +35,11 @@ public class Le_414_Third_Maximum_Number {
             return 0;
         }
         
-        long[] max = new long[3];
+        long[] max = new long[3];            // long型 ！！！
         max[0] = max[1] = max[2] = Long.MIN_VALUE;
         
         for (int num : nums) {
-            if ((long) num >= max[0]) {
+            if ((long) num >= max[0]) {      // 这里有等号 ！！！
                 if ((long) num > max[0]) {
                     max[2] = max[1];
                     max[1] = max[0];

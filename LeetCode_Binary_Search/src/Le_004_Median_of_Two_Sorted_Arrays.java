@@ -1,5 +1,4 @@
-public class Le_004_Median_of_Two_Sorted_Arrays {
-	/**************************************************************************
+/**************************************************************************
 	 * There are two sorted arrays nums1 and nums2 of size m and n respectively.
 	 * Find the median of the two sorted arrays. 
 	 * 
@@ -16,17 +15,17 @@ public class Le_004_Median_of_Two_Sorted_Arrays {
 	 * 
 	 **************************************************************************/
 
+public class Le_004_Median_of_Two_Sorted_Arrays {
 	// Solution 1: using merge sort, time complexity is O(m + n), space complexity is O(m + n)
 	public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        if(nums1 == null || nums2 == null) {
-            if(nums1 == null && nums2 == null) {
-                return 0;
-            } else if(nums1 == null) {
-                return nums2[nums2.length/2];
-            } else {
-                return nums1[nums1.length/2];
-            }
+		if(nums1 == null && nums2 == null) {
+            return 0;
+        } else if(nums1 == null) {
+            return nums2[nums2.length / 2];
+        } else if(nums2 == null) {
+            return nums1[nums1.length / 2];
         }
+		
         int len1 = nums1.length, len2 = nums2.length; 
         int len = len1 + len2;
         int[] array = new int[len];
@@ -54,16 +53,15 @@ public class Le_004_Median_of_Two_Sorted_Arrays {
     }
 	
 	
+	
 	// Solution 2: using binary search, the overall run time complexity is O(log (m+n)), space complexity is O(1).
 	public double findMedianSortedArrays2(int[] nums1, int[] nums2) {
-        if(nums1 == null || nums2 == null) {
-            if(nums1 == null && nums2 == null) {
-                return 0;
-            } else if(nums1 == null) {
-                return nums2[nums2.length/2];
-            } else {
-                return nums1[nums1.length/2];
-            }
+		if(nums1 == null && nums2 == null) {
+            return 0;
+        } else if(nums1 == null) {
+            return nums2[nums2.length / 2];
+        } else if(nums2 == null) {
+            return nums1[nums1.length / 2];
         }
         
         int len = nums1.length + nums2.length;
@@ -93,7 +91,7 @@ public class Le_004_Median_of_Two_Sorted_Arrays {
      	// 这两个元素分别表示A的第k/2小的元素和B的第k/2小的元素。这两个元素比较共有三种情况：>、<和=。
      	// 如果A[k/2-1]<B[k/2-1]，这表示A[0]到A[k/2-1]的元素都在A和B合并之后的前k小的元素中。
         if(num1 < num2) {     // A[k/2] < B[k/2],因此A[]往k/2后找，B[]往k/2前找
-            return findKthElement(nums1, start1 + k/2, nums2, start2, k - k/2);      // 表示第几大时，不减1，表示数组中元素时减1
+            return findKthElement(nums1, start1 + k/2, nums2, start2, k - k/2);
         } else {              // A[k/2] >= B[k/2],因此A[]往k/2前找，B[]往k/2后找
             return findKthElement(nums1, start1, nums2, start2 + k/2, k - k/2);
         }

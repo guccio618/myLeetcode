@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/Amazon/src/P2_Ave_Highest_Salary.java"/>
+<listEntry value="/I_Amazon/src/P2_Ave_Highest_Salary.java"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="P2_Ave_Highest_Salary"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Amazon"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="I_Amazon"/>
 </launchConfiguration>

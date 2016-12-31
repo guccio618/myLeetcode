@@ -3,6 +3,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
+import java.util.List;
 
 /*****
  * 
@@ -45,7 +46,7 @@ public class Le_127_Word_Ladder {
             return 0;
         }
         
-        int count = 1;
+        int step = 1;
         Queue<String> queue = new LinkedList<String>();
         HashSet<String> visited =  new HashSet<String>();
         queue.offer(beginWord);
@@ -53,17 +54,19 @@ public class Le_127_Word_Ladder {
         wordList.add(endWord);
         
         while(!queue.isEmpty()){
-            count++;
+            step++;
             int size = queue.size();
+            
             for(int i = 0; i < size; ++i){
                 String str = queue.poll();
-                for(String s : findWords(str, wordList)){
+                
+                for(String s : Expends(str, wordList)){
                     if(visited.contains(s)){
                         continue;
+                    } else if(s.equals(endWord)){
+                        return step;
                     }
-                    if(s.equals(endWord)){
-                        return count;
-                    }
+                    
                     visited.add(s);
                     queue.offer(s);
                 }
@@ -74,23 +77,29 @@ public class Le_127_Word_Ladder {
     }
     
     
-    public ArrayList<String> findWords(String str, Set<String> wordList){
-        ArrayList<String> list = new ArrayList<String>();
+    public List<String> Expends(String str, Set<String> wordList){
+        List<String> list = new LinkedList<String>();
         char[] array = str.toCharArray();
+        
         for(int i = 0; i < array.length; ++i){
             char temp = array[i];
+            
             for(char c = 'a'; c <= 'z'; ++c){
                 if(c == temp){
                     continue;
                 }
+                
                 array[i] = c;
                 String newWord = new String(array);
+                
                 if(wordList.contains(newWord)){
                     list.add(newWord);
                 }
             }
+            
             array[i] = temp;
         }
+        
         return list;
     }
 }

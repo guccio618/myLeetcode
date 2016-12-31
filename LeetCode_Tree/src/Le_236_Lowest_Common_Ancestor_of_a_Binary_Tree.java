@@ -35,8 +35,9 @@ public class Le_236_Lowest_Common_Ancestor_of_a_Binary_Tree {
 	
 	// using recursive
 	public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-		if (root == null || root == p || root == q) 
+		if (root == null || root == p || root == q) {
             return root;
+		}
         
         // Divide
         TreeNode left = lowestCommonAncestor(root.left, p, q);

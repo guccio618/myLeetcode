@@ -39,12 +39,10 @@ public class Le_010_Regular_Expression_Matching {
 	 **************************************************************************************/
 	
 	public boolean isMatch(String s, String p) {
-        if(s == null || p == null) {
-            if(s == null && p == null) {
-                return true;
-            } else {
-                return false;
-            }
+		if(s == null && p == null) {
+            return true;
+        } else if(s == null || p == null) {
+            return false;
         }
         
         int sLen = s.length(), pLen = p.length();
@@ -61,7 +59,7 @@ public class Le_010_Regular_Expression_Matching {
                 
                 if(c != '*') {
                     canMatch[i][j] = canMatch[i-1][j-1] && (c == '.' || c == s.charAt(i-1));
-                } else {
+                } else { // 第三部分test case: [a, a] [a, *]
                     canMatch[i][j] = (j >= 2 && canMatch[i][j-2]) || (canMatch[i][j-1]) || (canMatch[i-1][j] && (j >= 2 && p.charAt(j-2) == '.' || p.charAt(j-2) == s.charAt(i-1)));
                 }
             }
@@ -74,6 +72,9 @@ public class Le_010_Regular_Expression_Matching {
 	
 	
 	
+	
+	
+	/********************************** main function ***********************************/
 	
 	public static void main(String[] args){
 		Le_010_Regular_Expression_Matching t = new Le_010_Regular_Expression_Matching();

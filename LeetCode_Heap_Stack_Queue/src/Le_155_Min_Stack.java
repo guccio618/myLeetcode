@@ -27,7 +27,7 @@ public class Le_155_Min_Stack {
 	 * 
 	 **************************************************/
 	
-	// using two stacks
+	// solution 1: using two stacks
 	private Stack<Integer> stack = new Stack<Integer>();
     private Stack<Integer> min = new Stack<Integer>();  
     
@@ -66,7 +66,7 @@ public class Le_155_Min_Stack {
     
     
    /*****
-    // using two lists
+    // solution 2: using two lists
     
     private List<Integer> list1;
     private List<Integer> list2;

@@ -15,34 +15,38 @@ For example,
 
 
 public class Le_186_Reverse_Words_in_a_String_II {
-	public void reverseWords(char[] s) {
-        if(s == null || s.length <= 1){
-            return;
+	// test case:
+    // how many blanks between two words
+    // s is empty
+    
+    public void reverseWords(char[] s) {
+        if(s == null || s.length == 0) {
+            return ;
         }
         
+        reverse(s, 0, s.length - 1);
         int len = s.length;
-        reverseStr(s, 0, len - 1);
         int front = 0, back = 0;
         
-        while(front < len){
-            if(s[front] == ' '){
-                front++;
+        while(back < len) {
+            while(back < len && s[back] == ' ') {
                 back++;
-            } else {
-                while(front < len && s[front] != ' '){
-                    front++;
-                }
-                reverseStr(s, back, front - 1);
-                back = front;
             }
+            
+            front = back;
+            
+            while(front < len && s[front] != ' ') {
+                front++;
+            }
+            
+            reverse(s, back, front - 1);
+            back = front;
         }
     }
     
-    public void reverseStr(char[] s, int start, int end){
-        char temp = ' ';
-        
-        while(start < end){
-            temp = s[start];
+    public void reverse(char[] s, int start, int end) {
+        while(start < end) {
+            char temp = s[start];
             s[start] = s[end];
             s[end] = temp;
             start++;

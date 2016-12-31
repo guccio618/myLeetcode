@@ -1,5 +1,19 @@
+/*******
+ * 
+Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.
+
+Note: 
+	You may assume k is always valid, 1 ≤ k ≤ BST's total elements.
+
+Follow up:
+	What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? 
+	How would you optimize the kthSmallest routine?
+	
+ * 
+ * */
 
 public class Q230_Kth_Smallest_Element_in_a_BST {
+	// solution 1: using inorder travel, time is O(n)
 	int res = Integer.MAX_VALUE;
 	int count = 0;
 	
@@ -7,6 +21,7 @@ public class Q230_Kth_Smallest_Element_in_a_BST {
         if(root == null) {
         	return 0;      
         }
+        
         inOrder(root, k);
         return res;
     }
@@ -18,11 +33,51 @@ public class Q230_Kth_Smallest_Element_in_a_BST {
         
         inOrder(node.left, k); 
         count++;
+        
         if(count == k){
         	res = node.val;
         }
+        
         inOrder(node.right, k);
     }
+    
+    
+    
+    
+    
+    
+    // solution 2: using binary search, time is O(logn);
+    public int kthSmallest2(TreeNode root, int k) {
+        if (root == null || k <= 0) {
+            return -1;
+        }
+        
+        int count = getCount(root.left);
+        
+        if(k <= count) {
+            return kthSmallest(root.left, k);
+        } else if(k > count + 1) {
+            return kthSmallest(root.right, k - 1 - count);
+        } else {
+            return root.val;
+        }
+    }
+    
+    public int getCount(TreeNode node) {
+        if(node == null) {
+            return 0;
+        }
+        
+        return 1 + getCount(node.left) + getCount(node.right);
+    }
+    
+    
+    
+    
+    
+    
+    
+    /************************* main function **********************************/
     
     public static void main(String[] args){
     	Q230_Kth_Smallest_Element_in_a_BST t = new Q230_Kth_Smallest_Element_in_a_BST();
