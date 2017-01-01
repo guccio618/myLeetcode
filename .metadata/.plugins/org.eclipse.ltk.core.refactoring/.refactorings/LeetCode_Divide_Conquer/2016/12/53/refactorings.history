@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Q282_Expression_Add_Operators&apos; to &apos;Le_282_Expression_Add_Operators&apos;&#x0A;- Original project: &apos;LeetCode_Divide_Conquer&apos;&#x0A;- Original element: &apos;Q282_Expression_Add_Operators&apos;&#x0A;- Renamed element: &apos;Le_282_Expression_Add_Operators&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Q282_Expression_Add_Operators&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{Q282_Expression_Add_Operators.java[Q282_Expression_Add_Operators" matchStrategy="1" name="Le_282_Expression_Add_Operators" qualified="false" references="true" similarDeclarations="false" stamp="1483228611980" textual="false" version="1.0"/>
+</session>

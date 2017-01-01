@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Q288_Unique_Word_Abbreviation&apos; to &apos;Le_288_Unique_Word_Abbreviation&apos;&#x0A;- Original project: &apos;LeetCode_HashTable&apos;&#x0A;- Original element: &apos;Q288_Unique_Word_Abbreviation&apos;&#x0A;- Renamed element: &apos;Le_288_Unique_Word_Abbreviation&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Q288_Unique_Word_Abbreviation&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{Q288_Unique_Word_Abbreviation.java[Q288_Unique_Word_Abbreviation" matchStrategy="1" name="Le_288_Unique_Word_Abbreviation" qualified="false" references="true" similarDeclarations="false" stamp="1483239736147" textual="false" version="1.0"/>
+</session>

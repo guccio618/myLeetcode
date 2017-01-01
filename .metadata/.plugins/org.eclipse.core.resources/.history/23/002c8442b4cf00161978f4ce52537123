@@ -1,0 +1,11 @@
+import java.util.*;
+/*******
+ * 
+Follow up for Q281:
+ * 
+ * */
+public class Q281_Zigzag_Iterator_FollowUp {
+	public Q281_Zigzag_Iterator_FollowUp(List<Integer>[] listArray) {
+		
+	}
+}

@@ -22,6 +22,7 @@ After running your function, the 2D grid should be:
   
  * 
  * */
+
 public class Le_286_Walls_and_Gates {
 	public void wallsAndGates(int[][] rooms) {
         if(rooms == null || rooms.length == 0 || rooms[0].length == 0){
@@ -41,14 +42,13 @@ public class Le_286_Walls_and_Gates {
     }
     
     public void DFS(int[][] rooms, int x, int y, int distance){
-        if(rooms[x][y] < distance){
+        if(rooms[x][y] < distance){       // 注意这里不能有等号，否则"0"就过去不
         	return ;
         }
         
         int[] dx = {1, -1, 0, 0};
         int[] dy = {0, 0, 1, -1};
-        rooms[x][y] = distance;
-              
+        rooms[x][y] = distance;              
         
         for(int i = 0; i < 4; i++){
             int newX = x + dx[i];
@@ -59,6 +59,16 @@ public class Le_286_Walls_and_Gates {
             }
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*********************** main function *********************************/
     
     public static void main(String[] args){
     	Le_286_Walls_and_Gates t = new Le_286_Walls_and_Gates();
