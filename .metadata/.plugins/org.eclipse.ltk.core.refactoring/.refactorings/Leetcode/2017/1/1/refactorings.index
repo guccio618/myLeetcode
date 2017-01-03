@@ -14,3 +14,68 @@
 1483242466970	Copy compilation unit
 1483243064176	Copy compilation unit
 1483243111422	Copy compilation unit
+1483373806239	Rename local variable 'opt'
+1483373861965	Rename local variable 'opt'
+1483378967748	Rename method 'leftmost'
+1483378990410	Rename method 'rightmost'
+1483379014649	Rename local variable 'l'
+1483379100783	Rename local variable 'l'
+1483379107846	Rename local variable 'r'
+1483379957073	Copy compilation unit
+1483380014398	Copy compilation unit
+1483390991643	Copy compilation unit
+1483391070027	Copy compilation unit
+1483391717216	Copy compilation unit
+1483392283570	Copy compilation unit
+1483392296189	Copy compilation unit
+1483393340112	Copy compilation unit
+1483395675025	Rename local variable 'a'
+1483396081428	Rename local variable 'idx'
+1483396141412	Rename local variable 'next'
+1483396386164	Rename local variable 'val'
+1483397093861	Copy compilation unit
+1483397153375	Rename type 'Node'
+1483397164069	Copy compilation unit
+1483397782505	Rename local variable 'dp'
+1483397891102	Copy compilation unit
+1483399734729	Rename local variable 'array'
+1483399750336	Rename local variable 'array'
+1483399931594	Copy compilation unit
+1483399961299	Copy compilation unit
+1483399981482	Copy compilation unit
+1483400404592	Copy compilation unit
+1483400861075	Copy compilation unit
+1483400898051	Copy compilation unit
+1483405212817	Rename local variable 'c'
+1483407522615	Copy compilation unit
+1483407550902	Copy compilation unit
+1483409204014	Copy compilation unit
+1483409217634	Copy compilation unit
+1483409358372	Copy compilation unit
+1483409372243	Copy compilation unit
+1483410291947	Copy compilation unit
+1483410419594	Copy compilation unit
+1483410718751	Copy compilation unit
+1483410754069	Copy compilation unit
+1483413062729	Copy compilation unit
+1483413088038	Copy compilation unit
+1483413801080	Rename local variable 'n'
+1483413850663	Copy compilation unit
+1483413859053	Copy compilation unit
+1483414071792	Copy compilation unit
+1483414276027	Rename local variable 'n'
+1483414619793	Rename local variable 'str2'
+1483414629361	Rename local variable 'str1'
+1483414649899	Rename local variable 'str2_reverse'
+1483414659037	Rename local variable 'str1_reverse'
+1483414728075	Copy compilation unit
+1483415012674	Rename local variable 'num'
+1483415027234	Rename local variable 'back'
+1483415037790	Rename local variable 'front'
+1483415245249	Copy compilation unit
+1483415367409	Copy compilation unit
+1483415498855	Copy compilation unit
+1483415509324	Copy compilation unit
+1483415657370	Copy compilation unit
+1483415847565	Copy compilation unit
+1483415850640	Copy compilation unit

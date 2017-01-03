@@ -1,9 +1,6 @@
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
@@ -74,63 +71,14 @@ public class Le_323_Number_of_Connected_Components_in_an_Undirected_Graph {
         }
     }
 	
-	
-	/***********************************************/
-	// by Jackie using BFS
-	public int countComponents2(int n, int[][] edges) {
-        if(n <= 0){
-            return 0;
-        } else if(edges == null || edges.length == 0 || edges[0].length == 0){
-            return n;
-        }
-        
-        int len = edges.length;
-        Set<Integer>[] graph = new Set[n];
-        Set<Integer> visited = new HashSet<Integer>();
-        int count = 0;
-        
-        for(int i = 0; i < len; i++){
-            if(graph[edges[i][0]] == null){
-                graph[edges[i][0]] = new HashSet<Integer>();
-            }
-            graph[edges[i][0]].add(edges[i][1]);
-            
-            if(graph[edges[i][1]] == null){
-                graph[edges[i][1]] = new HashSet<Integer>();
-            }
-            graph[edges[i][1]].add(edges[i][0]);
-        }
-        
-        for(int i = 0; i < n; i++){
-            if(!visited.contains(i)){
-                count++;
-                bfs(graph, i, visited);
-            }
-        }
-        
-        return count;
-    }
     
-    public void bfs(Set<Integer>[] graph, int root, Set<Integer> visited){
-        Queue<Integer> queue = new LinkedList<Integer>();
-        queue.offer(root);
-        
-        while(!queue.isEmpty()){
-            int node = queue.poll();
-            if(visited.contains(node) || graph[node] == null){
-                continue;
-            }
-            
-            visited.add(node);
-            
-            for(int next : graph[node]){
-                if(!visited.contains(next)){
-                    queue.offer(next);
-                }
-            }
-        }
-    }
+    
 	
+	
+	
+    
+    
+    
     
     
     /***********************************************/

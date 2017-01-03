@@ -5,11 +5,14 @@ import java.util.*;
  * Q163_Missing_Ranges*, Q228_Summary_Ranges*, Q166_Fraction_to_Recurring_Decimal*, Q212_Word_Search_II*, Q214_Shortest_Palindrome*, 
  * Q218_The_Skyline_Problem*, Q224_Basic_Calculator*, Q224_Basic_Calculator_III*, Q230_Kth_Smallest_Element_in_a_BST* (logn方法), Q257_Binary_Tree_Paths* (iterator和recursive方法), 
  * Q269_Alien_Dictionary*, Q271_Encode_and_Decode_Strings*, Q272_Closest_Binary_Search_Tree_Value_II*, Q274_H_Index*, Q275_H_Index_II*, 
- * Q305_Number_of_Islands_II*, Q282_Expression_Add_Operators*, Q284_Peeking_Iterator*, Q324_Wiggle_Sort_II*, 
+ * Q282_Expression_Add_Operators*, Q284_Peeking_Iterator*, Q302_Smallest_Rectangle_Enclosing_Black_Pixels*, Q305_Number_of_Islands_II*, Q308_Range_Sum_Query_2D_Mutable*, 
+ * Q313_Super_Ugly_Number*, Q320_Generalized_Abbreviation*, Q324_Wiggle_Sort_II*, Q327_Count_of_Range_Sum*, Q330_Patching_Array*, 
+ * Q331_Verify_Preorder_Serialization_of_a_Binary_Tree*, Q332_Reconstruct_Itinerary*, Q336_Palindrome_Pairs*, Q341_Flatten_Nested_List_Iterator*, Q348_Design_Tic_Tac_Toe*, 
  * 
  * Q031_Next_Permutation, Q057_Insert_Interval, Q146_LRU_Cache, Q159_Longest_Substring_with_At_Most_Two_Distinct_Characters, Q162_Find_Peak_Element，
  * Q239_Sliding_Window_Maximum, Q252_Meeting_Rooms (方法2), Q281_Zigzag_Iterator, Q286_Walls_and_Gates, Q288_Unique_Word_Abbreviation, 
- * Q289_Game_of_Life, Q295_Find_Median_from_Data_Stream, Q475_Heaters
+ * Q289_Game_of_Life, Q295_Find_Median_from_Data_Stream, Q310_Minimum_Height_Trees, Q315_Count_of_Smaller_Numbers_After_Self(第二种方法)，Q318_Maximum_Product_of_Word_Lengths, 
+ * Q329_Longest_Increasing_Path_in_a_Matrix, Q340_Longest_Substring_with_At_Most_K_Distinct_Characters, Q346_Moving_Average_from_Data_Stream, Q475_Heaters
  * 
  * */
 

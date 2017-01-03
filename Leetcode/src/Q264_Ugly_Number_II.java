@@ -1,27 +1,18 @@
-public class Q264_Ugly_Number_II {
-	/***************************************************/
-	// by other
-//	public int nthUglyNumber(int n) {
-//		if (n <= 0)
-//			return 0;
-//		int T2 = 0, T3 = 0, T5 = 0;
-//		int[] table = new int[n];
-//		table[0] = 1;
-//		int count = 1;
-//		while (count < n) {
-//			int next_val = Math.min(table[T2] * 2, Math.min(table[T3] * 3, table[T5] * 5));
-//			table[count++] = next_val;
-//			if (table[T2] * 2 == next_val)
-//				T2++;
-//			if (table[T3] * 3 == next_val)
-//				T3++;
-//			if (table[T5] * 5 == next_val)
-//				T5++;
-//		}
-//		return table[n - 1];
-//	}
-	
-	// 三指针，类似merge sort的思想， nice
+/********
+ * 
+Write a program to find the n-th ugly number.
+
+Ugly numbers are positive numbers whose prime factors only include 2, 3, 5. For example, 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 is the sequence of the first 10 ugly numbers.
+
+Note that 1 is typically treated as an ugly number.
+
+ * 
+ * */
+
+// follow up is Le_313
+
+public class Q264_Ugly_Number_II {	
+	// 三指针，类似merge sort的思想
 	public int nthUglyNumber(int n) {
         if(n <= 0){
             return 0;
@@ -29,30 +20,39 @@ public class Q264_Ugly_Number_II {
             return n;
         }
         
-        int[] dp = new int[n];
-        dp[0] = 1;
+        int[] ugly = new int[n];
+        ugly[0] = 1;
         int index2 = 0, index3 = 0, index5 = 0;
         int currentIndex = 1;
         int currentValue = 0; 
         
         while(currentIndex < n){
-            currentValue = Math.min(dp[index2] * 2, Math.min(dp[index3] * 3, dp[index5] * 5));
-            dp[currentIndex++] = currentValue;
+            currentValue = Math.min(ugly[index2] * 2, Math.min(ugly[index3] * 3, ugly[index5] * 5));
+            ugly[currentIndex++] = currentValue;
             
-            if(dp[index2] * 2 == currentValue){
+            if(ugly[index2] * 2 == currentValue){
                 index2++;
             }
-            if(dp[index3] * 3 == currentValue){   // 这里不能用else， 因为ugly[index2 = 3] * 2和 ugly[index3 = 2] * 3时，
+            if(ugly[index3] * 3 == currentValue){   // 这里不能用else， 因为ugly[index2 = 3] * 2和 ugly[index3 = 2] * 3时，
                 index3++;                         // index2和index3两个都需要移动
             }
-            if(dp[index5] * 5 == currentValue){
+            if(ugly[index5] * 5 == currentValue){
                 index5++;
             }
         }
         
-        return dp[n - 1];
+        return ugly[n - 1];
     }
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	/************************* main function **********************************/
 	
 	public static void main(String[] args){
 		Q264_Ugly_Number_II t = new Q264_Ugly_Number_II();

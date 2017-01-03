@@ -96,68 +96,33 @@ public class Le_310_Minimum_Height_Trees {
 					}
 				}
 			}
+			
 			leaves = newLeaves;
 		}
+		
 		return leaves;
 	}
 	
 	
 	
-	/****************************************************************************/
-	// by Jackie
-	public List<Integer> findMinHeightTrees2(int n, int[][] edges) {
-        List<Integer> ans = new ArrayList<Integer>();
-        if(edges == null || edges.length == 0 || edges[0] == null || edges[0].length == 0 || n <= 0){
-            return ans;
-        }
-        
-        Node[] nodes = new Node[n];
-        
-        for(int row = 0; row < edges.length; ++row){
-            if(nodes[edges[row][0]] == null){
-                nodes[edges[row][0]] = new Node(edges[row][0]);
-            } 
-            nodes[edges[row][0]].neighbor.add(edges[row][1]);
-            
-            if(nodes[edges[row][1]] == null){
-                nodes[edges[row][1]] = new Node(edges[row][1]);
-            } 
-            nodes[edges[row][1]].neighbor.add(edges[row][0]);
-        }
-        
-        for(int i = 0; i < n; ++i){
-            if(nodes[i].neighbor.size() == 1){
-                ans.add(i);
-            }
-        }
-        
-        while(n > 2){
-        	ArrayList<Integer> newlist = new ArrayList<Integer>();
-            for(int next : ans){
-                for(int nb : nodes[next].neighbor){
-                	nodes[nb].neighbor.remove(next);
-                	nodes[next].neighbor.remove(nb);
-                	n--;
-                	if(nodes[nb].neighbor.size() == 1){
-                        newlist.add(nb);
-                    }
-                }  
-            }
-            ans = newlist;
-        }
-
-        return ans;
-    }
-    
-    class Node{
-        int label;
-        HashSet<Integer> neighbor;
-        
-        public Node(int l){
-            label = l;
-            neighbor = new HashSet<Integer>();
-        }
-    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
     
     

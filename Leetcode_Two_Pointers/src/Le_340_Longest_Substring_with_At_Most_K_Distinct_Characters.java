@@ -24,7 +24,7 @@ public class Le_340_Longest_Substring_with_At_Most_K_Distinct_Characters {
         for(int faster = 0; faster < n; faster++){
             hash[s.charAt(faster)]++;
             
-            while(slower < n && !isValid(hash, k)){
+            while(!isValid(hash, k)){
                 hash[s.charAt(slower)]--;
                 slower++;
             }
@@ -39,6 +39,7 @@ public class Le_340_Longest_Substring_with_At_Most_K_Distinct_Characters {
     
     public boolean isValid(int[] hash, int k){
         int count = 0;
+        
         for(int i = 0; i < 256; i++){
             if(hash[i] > 0){
                 count++;
@@ -47,12 +48,14 @@ public class Le_340_Longest_Substring_with_At_Most_K_Distinct_Characters {
                 return false;
             }
         }
+        
         return true;
     }
     
     
     
- // solution 2: time O(n), space O(1)
+    
+    // solution 2: time O(n), space O(1)
     public int lengthOfLongestSubstringKDistinct2(String s, int k) {
     	if(s == null || s.length() == 0) {
             return 0;
@@ -60,21 +63,21 @@ public class Le_340_Longest_Substring_with_At_Most_K_Distinct_Characters {
         
         int maxLen = 0;
         int[] hash = new int[256];
-        int back = 0;
-        int num = 0;
+        int slower = 0;
+        int count = 0;
         
-        for(int front = 0; front < s.length(); front++) {
-            if(hash[s.charAt(front)]++ == 0) {
-                num++;
+        for(int faster = 0; faster < s.length(); faster++) {
+            if(hash[s.charAt(faster)]++ == 0) {
+                count++;
             }
             
-            while(num > k) {
-                if(--hash[s.charAt(back++)] == 0) {
-                    num--;
+            while(count > k) {
+                if(hash[s.charAt(slower++)]-- == 1) {
+                    count--;
                 }
             }
             
-            maxLen = Math.max(maxLen, front - back + 1);
+            maxLen = Math.max(maxLen, faster - slower + 1);
         }
         
         return maxLen;
