@@ -23,13 +23,18 @@ Examples:
  * */
 
 public class Le_394_Decode_String {
-	// It is a normal way to parse the string by DFS
+	// test case:
+	//	s = "3[a]2[bc]", return "aaabcbc".
+	//	s = "3[a2[c]]", return "accaccacc".
+	//	s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
+	
+	// using DFS
 	public String decodeString(String s) {
 		if(s == null || s.length() == 0) {
             return "";
         }
         
-        Stack<String> stack = new Stack();
+        Stack<String> stack = new Stack<>();
         
         for(int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
@@ -43,7 +48,7 @@ public class Le_394_Decode_String {
                     builder.insert(0, stack.pop());
                 }
                 
-                stack.pop();
+                stack.pop();  // c = '['
                 StringBuilder timeBuilder = new StringBuilder();
                 
                 while(!stack.isEmpty() && stack.peek().length() == 1 && Character.isDigit(stack.peek().charAt(0))) {
@@ -76,9 +81,12 @@ public class Le_394_Decode_String {
 	
 	
 	
-//	s = "3[a]2[bc]", return "aaabcbc".
-//	s = "3[a2[c]]", return "accaccacc".
-//	s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
+	
+	
+	
+	
+	
+
 	
 	/*******************************************************/
 	// by other using stack, faster

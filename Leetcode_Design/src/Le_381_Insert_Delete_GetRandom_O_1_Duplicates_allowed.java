@@ -37,6 +37,7 @@ collection.remove(1);
 
 // getRandom should return 1 and 2 both equally likely.
 collection.getRandom();
+
  * 
  * */
 

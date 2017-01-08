@@ -21,7 +21,7 @@ public class Q320_Generalized_Abbreviation {
     
     public void backtrack(List<String> ans, String word, int pos, String solution, int count) {
         if(pos == word.length()) {
-            solution += count > 0 ? count : "";
+        	solution += (count > 0) ? count : "";
             ans.add(solution);
             return;
         }

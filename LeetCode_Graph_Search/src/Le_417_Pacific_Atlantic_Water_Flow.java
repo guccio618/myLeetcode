@@ -36,6 +36,7 @@ Return:
 
 
 public class Le_417_Pacific_Atlantic_Water_Flow {
+	// using DFS
 	public List<int[]> pacificAtlantic(int[][] matrix) {
 		List<int[]> ans = new ArrayList<>();
 
@@ -69,19 +70,18 @@ public class Le_417_Pacific_Atlantic_Water_Flow {
 		return ans;
 	}
 
-	public void canFlow(int[][] matrix, boolean[][] visited, int height, int x,
-			int y) {
-		if (x < 0 || x >= matrix.length || y < 0 || y >= matrix[0].length
-				|| visited[x][y] || matrix[x][y] < height) {
-			return;
-		}
-
+	public void canFlow(int[][] matrix, boolean[][] visited, int height, int x, int y) {
 		int[] dx = { -1, 0, 0, 1 };
 		int[] dy = { 0, -1, 1, 0 };
 		visited[x][y] = true;
 
-		for (int i = 0; i < dx.length; i++) {
-			canFlow(matrix, visited, matrix[x][y], x + dx[i], y + dy[i]);
+		for (int i = 0; i < 4; i++) {
+		    int newX = x + dx[i];
+		    int newY = y + dy[i];
+		    
+		    if(newX >= 0 && newX < matrix.length && newY >= 0 && newY < matrix[0].length && !visited[newX][newY] && matrix[newX][newY] >= matrix[x][y]) {
+		        canFlow(matrix, visited, matrix[newX][newY], newX, newY);
+		    }
 		}
 	}
 
@@ -94,7 +94,11 @@ public class Le_417_Pacific_Atlantic_Water_Flow {
 	
 	
 	
-	/*********************************************************/
+	
+	
+	
+	
+	/**************************** main function *****************************/
 	public void print(int[][] array) {
 		for (int i = 0; i < array.length; i++) {
 			for (int j = 0; j < array[i].length; j++) {

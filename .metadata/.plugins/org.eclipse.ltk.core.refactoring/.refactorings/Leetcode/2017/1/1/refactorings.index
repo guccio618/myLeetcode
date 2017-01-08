@@ -79,3 +79,103 @@
 1483415657370	Copy compilation unit
 1483415847565	Copy compilation unit
 1483415850640	Copy compilation unit
+1483582665389	Copy compilation unit
+1483587191854	Copy compilation unit
+1483587238211	Copy compilation unit
+1483628891806	Copy compilation unit
+1483629013838	Copy compilation unit
+1483630477100	Copy compilation unit
+1483630659644	Copy compilation unit
+1483631080720	Copy compilation unit
+1483631310184	Copy compilation unit
+1483637842840	Copy compilation unit
+1483637857268	Copy compilation unit
+1483639020322	Copy compilation unit
+1483672896150	Rename local variable 'flag'
+1483673286190	Copy compilation unit
+1483673809820	Copy compilation unit
+1483673830159	Copy compilation unit
+1483675375156	Copy compilation unit
+1483675391819	Copy compilation unit
+1483675504579	Copy compilation unit
+1483675511318	Copy compilation unit
+1483676205536	Copy compilation unit
+1483676605892	Copy compilation unit
+1483676819006	Copy compilation unit
+1483676937220	Copy compilation unit
+1483708427734	Rename field 'available'
+1483708463974	Copy compilation unit
+1483708471251	Copy compilation unit
+1483708817579	Copy compilation units
+1483710087491	Copy compilation unit
+1483710093400	Copy compilation unit
+1483710296169	Copy compilation units
+1483713845960	Copy compilation unit
+1483713857060	Copy compilation unit
+1483715429390	Copy compilation unit
+1483715436802	Copy compilation unit
+1483716089016	Copy compilation unit
+1483716315872	Rename field 'map'
+1483717075182	Rename local variable 'query'
+1483724562354	Copy compilation unit
+1483726124632	Rename local variable 'bit'
+1483726142744	Rename local variable 'bitNum'
+1483726189914	Rename local variable 'range'
+1483726324990	Rename local variable 'startNum'
+1483726564568	Copy compilation unit
+1483735593252	Copy compilation unit
+1483736524313	Copy compilation unit
+1483737466501	Copy compilation unit
+1483737486646	Copy compilation unit
+1483737666376	Copy compilation unit
+1483740455122	Copy compilation unit
+1483740664551	Copy compilation unit
+1483740673482	Copy compilation unit
+1483742050593	Copy compilation unit
+1483745556602	Copy compilation unit
+1483745897870	Copy compilation unit
+1483745914107	Copy compilation unit
+1483757274959	Copy compilation unit
+1483757293936	Copy compilation unit
+1483759933188	Rename local variable 'curNode'
+1483759940181	Rename local variable 'curBit'
+1483759960427	Rename local variable 'curNode'
+1483759972394	Rename local variable 'curBit'
+1483761550356	Copy compilation unit
+1483800074443	Copy compilation unit
+1483800120024	Copy compilation unit
+1483800172229	Copy compilation unit
+1483801347220	Copy compilation unit
+1483801379440	Copy compilation unit
+1483801864579	Rename local variable 'temp'
+1483803152457	Rename local variable 'index'
+1483803160085	Rename local variable 'curindex'
+1483803659266	Rename method 'findSquare'
+1483803674885	Copy compilation unit
+1483803704597	Copy compilation unit
+1483805073132	Copy compilation unit
+1483805369145	Copy compilation unit
+1483805467492	Copy compilation unit
+1483806977632	Copy compilation unit
+1483806986279	Copy compilation unit
+1483807671732	Rename type 'Node'
+1483807679791	Rename local variable 'n1'
+1483807685386	Rename local variable 'n2'
+1483807694908	Rename local variable 'n'
+1483808445255	Copy compilation unit
+1483808460025	Copy compilation unit
+1483808625124	Copy compilation unit
+1483808790842	Copy compilation unit
+1483822166722	Copy compilation unit
+1483824444005	Copy compilation unit
+1483824465799	Copy compilation unit
+1483824971480	Copy compilation unit
+1483825439284	Rename local variable 'res'
+1483826500509	Rename local variable 'row'
+1483826506572	Rename local variable 'col'
+1483827179034	Rename local variable 'array'
+1483827464629	Rename local variable 'val'
+1483827495311	Rename local variable 'subres'
+1483827559311	Rename local variable 'n'
+1483827567306	Rename local variable 'm'
+1483828449918	Copy compilation unit

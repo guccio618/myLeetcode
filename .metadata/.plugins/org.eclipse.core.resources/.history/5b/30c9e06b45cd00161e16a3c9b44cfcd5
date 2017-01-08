@@ -1,7 +1,0 @@
-
-
-public class Snippet {
-	public static void main(String[] args) {
-		Q163_Missing_Ranges
-	}
-}
