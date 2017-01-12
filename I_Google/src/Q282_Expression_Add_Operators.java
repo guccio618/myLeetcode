@@ -17,6 +17,8 @@ Examples:
 
 
 public class Q282_Expression_Add_Operators {
+	// test case: ["0"], ["01"], ["101"]
+	
 	public List<String> addOperators(String num, int target) {
         List<String> ans = new ArrayList<String>();
         
@@ -24,32 +26,33 @@ public class Q282_Expression_Add_Operators {
         	return ans;
         }
         
-        helper(ans, "", num, target, 0, 0, 0);
+        backtrack(ans, num, target, "", 0, 0, 0);
         return ans;
     }
-    
-    public void helper(List<String> rst, String solution, String num, int target, int pos, long sum, long multed){
-        if(pos == num.length()){
+    	
+    public void backtrack(List<String> ans, String num, int target, String solution, int start, long sum, long prevNum){
+    	// prevNum is used to store the previous valid number 
+        if(start == num.length()){
             if(target == sum){
-                rst.add(solution);
+                ans.add(solution);
             }
             
             return;
         }
         
-        for(int i = pos; i < num.length(); i++){
-            if(i != pos && num.charAt(pos) == '0'){
-            	break;
+        for(int i = start; i < num.length(); i++){ 
+            if(i != start && num.charAt(start) == '0'){    // 注意这里是start，而不是 i  ！！！
+            	break;                                     // 可以是 "0", 但不可以是"01"之类的 ！！！
             }
             
-            long cur = Long.parseLong(num.substring(pos, i + 1));
+            long cur = Long.parseLong(num.substring(start, i + 1));
             
-            if(pos == 0){
-                helper(rst, solution + cur, num, target, i + 1, cur, cur);
+            if(start == 0){
+                backtrack(ans, num, target, solution + cur, i + 1, cur, cur);
             } else{
-                helper(rst, solution + "+" + cur, num, target, i + 1, sum + cur , cur);                
-                helper(rst, solution + "-" + cur, num, target, i + 1, sum - cur, -cur);               
-                helper(rst, solution + "*" + cur, num, target, i + 1, sum + multed * cur - multed, multed * cur );
+                backtrack(ans, num, target, solution + "+" + cur, i + 1, sum + cur, cur);                
+                backtrack(ans, num, target, solution + "-" + cur, i + 1, sum - cur, -cur);               
+                backtrack(ans, num, target, solution + "*" + cur, i + 1, sum + prevNum * cur - prevNum, prevNum * cur);   // because in last recusrion, multed has been add one time.
             }
         }
     }

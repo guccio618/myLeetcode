@@ -19,14 +19,14 @@ public class Q320_Generalized_Abbreviation {
         return ans;
     }
     
-    public void backtrack(List<String> ans, String word, int pos, String solution, int count) {
-        if(pos == word.length()) {
+    public void backtrack(List<String> ans, String word, int start, String solution, int count) {
+        if(start == word.length()) {
         	solution += (count > 0) ? count : "";
             ans.add(solution);
             return;
         }
         
-        backtrack(ans, word, pos + 1, solution, count + 1);
-        backtrack(ans, word, pos + 1, solution + (count > 0 ? count : "") + word.charAt(pos), 0);
+        backtrack(ans, word, start + 1, solution, count + 1);
+        backtrack(ans, word, start + 1, solution + (count > 0 ? count : "") + word.charAt(start), 0);
     }
 }

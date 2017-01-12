@@ -18,57 +18,52 @@ return 3. (Placing a bomb at (1,1) kills 3 enemies)
 
 public class Le_361_Bomb_Enemy {
 	public int maxKilledEnemies(char[][] grid) {
-        if(grid == null || grid.length == 0 || grid[0].length == 0){
+        if(grid == null || grid.length == 0 || grid[0].length == 0) {
             return 0;
         }
         
-        int row = grid.length;
-        int col = grid[0].length;
-        int[] colCounts = new int[col];
+        int row = grid.length, col = grid[0].length;
         int rowCount = 0;
-        int maxNum = 0;
+        int[] colsCount = new int[col];
+        int maxCount = 0;
         
-        for(int i = 0; i < row; i++){
-            for(int j = 0; j < col; j++){
-                if(grid[i][j] == 'W'){
+        for(int i = 0; i < row; i++) {
+            for(int j = 0; j < col; j++) {
+                if(grid[i][j] == 'W') {
                     continue;
                 }
                 
-                if(j == 0 || grid[i][j - 1] == 'W'){
-                    rowCount = getKilledEnemiesInRow(grid, i, j);
+                if(j == 0 || grid[i][j - 1] == 'W') {
+                    rowCount = getEnemy(grid, i, j, true);
                 }
                 
-                if(i == 0 || grid[i - 1][j] == 'W'){
-                    colCounts[j] = getKilledEnemiesInCol(grid, i, j);
+                if(i == 0 || grid[i - 1][j] == 'W') {
+                    colsCount[j] = getEnemy(grid, i, j, false);
                 }
                 
-                if(grid[i][j] == '0'){
-                    maxNum = Math.max(maxNum, rowCount + colCounts[j]);
+                if(grid[i][j] == '0') {
+                    maxCount = Math.max(maxCount, rowCount + colsCount[j]);
                 }
             }
         }
         
-        return maxNum;
+        return maxCount;
     }
     
-    public int getKilledEnemiesInRow(char[][] grid, int x, int y){
+    public int getEnemy(char[][] grid, int x, int y, boolean byRow) {
         int count = 0;
         
-        for(int i = y; i < grid[0].length && grid[x][i] != 'W'; i++){
-            if(grid[x][i] == 'E'){
-                count++;
+        if(byRow) {
+            for(int i = y; i < grid[0].length && grid[x][i] != 'W'; i++) {
+                if(grid[x][i] == 'E') {
+                    count++;
+                }
             }
-        }
-        
-        return count;
-    }
-    
-    public int getKilledEnemiesInCol(char[][] grid, int x, int y){
-        int count = 0;
-        
-        for(int i = x; i < grid.length && grid[i][y] != 'W'; i++){
-            if(grid[i][y] == 'E'){
-                count++;
+        } else {
+            for(int i = x; i < grid.length && grid[i][y] != 'W'; i++) {
+                if(grid[i][y] == 'E') {
+                    count++;
+                }
             }
         }
         
@@ -77,7 +72,20 @@ public class Le_361_Bomb_Enemy {
 	
     
     
-    /*******************************************************************/
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /****************************** main function *************************************/
 	// by Jackie using DP
 	public int maxKilledEnemies2(char[][] grid) {
 		if(grid == null || grid.length == 0 || grid[0].length == 0){

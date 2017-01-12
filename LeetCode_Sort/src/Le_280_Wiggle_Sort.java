@@ -33,30 +33,21 @@ public class Le_280_Wiggle_Sort {
     
 	// solution 2: time is O(n), space is O(1)
 	public void wiggleSort(int[] nums) {
-        if(nums == null || nums.length == 0){
-            return ;
+		if(nums == null || nums.length <= 1) {
+            return;
         }
         
-        int n = nums.length;
+        int len = nums.length;
         
-        for(int i = 0; i < n - 1; i++){
-            if(i % 2 == 0){
-                if(nums[i] > nums[i + 1]){
-                    swap(nums, i, i + 1);
-                }
-            } else {
-                if(nums[i] < nums[i + 1]){
-                    swap(nums, i, i + 1);
-                }
-            }
+        for(int i = 0; i < len - 1; i++) {
+            if( (i % 2 == 0 && nums[i] > nums[i + 1]) || (i % 2 == 1 && nums[i] < nums[i + 1]) ) {
+                int temp = nums[i];
+                nums[i] = nums[i + 1];
+                nums[i + 1] = temp;
+            } 
         }
     }
-    
-    public void swap(int[] nums, int x, int y){
-        int temp = nums[x];
-        nums[x] = nums[y];
-        nums[y] = temp;
-    }
+
     
     
     

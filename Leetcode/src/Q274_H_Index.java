@@ -13,21 +13,29 @@ Note: If there are several possible values for h, the maximum one is taken as th
  * */
 
 public class Q274_H_Index {
-	// solution 1: using sort, time is O(nlogn), space is O(1)
+	// solution 1: using sort + binary serach, time is O(nlogn + logn), space is O(1)
 	public int hIndex(int[] citations) {
-        if(citations == null || citations.length == 0){
+		if(citations == null || citations.length == 0) {
             return 0;
         }
         
         Arrays.sort(citations);
-        int n = citations.length;
-        int i = 0;
+        int len = citations.length;
+        int left = 0, right = citations.length - 1;
+        int ans = 0;
         
-        while(i < n && citations[n - i - 1] > i){   // 注意这里是 n - i - 1
-            i++;
+        while(left <= right) {
+            int mid = left + (right - left) / 2;
+            
+            if(citations[mid] < len - mid) {
+                left = mid + 1;
+            } else {
+                ans = len - mid;
+                right = mid - 1;
+            }
         }
         
-        return i;
+        return ans;
     }
 		
 	

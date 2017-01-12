@@ -36,7 +36,7 @@ public class Le_284_Peeking_Iterator_FollowUp implements Iterator<Object> {
 	    if(iter.hasNext()){
 	    	next = iter.next();
 	    } else {
-	    	next = (Integer) null;
+	    	next = (Object) null;
 	    }
 	    
 	    return ans;
@@ -44,7 +44,7 @@ public class Le_284_Peeking_Iterator_FollowUp implements Iterator<Object> {
 
 	@Override
 	public boolean hasNext() {
-		return next != (Integer) null;
+		return next != (Object) null;
 	}
 	
 	

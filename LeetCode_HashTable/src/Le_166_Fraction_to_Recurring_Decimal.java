@@ -62,6 +62,20 @@ public class Le_166_Fraction_to_Recurring_Decimal {
     }
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/******************************************************************************/
 	// by other
 	public String fractionToDecimal2(int numerator, int denominator) {
 		boolean isNegative = ((numerator < 0 && denominator > 0) || (numerator > 0 && denominator < 0)) ? true : false;

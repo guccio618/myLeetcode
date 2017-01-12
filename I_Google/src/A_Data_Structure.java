@@ -2,36 +2,52 @@ import java.util.*;
 /******
  * 
  * 
- * 4, 22, 140, 157, 158,   
- * 163, 228, 166, 212, 214,
- * 218, 224, 224, 230 (logn方法), 257 (iterator和recursive方法),  
- * 269, 271, 272, 274, 275,
- * 282, 284, 302, 305, 308,
- * 313, 320, 324, 327, 330,
- * 331, 332, 336, 341, 348,
- * 351, 354, 361, 363, 368, 
- * 375, 379, 381, 391, 393, 
- * 394, 399, 400, 406, 411 (?), 
- * 418, 421, 425, 444, 460, 
- * 474 (两种解法)
+ * 4, 140*, 157, 158*, 163, 
+ * 228*, 166*, 212*, 214*, 218, 
+ * 224, 224*, 230 (logn + n方法), 257 (iterator和recursive方法), 269, 
+ * 271, 272*, 274*, 275*, 282*, 
+ * 284*, 302*(binary search 方法), 305, 308*, 313*, 264,  
+ * 320, 324*, 327*, 330*, 331, 
+ * 332, 336, 341*, 348, 351*, 
+ * 354*(binary search方法), 358*, 361*, 363**, 368*, 
+ * 369**(constant space方法), 375*, 379*, 381*, 391**, 
+ * 393*, 394**, 397*(2种方法), 399*, 400*, 
+ * 402*, 406*, 411 (?), 418*, 421**, 
+ * 425**, 444*(细节), 447*, 460*, 474*(两种解法)
  * 
  * 
- * 31, 57, 146, 159, 162,
- * 239, 252 (方法2), 281, 286, 288,
- * 289, 295, 310, 315 (第二种方法)，318, 
- * 329, 340, 346, 356, 358, 
- * 360, 362, 369, 370, 373, 
- * 377, 401, 402, 407, 408, 
- * 417, 422, 447, 463, 469, 
- * 475
+ * 22, 31*, 57*(O(n)方法), 146, 159, 
+ * 162, 239, 252 (方法2), 281*, 286*, 
+ * 288*, 289, 295*, 310*, 315 (第二种方法)，
+ * 318, 329*, 340, 346, 356, 
+ * 360, 362, 370, 373, 377, 
+ * 401*, 407, 408*, 417, 422*, 
+ * 463*(第二种方法), 469*, 475, 480, 482, 
+ * 
  * 
  * 
  * Design: 
+ * 			Q146_LRU_Cache
+ * 			Q284_Peeking_Iterator*
+ * 			Q288_Unique_Word_Abbreviation*
+ * 			Q295_Find_Median_from_Data_Stream
+ * 			Q308_Range_Sum_Query_2D_Mutable*
+ * 			Q341_Flatten_Nested_List_Iterator*
+ * 			Q346_Moving_Average_from_Data_Stream
+ * 			Q348_Design_Tic_Tac_Toe
+ * 			Q351_Android_Unlock_Patterns*
+ * 			Q362_Design_Hit_Counter
+ * 			Q379_Design_Phone_Directory*
+ * 			Q380_Insert_Delete_GetRandom_O_1
+ * 			Q381_Insert_Delete_GetRandom_O_1_Duplicates_allowed*
  * 			Q382_Linked_List_Random_Node
- * 			Q460_LFU_Cache
+ * 			Q460_LFU_Cache*
  * 
  * String Abbreviation:
- * 			320,  
+ * 			320, 408, 
+ * 
+ * Segment Tree:
+ * 			327, 
  * 
  * 
  * Q004_Median_of_Two_Sorted_Arrays*, Q022_Generate_Parentheses*, Q140_Word_Break_II*, Q157_Read_N_Characters_Given_Read4, Q158_Read_N_Characters_Given_Read4_II_Call_multiple_times*, 

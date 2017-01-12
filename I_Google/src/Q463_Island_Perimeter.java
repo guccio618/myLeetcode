@@ -67,7 +67,7 @@ public class Q463_Island_Perimeter {
     * each island grid has four sides, and just need to count right neighbour or down neighbour;
     * each neighbours pairs have two sides. 
     ************************************************************************/
-    // solution 2: 
+    // solution 2: time is O(n^2)
     public int islandPerimeter2(int[][] grid) {
     	if(grid == null || grid.length == 0 || grid[0].length == 0) {
             return 0;

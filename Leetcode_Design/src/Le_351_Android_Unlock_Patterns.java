@@ -32,20 +32,20 @@ Given m = 1, n = 1, return 9.
 
 
 public class Le_351_Android_Unlock_Patterns {
-	private int[][] jumps = new int[10][10];
+	private int[][] jumpStatus = new int[10][10];
     private boolean[] visited = new boolean[10];  
     
     public int numberOfPatterns(int m, int n) {
-        jumps[1][3] = jumps[3][1] = 2;
-        jumps[4][6] = jumps[6][4] = 5;
-        jumps[7][9] = jumps[9][7] = 8;
-        jumps[1][7] = jumps[7][1] = 4;
-        jumps[2][8] = jumps[8][2] = 5;
-        jumps[3][9] = jumps[9][3] = 6;
-        jumps[1][9] = jumps[9][1] = jumps[3][7] = jumps[7][3] = 5;
+        jumpStatus[1][3] = jumpStatus[3][1] = 2;
+        jumpStatus[4][6] = jumpStatus[6][4] = 5;
+        jumpStatus[7][9] = jumpStatus[9][7] = 8;
+        jumpStatus[1][7] = jumpStatus[7][1] = 4;
+        jumpStatus[2][8] = jumpStatus[8][2] = 5;
+        jumpStatus[3][9] = jumpStatus[9][3] = 6;
+        jumpStatus[1][9] = jumpStatus[9][1] = jumpStatus[3][7] = jumpStatus[7][3] = 5;
         
         int count = 0;
-        count += DFS(1, m, n, 1, 0) * 4;
+        count += DFS(1, m, n, 1, 0) * 4;    // solutionLen 从1开始 ！！！
         count += DFS(2, m, n, 1, 0) * 4;
         count += DFS(5, m, n, 1, 0);
         return count;
@@ -60,8 +60,8 @@ public class Le_351_Android_Unlock_Patterns {
         
         visited[start] = true;
         
-        for(int next = 1; next <= 9; next++) {
-            int jumpNeed = jumps[start][next];
+        for(int next = 1; next <= 9; next++) {    // next 从 1 - 9 ！！！
+            int jumpNeed = jumpStatus[start][next];
             
             if(!visited[next] && (jumpNeed == 0 || visited[jumpNeed] == true)) {
                 count = DFS(next, m, n, solutionLen + 1, count);
@@ -75,7 +75,16 @@ public class Le_351_Android_Unlock_Patterns {
     
     
     
-    /***** main function ******/
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /******************************* main function *******************************************/
     
     public static void main(String[] args){
     	Le_351_Android_Unlock_Patterns t = new Le_351_Android_Unlock_Patterns();

@@ -27,8 +27,8 @@ public class Le_272_Closest_Binary_Search_Tree_Value_II {
             return ans;
         }
         
-        Queue<Node> heap = new PriorityQueue<Node>(1, new Comparator<Node>(){
-            public int compare(Node left, Node right){
+        Queue<Pair> heap = new PriorityQueue<Pair>(1, new Comparator<Pair>(){
+            public int compare(Pair left, Pair right){
                 if(left.diff > right.diff){
                     return 1;
                 } else if(left.diff < right.diff){
@@ -48,7 +48,7 @@ public class Le_272_Closest_Binary_Search_Tree_Value_II {
             }
             
             root = stack.pop();
-            heap.offer(new Node(root.val, Math.abs((double) root.val - target)));
+            heap.offer(new Pair(root.val, Math.abs((double) root.val - target)));
             root = root.right;
         }
         
@@ -59,11 +59,11 @@ public class Le_272_Closest_Binary_Search_Tree_Value_II {
         return ans;
     }
     
-    class Node {
+    class Pair {
         int value;
         double diff;
         
-        public Node (int v, double d){
+        public Pair (int v, double d){
             value = v;
             diff = d;
         }
@@ -72,7 +72,7 @@ public class Le_272_Closest_Binary_Search_Tree_Value_II {
     
     
     
-	// follow up: solution 2: time complexity is O(logn)
+	// follow up: solution 2: using two stack + merge sort, time complexity is O(logn)
 	public List<Integer> closestKValues2(TreeNode root, double target, int k) {
         List<Integer> ans = new ArrayList<Integer>();
         

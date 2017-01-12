@@ -55,7 +55,7 @@ public class Q368_Largest_Divisible_Subset {
         }
         
         while(startIndex != -1) {
-            ans.add(array[startIndex].num);
+            ans.add(array[startIndex].value);
             startIndex = array[startIndex].preIndex;
         }
         
@@ -63,12 +63,12 @@ public class Q368_Largest_Divisible_Subset {
     }
     
     class Pair {
-        int num;
+        int value;
         int longestSize;
         int preIndex; 
         
-        public Pair(int num, int longestSize, int preIndex) {
-            this.num = num;
+        public Pair(int value, int longestSize, int preIndex) {
+            this.value = value;
             this.longestSize = longestSize;
             this.preIndex = preIndex;
         }
@@ -122,7 +122,14 @@ public class Q368_Largest_Divisible_Subset {
 	
 	
 	
-	/********** main function **********/
+	
+	
+	
+	
+	
+	
+	
+	/************************************ main function ***********************************/
 	// by Jackie, time complexity is O(n^2), space is O(n)
 	public List<Integer> largestDivisibleSubset3(int[] nums) {
 		if(nums == null || nums.length == 0){

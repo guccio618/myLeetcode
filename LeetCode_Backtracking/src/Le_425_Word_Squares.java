@@ -98,8 +98,8 @@ public class Le_425_Word_Squares {
         TrieNode node = root;
         
         for(int i = 0; i < s.length(); i++) {
-            if(node.next[s.charAt(i) - 'a'] != null) {
-                node = node.next[s.charAt(i) - 'a'];
+            if(node.children[s.charAt(i) - 'a'] != null) {
+                node = node.children[s.charAt(i) - 'a'];
             } else {
                 node = null;
                 break;
@@ -124,11 +124,11 @@ public class Le_425_Word_Squares {
             for(char c : array) {
                 node.words.add(word);
                 
-                if(node.next[c - 'a'] == null) {
-                    node.next[c - 'a'] = new TrieNode();
+                if(node.children[c - 'a'] == null) {
+                    node.children[c - 'a'] = new TrieNode();
                 }
                 
-                node = node.next[c - 'a'];
+                node = node.children[c - 'a'];
             }
             
             node.words.add(word);
@@ -136,7 +136,12 @@ public class Le_425_Word_Squares {
     }
     
     class TrieNode {
-        TrieNode[] next = new TrieNode[26];
-        List<String> words = new ArrayList<>();
+        TrieNode[] children; 
+        Set<String> words;
+        
+        public TrieNode() {
+        	children = new TrieNode[26];
+        	words = new HashSet<>();
+        }
     }
 }

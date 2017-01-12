@@ -76,22 +76,22 @@ public class Le_057_Insert_Interval {
 			int startPos = newInterval.start, endPos = newInterval.end;
 
 			while (index < len) {
-				Interval currentInterval = intervals.get(index);
+				Interval curInterval = intervals.get(index);
 
-				if (currentInterval.end >= newInterval.start) {
-					break;
-				} else {
-					ans.add(currentInterval);
+				if(curInterval.end < newInterval.start) {
+					ans.add(curInterval);
 					index++;
+				} else {
+					break;
 				}
 			}
 
 			while (index < len) {
-				Interval currentInterval = intervals.get(index);
+				Interval curInterval = intervals.get(index);
 
-				if (endPos >= currentInterval.start) {
-					startPos = Math.min(startPos, currentInterval.start);
-					endPos = Math.max(endPos, currentInterval.end);
+				if (curInterval.start <= endPos) {
+					startPos = Math.min(startPos, curInterval.start);
+					endPos = Math.max(endPos, curInterval.end);
 					index++;
 				} else {
 					break;

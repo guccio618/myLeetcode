@@ -46,24 +46,29 @@ public class Q393_UTF8_Validation {
             return false;
         }
         
-        int cnt = 0;
+        int count = 0;
         
-        for(int n : data) {
-            if(cnt == 0) {
-                if((n >> 5) == 0b110) {cnt = 1;}
-                else if((n >> 4) == 0b1110) {cnt = 2;}
-                else if((n >> 3) == 0b11110) {cnt = 3;}
-                else if((n >> 7) == 0b1) {return false;}   // test case: [255]
+        for(int elem : data) {
+            if(count == 0) {
+                if((elem >> 5) == 0b110) {
+                    count = 1;
+                } else if((elem >> 4) == 0b1110) {
+                    count = 2;
+                } else if((elem >> 3) == 0b11110) {
+                    count = 3;
+                } else if((elem >> 7) == 0b1) {   // test case: [255]
+                    return false;
+                }
             } else {
-                if((n >> 6) != 0b10) {
+                if((elem >> 6) != 0b10) {
                     return false;
                 } else {
-                    cnt--;
+                    count--;
                 }
             }
         }
         
-        return cnt == 0;
+        return count == 0;
     }
 	
 	

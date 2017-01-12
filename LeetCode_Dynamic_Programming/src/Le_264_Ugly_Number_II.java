@@ -9,8 +9,10 @@ Note that 1 is typically treated as an ugly number.
  * 
  * */
 
+// follow up is Le_313
+
 public class Le_264_Ugly_Number_II {	
-	// 三指针，类似merge sort的思想
+	// using 三指针，类似merge sort的思想
 	public int nthUglyNumber(int n) {
         if(n <= 0){
             return 0;
@@ -21,26 +23,30 @@ public class Le_264_Ugly_Number_II {
         int[] ugly = new int[n];
         ugly[0] = 1;
         int index2 = 0, index3 = 0, index5 = 0;
-        int currentIndex = 1;
-        int currentValue = 0; 
+        int curIndex = 1;
+        int curValue = 0; 
         
-        while(currentIndex < n){
-            currentValue = Math.min(ugly[index2] * 2, Math.min(ugly[index3] * 3, ugly[index5] * 5));
-            ugly[currentIndex++] = currentValue;
+        while(curIndex < n){
+            curValue = Math.min(ugly[index2] * 2, Math.min(ugly[index3] * 3, ugly[index5] * 5));
+            ugly[curIndex++] = curValue;
             
-            if(ugly[index2] * 2 == currentValue){
+            // remove duplicated num, cannot using else	
+            if(ugly[index2] * 2 == curValue){
                 index2++;
             }
-            if(ugly[index3] * 3 == currentValue){   // 这里不能用else， 因为ugly[index2 = 3] * 2和 ugly[index3 = 2] * 3时，
+            if(ugly[index3] * 3 == curValue){   // 这里不能用else， 因为ugly[index2 = 3] * 2和 ugly[index3 = 2] * 3时，
                 index3++;                         // index2和index3两个都需要移动
             }
-            if(ugly[index5] * 5 == currentValue){
+            if(ugly[index5] * 5 == curValue){
                 index5++;
             }
         }
         
         return ugly[n - 1];
     }
+	
+	
+	
 	
 	
 	

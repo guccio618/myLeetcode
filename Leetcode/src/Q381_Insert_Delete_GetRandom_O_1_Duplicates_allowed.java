@@ -80,6 +80,10 @@ public class Q381_Insert_Delete_GetRandom_O_1_Duplicates_allowed {
 
 		int pos = number_pos_Map.get(val).iterator().next();
 		number_pos_Map.get(val).remove(pos);
+		
+		if (number_pos_Map.get(val).isEmpty()) {
+			number_pos_Map.remove(val);
+		}
 
 		if (pos < numbers.size() - 1) {
 			int lastElement = numbers.get(numbers.size() - 1);
@@ -89,11 +93,6 @@ public class Q381_Insert_Delete_GetRandom_O_1_Duplicates_allowed {
 		}
 
 		numbers.remove(numbers.size() - 1);
-
-		if (number_pos_Map.get(val).isEmpty()) {
-			number_pos_Map.remove(val);
-		}
-
 		return true;
 	}
 

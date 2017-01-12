@@ -47,7 +47,7 @@ public class Q402_Remove_K_Digits {
                 count++;
             }
             
-            if(c == '0' && stack.isEmpty()) {
+            if(c == '0' && stack.isEmpty()) {    // first character should not be "0" !!!
                 continue;
             } else {
                 stack.push(c);
@@ -58,7 +58,7 @@ public class Q402_Remove_K_Digits {
             sb.insert(0, stack.pop());
         }
         
-        return sb.length() == 0 ? "0" : sb.substring(0, sb.length() - k + count);   // 防止test case: [112] [1]
+        return sb.length() == 0 ? "0" : sb.substring(0, sb.length() - k + count);   // 防止test case: [112, 1]
 	}
 	
 	

@@ -1,0 +1,51 @@
+
+public class Q456_132_Pattern {
+	public boolean find132pattern(int[] nums) {
+        if(nums == null || nums.length <= 2) {
+            return false;
+        }
+        
+        int[] array = new int[3];
+        array[0] = array[2] = Integer.MAX_VALUE;
+        array[1] = Integer.MIN_VALUE;
+        
+        for(int num : nums) {
+            if(num < array[0]) {
+                array[0] = num;
+            } else if(num > array[1]) {
+                array[1] = num;
+            } else if(num < array[2]) {
+                array[2] = num;
+            }
+            
+            System.out.println(array[0] + " " + array[1] + " " + array[2]);
+            
+            if(array[2] != Integer.MAX_VALUE) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/************************** main function ******************************/
+	
+	public static void main(String[] args) {
+		Q456_132_Pattern t = new Q456_132_Pattern();
+		int[] nums = {1, 0, 1, -4, -3};
+		System.out.println(t.find132pattern(nums));
+	}
+}

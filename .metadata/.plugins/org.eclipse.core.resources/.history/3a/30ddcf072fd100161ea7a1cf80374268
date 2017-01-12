@@ -1,7 +1,0 @@
-
-
-public class Snippet {
-	public static void main(String[] args) {
-		Q308_Range_Sum_Query_2D_Mutable
-	}
-}

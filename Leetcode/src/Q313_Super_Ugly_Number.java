@@ -34,7 +34,7 @@ public class Q313_Super_Ugly_Number {
 	    
 	    // time is O(klogk)
 	    for(int prime : primes) {
-	        heap.offer(new Pair(prime, 1, prime));
+	        heap.offer(new Pair(prime, 0, prime));
 	    }
 	    
 	    // time is O(nlogk)

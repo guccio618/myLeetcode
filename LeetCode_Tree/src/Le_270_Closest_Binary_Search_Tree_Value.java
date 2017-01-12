@@ -1,5 +1,8 @@
 
 public class Le_270_Closest_Binary_Search_Tree_Value {
+	// naive method is to use inorder travel, and find the node 
+	// which is most close to the target node, time is O(n).
+	
 	// using binary search, time is O(logn)
 	public int closestValue(TreeNode root, double target) {
         if(root == null) {

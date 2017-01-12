@@ -42,31 +42,32 @@ public class Q394_Decode_String {
             if(c != ']') {
                 stack.push(String.valueOf(c));
             } else {
-                StringBuilder builder = new StringBuilder();
+                StringBuilder strBuilder = new StringBuilder();
                 
                 while(!stack.isEmpty() && !stack.peek().equals("[")) {
-                    builder.insert(0, stack.pop());
+                    strBuilder.insert(0, stack.pop());
                 }
                 
-                stack.pop();  // c = '['
+                stack.pop();  // pop(): c = '['
                 StringBuilder timeBuilder = new StringBuilder();
                 
+                // is a digit and the length is equal to 1
                 while(!stack.isEmpty() && stack.peek().length() == 1 && Character.isDigit(stack.peek().charAt(0))) {
                     timeBuilder.insert(0, stack.pop());
                 }
                 
                 int time = Integer.parseInt(timeBuilder.toString());
-                String str = builder.toString();
+                String str = strBuilder.toString();
                 
-                for(int j = 1; j < time; j++) {
-                    builder.append(str);
+                for(int j = 1; j < time; j++) {  // j从1开始 ！！！
+                    strBuilder.append(str);
                 }
                 
-                stack.push(builder.toString());
+                stack.push(strBuilder.toString());
             }
         }
         
-        StringBuilder sb = new StringBuilder("");
+        StringBuilder sb = new StringBuilder();
 		
 		while (!stack.empty()) {
 		    sb.insert(0, stack.pop());
@@ -88,7 +89,7 @@ public class Q394_Decode_String {
 	
 
 	
-	/*******************************************************/
+	/************************* main function ******************************/
 	// by other using stack, faster
 	public String decodeString2(String s) {
 		if(s == null || s.length() == 0){

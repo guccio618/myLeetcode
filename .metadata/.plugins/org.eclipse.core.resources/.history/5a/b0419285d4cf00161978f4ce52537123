@@ -1,7 +1,0 @@
-
-
-public class Snippet {
-	public static void main(String[] args) {
-		Q289_Game_of_Life
-	}
-}

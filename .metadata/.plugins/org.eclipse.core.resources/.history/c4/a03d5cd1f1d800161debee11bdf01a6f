@@ -1,0 +1,18 @@
+
+public class Q482_License_Key_Formatting {
+	public String licenseKeyFormatting(String S, int K) {
+        if(S == null || S.length() == 0 || K <= 0) {
+            return S;
+        } else if(K > S.length()) {
+        	return "";
+        }
+        
+        int len = S.length();
+        String newStr = S.replaceAll("-", "");
+        int groupCount = len - newStr.length() + 1;
+        
+        if(newStr.length() < groupCount * K + 1) {
+        	return "";
+        }
+    }
+}

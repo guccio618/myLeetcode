@@ -34,7 +34,7 @@ Example 3:
  * */
 
 public class Q331_Verify_Preorder_Serialization_of_a_Binary_Tree {
-	// test case: 1,#,#,#,# 和 1,#
+	// test case: [1,#,#,#,#], [1,#], [#,#,#]
 	public boolean isValidSerialization(String preorder) {
         if(preorder == null || preorder.length() == 0){
             return false;
@@ -53,7 +53,7 @@ public class Q331_Verify_Preorder_Serialization_of_a_Binary_Tree {
                 while(!stack.isEmpty() && stack.peek().equals("#")){     // 这里必须用while !!!
                     stack.pop();
                     
-                    if(!stack.isEmpty()){
+                    if(!stack.isEmpty() && !stack.peek().equals("#")) {
                         stack.pop();
                     } else {
                         return false;
@@ -82,7 +82,7 @@ public class Q331_Verify_Preorder_Serialization_of_a_Binary_Tree {
 	
 	
 	
-	/******************************************************************/
+	/******************************* main function ***********************************/
 	// by other
 	public boolean isValidSerialization2(String preorder) {
         // using a stack, scan left to right

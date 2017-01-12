@@ -34,8 +34,8 @@ public class Q139_Word_Break {
 	
 	// using DP, time is O(n), space is O(n)
 	public boolean wordBreak(String s, Set<String> wordDict) {
-        if(s == null || s.length() == 0){
-            return true;
+		if(s == null || s.length() == 0 || wordDict == null || wordDict.size() == 0) {
+            return false;
         }
         
         int maxLen = getMaxWordLength(wordDict);

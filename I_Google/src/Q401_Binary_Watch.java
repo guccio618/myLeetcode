@@ -63,8 +63,6 @@ public class Q401_Binary_Watch {
                 str2 = str2.length() == 1 ? "0" + str2 : str2;
                 ans.add(str1 + ":" + str2);
             }
-        } else if(lightNum == num) {
-            return;
         } else {
             for(int i = pos; i < lights.length; i++) {
                 if(lights[i] == 0) {

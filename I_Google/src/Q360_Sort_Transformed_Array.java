@@ -17,6 +17,8 @@ Example:
 
 
 public class Q360_Sort_Transformed_Array {
+	// test case: [a = 0]时
+	
 	public int[] sortTransformedArray(int[] nums, int a, int b, int c) {
 		// using merge sort, time is O(n)
 		if(nums == null || nums.length == 0){
@@ -24,7 +26,7 @@ public class Q360_Sort_Transformed_Array {
 	    }
 		
 		int len = nums.length;
-		int index = (a >= 0) ? len - 1 : 0;
+		int index = (a >= 0) ? len - 1 : 0;  // 有等号 ！！！
 		int[] ans = new int[len];
 		int left = 0, right = len - 1;
 		

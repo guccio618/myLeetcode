@@ -56,11 +56,11 @@ public class Q469_Convex_Polygon {
         for (int i = 0; i < points.size(); i++) {
             int angle = getAngle(points, i);
             
-            if (angle == 0) {
+            if (angle == 0) {  // collinear
                 continue;
             }
             
-            if (flag == 0) {
+            if (flag == 0) {   // first element in the array
                 flag = angle > 0 ? 1 : -1;
             } else if (flag > 0 != angle > 0) {
                 return false;

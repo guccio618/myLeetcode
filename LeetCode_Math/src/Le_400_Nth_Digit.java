@@ -32,19 +32,19 @@ public class Le_400_Nth_Digit {
             return n;
         }
         
-        int digitNum = 1;
-        int start = 1;
+        int digitCount = 1;
+        int startNum = 1;
         long base = 9;
         
-        while(n > base * digitNum) {
-            n -= base * digitNum;
+        while(n > base * digitCount) {
+            n -= base * digitCount;
             base *= 10;
-            digitNum++;
-            start *= 10;
+            digitCount++;
+            startNum *= 10;
         }
         
-        int curNum = start + (n - 1) / digitNum;
-        int index = (n - 1) % digitNum;
+        int curNum = startNum + (n - 1) / digitCount;
+        int index = (n - 1) % digitCount;
         return Integer.toString(curNum).charAt(index) - '0';
     }
 	

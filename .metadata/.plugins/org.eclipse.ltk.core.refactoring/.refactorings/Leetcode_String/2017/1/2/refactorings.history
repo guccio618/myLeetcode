@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Q482_License_Key_Formatting&apos; to &apos;Le_482_License_Key_Formatting&apos;&#x0A;- Original project: &apos;Leetcode_String&apos;&#x0A;- Original element: &apos;Q482_License_Key_Formatting&apos;&#x0A;- Renamed element: &apos;Le_482_License_Key_Formatting&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Q482_License_Key_Formatting&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{Q482_License_Key_Formatting.java[Q482_License_Key_Formatting" matchStrategy="1" name="Le_482_License_Key_Formatting" qualified="false" references="true" similarDeclarations="false" stamp="1484245216934" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Le_057_Insert_Interval.java&apos; to &apos;LeetCode_Sort/src/(default package)&apos;&#x0A;- Original project: &apos;LeetCode_Array&apos;&#x0A;- Destination element: &apos;LeetCode_Sort/src/(default package)&apos;&#x0A;- Original element: &apos;Le_057_Insert_Interval.java&apos;" description="Copy compilation unit" destination="=LeetCode_Sort/src&lt;" element1="/src&lt;{Le_057_Insert_Interval.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1484018080230" units="1" version="1.0"/>
+</session>

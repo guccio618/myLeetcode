@@ -21,23 +21,25 @@ Example 2:
  * 
  * */
 
+// test case: ["abcd","dcba","lls","s","sssll"] -> [[[0,1],[1,0],[3,2],[2,4]]]
+// test case: ["a", ""] -> [[0,1], [1,0]]
+
 public class Q336_Palindrome_Pairs {
 	public List<List<Integer>> palindromePairs(String[] words) {
-        List<List<Integer>> ans = new ArrayList<List<Integer>>();
+        List<List<Integer>> ans = new ArrayList<>();
         
         if(words == null || words.length == 0){
             return ans;
         }
         
         Map<String, Integer> map = new HashMap<String, Integer>();
-        int len = words.length;
         
-        for(int i = 0; i < len; i++){
+        for(int i = 0; i < words.length; i++){
             map.put(words[i], i);
         }
         
-        for(int i = 0; i < len; i++){
-            for(int j = 0; j <= words[i].length(); j++){   // 有等于号 ！！！
+        for(int i = 0; i < words.length; i++){
+            for(int j = 0; j <= words[i].length(); j++){   // j从0开始，到words[i]的长度，且有等于号 ！！！ test case: ["abcd","dcba","lls","s","sssll"]
                 String part1 = words[i].substring(0, j);
                 String part2 = words[i].substring(j);
                 
@@ -52,7 +54,7 @@ public class Q336_Palindrome_Pairs {
                     }
                 }
                 
-                if(isPalindrome(part2) && part2.length() != 0){  // 必须有 str2.length() != 0, 防止test case ["abcd","dcba"]被重复计算2次 ！！！
+                if(isPalindrome(part2) && part2.length() != 0){  // 必须有 part2.length() != 0, 防止test case ["abcd","dcba"]被重复计算2次 ！！！
                     String part1_reverse = new StringBuffer(part1).reverse().toString();
                     
                     if(map.containsKey(part1_reverse) && map.get(part1_reverse) != i){  
@@ -68,22 +70,15 @@ public class Q336_Palindrome_Pairs {
         return ans;
     }
     
-    public boolean isPalindrome(String str){
-        if(str == null || str.length() <= 1){
-            return true;
-        }
-        
+	public boolean isPalindrome(String str) {
         int left = 0, right = str.length() - 1;
         
-        while(left < right){
-            char c1 = str.charAt(left);
-            char c2 = str.charAt(right);
-            
-            if(c1 != c2){
-                return false;
-            } else {
-            	left++;
+        while(left <= right) {
+            if(str.charAt(left) == str.charAt(right)) {
+                left++;
                 right--;
+            } else {
+                return false;
             }
         }
         

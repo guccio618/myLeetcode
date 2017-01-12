@@ -53,16 +53,16 @@ Could you do better than O(n2) per move() operation?
  * */
 
 public class Le_348_Design_Tic_Tac_Toe {
-	private int[] rows;
-    private int[] cols;
+	private int[] rowStatus;
+    private int[] colStatus;
     private int diagonal = 0;
-    private int antiDiagonal = 0;
+    private int anti_diagonal = 0;
     private int size = 0;
     
     /** Initialize your data structure here. */
     public Le_348_Design_Tic_Tac_Toe(int n) {
-        rows = new int[n];
-        cols = new int[n];
+        rowStatus = new int[n];
+        colStatus = new int[n];
         size = n;
     }
     
@@ -75,20 +75,20 @@ public class Le_348_Design_Tic_Tac_Toe {
                 1: Player 1 wins.
                 2: Player 2 wins. */
     public int move(int row, int col, int player) {
-        int num = (player == 1) ? 1 : -1;
+        int step = (player == 1) ? 1 : -1;
         
-        rows[row] += num;
-        cols[col] += num;
+        rowStatus[row] += step;
+        colStatus[col] += step;
         
         if(col == row){
-            diagonal += num;
+            diagonal += step;
         } 
         
         if(col + row == size - 1){
-            antiDiagonal += num;
+            anti_diagonal += step;
         }
         
-        if(Math.abs(rows[row]) == size || Math.abs(cols[col]) == size || Math.abs(diagonal) == size || Math.abs(antiDiagonal) == size){
+        if(Math.abs(rowStatus[row]) == size || Math.abs(colStatus[col]) == size || Math.abs(diagonal) == size || Math.abs(anti_diagonal) == size){
             return player;
         } else {
             return 0;

@@ -37,28 +37,42 @@ public class Le_330_Patching_Array {
 	 * 
 	 ******************************************************************************************************************************/
 	
+	// test case: [1,2,31,33] [2147483647] -> 28
+	
 	// using Greedy
 	public int minPatches(int[] nums, int n) {
 		int index = 0;
-		int ans = 0;
-		long currentRange = 0; // 当前能覆盖到的最大范围，必须从0开始 ！！！
+		int count = 0;
+		long curRange = 0; // 当前能覆盖到的最大范围，必须从0开始 ！！！ 防止test case: [1,2,31,33] [2147483647]
 
-		while (currentRange < n) {
-			if (index < nums.length && nums[index] <= currentRange + 1) {
-				currentRange = currentRange + nums[index];
+		while (curRange < n) {
+			if (index < nums.length && nums[index] <= curRange + 1) {
+				curRange = curRange + nums[index];
 				index++;
 			} else {
-				ans++;
-				currentRange = currentRange * 2 + 1; // 增添currentRange+1可以让currentRange增长的最快同时保证中间不出现裂口
+				curRange = curRange * 2 + 1; // 增添currentRange+1可以让currentRange增长的最快同时保证中间不出现裂口
+				count++;
 			}
 		}
 		
-		return ans;
+		return count;
 	}
 	
 	
 	
-	/**********************************************************/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*************************** main function *******************************/
 	// by ninechapter, easily unstand
 	public int minPatches2(int[] nums, int n) {
 		long sumRange = 0;

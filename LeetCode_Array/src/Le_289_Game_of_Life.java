@@ -45,7 +45,7 @@ public class Le_289_Game_of_Life {
         
         for(int i = 0; i < row; i++){
             for(int j = 0; j < col; j++){
-                int liveNum = getNeighborNum(board, i, j);
+                int liveNum = getLiveNeighborNum(board, i, j);
                 
                 if(board[i][j] == 1 && liveNum >= 2 && liveNum <= 3){
                 	tempBoard[i][j] = 1;
@@ -62,7 +62,7 @@ public class Le_289_Game_of_Life {
         }
     }
     
-    public int getNeighborNum(int[][] board, int x, int y){
+    public int getLiveNeighborNum(int[][] board, int x, int y){
         int row = board.length, col = board[0].length;
         int[] dx = {-1, -1, -1, 0, 0, 1, 1, 1};
         int[] dy = {-1, 0, 1, -1, 1, -1, 0, 1};
@@ -72,8 +72,8 @@ public class Le_289_Game_of_Life {
             int newX = x + dx[i];
             int newY = y + dy[i];
             
-            if(newX >= 0 && newX < row && newY >= 0 && newY < col){
-                count += board[newX][newY];
+            if(newX >= 0 && newX < row && newY >= 0 && newY < col && board[newX][newY] == 1){
+                count++;
             }
         }
         
@@ -121,7 +121,7 @@ public class Le_289_Game_of_Life {
             int newX = x + dx[i];
             int newY = y + dy[i];
             
-            if(newX >= 0 && newX < row && newY >= 0 && newY < col){
+            if(newX >= 0 && newX < row && newY >= 0 && newY < col){  // 这里必须用 board[newX][newY] & 1, 用位运算的方法读取前一天的状态 ！！！
                 count += (board[newX][newY] & 1);
             }
         }

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;pos&apos; in &apos;Le_320_Generalized_Abbreviation.backtrack(...)&apos; to &apos;start&apos;&#x0A;- Original project: &apos;LeetCode_Backtracking&apos;&#x0A;- Original element: &apos;Le_320_Generalized_Abbreviation.backtrack(List&lt;String&gt;, String, int, String, int).pos&apos;&#x0A;- Renamed element: &apos;pos&apos;&#x0A;- Update references to refactored element" description="Rename local variable &apos;pos&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{Le_320_Generalized_Abbreviation.java[Le_320_Generalized_Abbreviation~backtrack~QList\&lt;QString;&gt;;~QString;~I~QString;~I@pos!620!626!624!626!I!0!true" name="start" references="true" stamp="1484003190931" version="1.0"/>
+</session>

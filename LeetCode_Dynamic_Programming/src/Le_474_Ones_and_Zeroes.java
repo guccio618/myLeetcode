@@ -26,7 +26,7 @@ Example 2:
 
 public class Le_474_Ones_and_Zeroes {
 	// solution 1: using backtrack, but TLE
-		int maxLen = 0;
+		private int maxLen = 0;
 		
 		public int findMaxForm(String[] strs, int m, int n) {
 	        if(strs == null || strs.length == 0) {
@@ -51,22 +51,22 @@ public class Le_474_Ones_and_Zeroes {
 	        return maxLen;
 		}
 		
-		public void backtrack(int[][] needs, int len, int start, int count, int zeroLeft, int oneLeft) {
-			if(start == len) {
-				maxLen = Math.max(maxLen, count);
+		public void backtrack(int[][] needs, int strsCount, int start, int finishCount, int zeroLeft, int oneLeft) {
+			if(start == strsCount) {
+				maxLen = Math.max(maxLen, finishCount);
 				return ;
 			}
 			
-			for(int i = start; i < len; i++) {
+			for(int i = start; i < strsCount; i++) {
 				if(zeroLeft >= needs[i][0] && oneLeft >= needs[i][1]) {
-					backtrack(needs, len, i + 1, count + 1, zeroLeft - needs[i][0], oneLeft - needs[i][1]);
+					backtrack(needs, strsCount, i + 1, finishCount + 1, zeroLeft - needs[i][0], oneLeft - needs[i][1]);
 				}
 			}
 		}
 		
 		
 	
-	// solution 2: using DP, time is O(len * m * n), space is O(m * n)
+	// solution 2: using DP, similar to backpack, time is O(len * m * n), space is O(m * n)
 		public int findMaxForm2(String[] strs, int m, int n) {
 	        if(strs == null || strs.length == 0) {
 	            return 0;

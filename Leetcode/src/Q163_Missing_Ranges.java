@@ -15,6 +15,9 @@ public class Q163_Missing_Ranges {
 	  * lower -> nums[0],  nums[i] -> nums[i + 1], nums[n - 1] -> upper
 	  * 
 	  *******************************************************************/
+	
+	// test case: [0, Integer.MAX_VALUE]
+	
 	public List<String> findMissingRanges(int[] nums, int lower, int upper) {
         List<String> ans = new ArrayList<>();
         

@@ -14,7 +14,7 @@ Follow up:
 
 public class Q230_Kth_Smallest_Element_in_a_BST {
 	// solution 1: using inorder travel, time is O(n)
-	int res = Integer.MAX_VALUE;
+	int ans = Integer.MAX_VALUE;
 	int count = 0;
 	
 	public int kthSmallest(TreeNode root, int k) {
@@ -23,7 +23,7 @@ public class Q230_Kth_Smallest_Element_in_a_BST {
         }
         
         inOrder(root, k);
-        return res;
+        return ans;
     }
     
     public void inOrder(TreeNode node, int k){
@@ -35,18 +35,16 @@ public class Q230_Kth_Smallest_Element_in_a_BST {
         count++;
         
         if(count == k){
-        	res = node.val;
+        	ans = node.val;
+        	return;
         }
         
         inOrder(node.right, k);
     }
     
     
-    
-    
-    
-    
-    // solution 2: using binary search, time is O(logn);
+       
+    // solution 2: using binary search, time is O(logn + n);
     public int kthSmallest2(TreeNode root, int k) {
         if (root == null || k <= 0) {
             return -1;
@@ -70,6 +68,13 @@ public class Q230_Kth_Smallest_Element_in_a_BST {
         
         return 1 + getCount(node.left) + getCount(node.right);
     }
+    
+    
+    
+    
+    
+    
+    
     
     
     

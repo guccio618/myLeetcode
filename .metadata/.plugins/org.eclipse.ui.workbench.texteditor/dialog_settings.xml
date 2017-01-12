@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item value="724" key="DIALOG_X_ORIGIN"/>
+		<item value="417" key="DIALOG_Y_ORIGIN"/>
+	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="15" key="selection"/>
+		<item value="3de" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="3de"/>
 			<item value="15"/>
 			<item value="System.out.println(&quot;i = &quot; + i + &quot;, dp[i].count = &quot; + dp[i].count);"/>
 		</list>

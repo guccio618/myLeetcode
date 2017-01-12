@@ -56,8 +56,8 @@ public class Q380_Insert_Delete_GetRandom_O_1 {
             return false;   
         } 
         
-        number_pos_Map.put(val, numbers.size());
         numbers.add(val);
+        number_pos_Map.put(val, numbers.size() - 1);    
         return true;
     }
     
@@ -68,14 +68,14 @@ public class Q380_Insert_Delete_GetRandom_O_1 {
         }
         
         int pos = number_pos_Map.get(val);
+        number_pos_Map.remove(val);
         
         if (pos < numbers.size() - 1) { // not the last one then swap the last one with this val
             int lastElement = numbers.get(numbers.size() - 1);
             numbers.set(pos, lastElement);
             number_pos_Map.put(lastElement, pos);
-        }
+        }        
         
-        number_pos_Map.remove(val);
         numbers.remove(numbers.size() - 1);
         return true;
     }

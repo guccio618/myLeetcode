@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -76,15 +75,15 @@ public class Le_218_The_Skyline_Problem {
         }
         
         while (!queue.isEmpty()) {
-            Pair node = queue.poll();
+            Pair p = queue.poll();
             
-            if (node.isStart == true) {
-                curHeight.offer(node.height);
+            if (p.isStart == true) {
+                curHeight.offer(p.height);
             } else {
-                curHeight.remove(node.height);
+                curHeight.remove(p.height);
             }
             
-            while (!queue.isEmpty() && queue.peek().index == node.index) {
+            while (!queue.isEmpty() && queue.peek().index == p.index) {
                 Pair tempNode = queue.poll();
                 
                 if (tempNode.isStart == true) {
@@ -95,12 +94,13 @@ public class Le_218_The_Skyline_Problem {
             }
             
             int[] result = new int[2];
-            result[0] = node.index;
+            result[0] = p.index;
             result[1] = curHeight.isEmpty() ? 0 : curHeight.peek();
             
             if (ans.size() > 0 && ans.get(ans.size() - 1)[1] == result[1]) {
                 continue;
             }
+            
             ans.add(result);   
         }
         

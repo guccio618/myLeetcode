@@ -47,7 +47,7 @@ public class Q332_Reconstruct_Itinerary {
             return res;
         }
         
-        Map<String, LinkedList<String>> map = new HashMap<String, LinkedList<String>>();
+        Map<String, LinkedList<String>> map = new HashMap<String, LinkedList<String>>();  // 这里必须使用linkedlist, 其有poll() API ！！！
         int len = tickets.length;
         
         for(int i = 0; i < len; ++i){
