@@ -53,8 +53,8 @@ public class Le_274_H_Index {
 	    }
 	    
 	    int count = 0;
-	    for(int i = n; i >= 0; i--) {
-	        count += buckets[i];     // 注意这里用的是bucket而不是citation
+	    for(int i = n; i >= 0; i--) {  // i means the number of articles which have been cited for i time
+	        count += buckets[i];       // 注意这里用的是bucket而不是citation
 	        if(count >= i) {
 	            return i;
 	        }

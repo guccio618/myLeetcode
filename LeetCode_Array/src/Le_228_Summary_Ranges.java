@@ -28,14 +28,20 @@ public class Le_228_Summary_Ranges {
             
             if(num == needNum) {
                 needNum++;
-            } else {               // 不需要判断 Integer.MAX_VALUE退出，不同于找缺失的range !!!
+            } else {               
                 ans.add(getStr(start, needNum - 1));
-                start = num;
-                needNum = start + 1;
+                
+                if(num == Integer.MAX_VALUE) {  // test case: [1, 2, Integer.MAX_VALUE]
+                	ans.add(getStr(num, num));
+                	return ans;
+                } else {
+                	start = num;
+                	needNum = start + 1;
+                } 
             }
         }
         
-        ans.add(getStr(start, needNum - 1));   // 扫尾 ！！！
+        ans.add(getStr(start, needNum - 1));   // 扫尾 ！！！ test case: [3] 
         return ans;
     }
     

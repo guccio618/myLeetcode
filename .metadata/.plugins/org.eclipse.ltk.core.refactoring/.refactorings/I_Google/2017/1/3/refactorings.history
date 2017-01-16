@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;availableQueue&apos; in &apos;Q379_Design_Phone_Directory&apos; to &apos;numberPool&apos;&#x0A;- Original project: &apos;I_Google&apos;&#x0A;- Original element: &apos;Q379_Design_Phone_Directory.availableQueue&apos;&#x0A;- Renamed element: &apos;Q379_Design_Phone_Directory.numberPool&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;availableQueue&apos;" flags="589826" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src&lt;{Q379_Design_Phone_Directory.java[Q379_Design_Phone_Directory^availableQueue" name="numberPool" references="true" setter="false" stamp="1484513712749" textual="false" version="1.0"/>
+</session>

@@ -49,38 +49,39 @@ true
 
 
 public class Q444_Sequence_Reconstruction {
-	public boolean sequenceReconstruction(int[] org, int[][] seqs) {
+	public boolean sequenceReconstruction(int[] org, List<List<Integer>> seqs) {
         Map<Integer, Integer> degreeMap = new HashMap<>();
         Map<Integer, Set<Integer>> graph = new HashMap<>();
         Queue<Integer> queue = new LinkedList<>();
-
-        for(int[] seq : seqs) {
-            if(seq.length == 1) {
-                if(!graph.containsKey(seq[0])) {
-                    graph.put(seq[0], new HashSet<>());
-                    degreeMap.put(seq[0], 0);
+        
+        for(List<Integer> seq : seqs) {
+            if(seq.size() == 1) {
+                if(!graph.containsKey(seq.get(0))) {
+                    graph.put(seq.get(0), new HashSet<Integer>());
+                    degreeMap.put(seq.get(0), 0);
                 }
             } else {
-                for(int i = 0; i < seq.length - 1; i++) {
-                    if(!graph.containsKey(seq[i])) {
-                        graph.put(seq[i], new HashSet<>());
-                        degreeMap.put(seq[i], 0);
+                for(int i = 0; i < seq.size() - 1; i++) {
+                    if(!graph.containsKey(seq.get(i))) {
+                        graph.put(seq.get(i), new HashSet<Integer>());
+                        degreeMap.put(seq.get(i), 0);
                     }
                     
-                    if(!graph.containsKey(seq[i + 1])) {
-                        graph.put(seq[i + 1], new HashSet<>());
-                        degreeMap.put(seq[i + 1], 0);
+                    if(!graph.containsKey(seq.get(i + 1))) {
+                        graph.put(seq.get(i + 1), new HashSet<Integer>());
+                        degreeMap.put(seq.get(i + 1), 0);
                     }
                     
-                    if(!graph.get(seq[i]).contains(seq[i + 1])) {
-                        graph.get(seq[i]).add(seq[i + 1]);
-                        degreeMap.put(seq[i + 1], degreeMap.get(seq[i + 1]) + 1);
+                    if(!graph.get(seq.get(i)).contains(seq.get(i + 1))) {
+                        graph.get(seq.get(i)).add(seq.get(i + 1));
+                        // degreeMap.put(seq.get(i + 1), degreeMap.getOrDefault(seq.get(i + 1), 0) + 1);
+                        degreeMap.put(seq.get(i + 1), degreeMap.get(seq.get(i + 1)) + 1);
                     }
                 }
             }
         }
         
-        for(int key : graph.keySet()) {
+        for(int key : degreeMap.keySet()) {
             if(degreeMap.get(key) == 0) {
                 queue.offer(key);
             }
@@ -103,7 +104,6 @@ public class Q444_Sequence_Reconstruction {
                 int count = degreeMap.get(next);
                 
                 if(count == 1) {
-                    degreeMap.remove(next);
                     queue.offer(next);
                 } else {
                     degreeMap.put(next, count - 1);

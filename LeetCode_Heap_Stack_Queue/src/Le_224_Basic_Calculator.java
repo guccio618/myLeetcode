@@ -19,7 +19,95 @@ Note: Do not use the eval built-in library function.
  * */
 
 public class Le_224_Basic_Calculator {
+	// using recursion
 	public int calculate(String s) {
+        if(s == null || s.length() == 0) {
+            return 0;
+        }
+        
+        int len = s.length();
+        char prevSign = ' ';
+        int num = 0;
+        Stack<Integer> stack = new Stack<>();
+        int index = 0;
+        int sum = 0;
+        
+        while(index < len) {
+            char c = s.charAt(index);
+            
+            if(Character.isDigit(c)) {
+                num = num * 10 + (int) (c - '0');
+            }
+            
+            if(!Character.isDigit(c) && c != ' ' || index == len - 1) {
+                if(c == '(') {
+                    int endPos = getClosePosition(s, index);
+                    
+                    if(endPos == -1) {
+                        return 0;
+                    } 
+                    
+                    num = calculate(s.substring(index + 1, endPos));
+                    index = endPos + 1;
+                    continue;
+                }
+                
+                if(prevSign == '+') {
+                    stack.push(num);
+                } else if(prevSign == '-') {
+                    stack.push(-num);
+                } else {
+                    stack.push(num);
+                }
+                
+                prevSign = c;
+                num = 0;
+            }
+            
+            index++;
+        }
+        
+        while(!stack.isEmpty()) {
+            sum += stack.pop();
+        }
+        
+        if(num != 0) {
+            if(prevSign == '+') {
+                sum += num;
+            } else if(prevSign == '-') {
+                sum -= num;
+            } else {
+                sum += num;
+            }
+        }
+        
+        return sum;
+    }
+    
+    public int getClosePosition(String s, int start) {
+        int count = 0;
+        
+        for(int i = start; i < s.length(); i++) {
+            char c = s.charAt(i);
+            
+            if(c == '(') {
+                count++;
+            } else if(c == ')') {
+                count--;
+            }
+            
+            if(count == 0) {
+                return i;
+            }
+        }
+        
+        return -1;
+    }
+    
+    
+	
+	// follow up, + - * /
+	public int calculate_follow_up(String s) {
         if(s == null || s.length() == 0){
             return 0;
         }

@@ -28,7 +28,7 @@ The 11th digit of the sequence 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ... is a 0, wh
 
 public class Q400_Nth_Digit {
 	public int findNthDigit(int n) {
-        if(n < 9) {
+        if(n <= 9) {
             return n;
         }
         

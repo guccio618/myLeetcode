@@ -24,11 +24,7 @@ public class Q406_Queue_Reconstruction_by_Height {
         Arrays.sort(people, new Comparator<int[]>() {
             @Override
             public int compare(int[] nums1, int[] nums2) {
-                if(nums1[0] != nums2[0]) {
-                    return nums2[0] - nums1[0];
-                } else {
-                    return nums1[1] - nums2[1];
-                }
+            	return (nums1[0] != nums2[0]) ? nums2[0] - nums1[0] : nums1[1] - nums2[1];
             }
         });
         

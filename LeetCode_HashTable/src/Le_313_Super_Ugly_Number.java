@@ -38,7 +38,7 @@ public class Le_313_Super_Ugly_Number {
 	    }
 	    
 	    // time is O(nlogk)
-	    for(int i = 1; i < n; i++) {
+	    for(int i = 1; i < n; i++) {   // 从1开始 ！！！
 	        ugly[i] = heap.peek().value;
 	        
 	        // remove duplicated num

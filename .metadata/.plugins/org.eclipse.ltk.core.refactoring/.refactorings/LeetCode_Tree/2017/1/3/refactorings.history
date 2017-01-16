@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Q450_Delete_Node_in_a_BST&apos; to &apos;Le_450_Delete_Node_in_a_BST&apos;&#x0A;- Original project: &apos;LeetCode_Tree&apos;&#x0A;- Original element: &apos;Q450_Delete_Node_in_a_BST&apos;&#x0A;- Renamed element: &apos;Le_450_Delete_Node_in_a_BST&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Q450_Delete_Node_in_a_BST&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{Q450_Delete_Node_in_a_BST.java[Q450_Delete_Node_in_a_BST" matchStrategy="1" name="Le_450_Delete_Node_in_a_BST" qualified="false" references="true" similarDeclarations="false" stamp="1484574150620" textual="false" version="1.0"/>
+</session>

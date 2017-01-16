@@ -28,14 +28,20 @@ public class Q228_Summary_Ranges {
             
             if(num == needNum) {
                 needNum++;
-            } else {               // 不需要判断 Integer.MAX_VALUE退出，不同于找缺失的range !!!
+            } else {               
                 ans.add(getStr(start, needNum - 1));
-                start = num;
-                needNum = start + 1;
+                
+                if(num == Integer.MAX_VALUE) {  // test case: [1, 2, Integer.MAX_VALUE]
+                	ans.add(getStr(num, num));
+                	return ans;
+                } else {
+                	start = num;
+                    needNum = start + 1;
+                }    
             }
         }
         
-        ans.add(getStr(start, needNum - 1));   // 扫尾 ！！！
+        ans.add(getStr(start, needNum - 1));   // 扫尾 ！！！ test case: [3] 
         return ans;
     }
     
@@ -124,7 +130,8 @@ public class Q228_Summary_Ranges {
 	
 	public static void main(String[] args){
 		Q228_Summary_Ranges test = new Q228_Summary_Ranges();
-		int[] array = {-2147483648,-2147483647,2147483647};
+//		int[] array = {-2147483648,-2147483647,2147483647};
+		int[] array = {1,2,2147483647};
 		 List<String> list = test.summaryRanges(array);
 		 for(int i = 0; i < list.size(); i++)
 			 System.out.print(list.get(i) + ", ");

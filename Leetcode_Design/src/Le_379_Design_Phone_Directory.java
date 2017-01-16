@@ -39,7 +39,7 @@ directory.check(2);
  * */
 
 public class Le_379_Design_Phone_Directory {
-	private Queue<Integer> availableQueue = new LinkedList<Integer>();
+	private Queue<Integer> numberPool = new LinkedList<Integer>();
     private Set<Integer> used = new HashSet<Integer>();
     private int capacity;
     
@@ -49,21 +49,20 @@ public class Le_379_Design_Phone_Directory {
         capacity = maxNumbers;
         
         for(int i = 0; i < capacity; i++){
-            availableQueue.offer(i);
+            numberPool.offer(i);
         }
     }
     
     /** Provide a number which is not assigned to anyone.
         @return - Return an available number. Return -1 if none is available. */
     public int get() {
-        Integer ans = availableQueue.poll();   // 注意这里用的是Integer !!!
-        
-        if(ans == null){
+    	if(used.size() == capacity) {
             return -1;
-        } else {
-            used.add(ans);
-            return ans;
         }
+        
+        int ans = numberPool.poll();
+        used.add(ans);
+        return ans;
     }
     
     /** Check if a number is available or not. */
@@ -77,9 +76,11 @@ public class Le_379_Design_Phone_Directory {
     
     /** Recycle or release a number. */
     public void release(int number) {
-        if(used.contains(number)){
-            used.remove(number);
-            availableQueue.offer(number);
-        } 
+    	if(!used.contains(number)) {
+            return;
+        }
+        
+        used.remove(number);
+        numberPool.offer(number);
     }
 }

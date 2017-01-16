@@ -24,6 +24,8 @@ Example 2:
 
 
 public class Le_368_Largest_Divisible_Subset {
+	// test case: [],  [1]
+	
 	// solution 1: using self-definded class, time complexity is O(n^2), space is O(n)
 	public List<Integer> largestDivisibleSubset(int[] nums) {
         List<Integer> ans = new ArrayList<>();

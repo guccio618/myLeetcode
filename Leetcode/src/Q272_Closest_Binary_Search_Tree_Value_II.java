@@ -19,180 +19,50 @@ Follow up:
  * */
 
 public class Q272_Closest_Binary_Search_Tree_Value_II {
-	// solution 1:  using heap, time complexity O(nlogn + klogn)
-    public List<Integer> closestKValues(TreeNode root, double target, int k) {
-        List<Integer> ans = new ArrayList<Integer>();
+	// solution 1:  using heap, time complexity O(nlogk + klogk)
+	public List<Integer> closestKValues(TreeNode root, double target, int k) {
+        List<Integer> ans = new ArrayList<>();
         
-        if(root == null){
+        if(root == null || k <= 0) {
             return ans;
         }
         
-        Queue<Pair> heap = new PriorityQueue<Pair>(1, new Comparator<Pair>(){
-            public int compare(Pair left, Pair right){
-                if(left.diff > right.diff){
-                    return 1;
-                } else if(left.diff < right.diff){
-                    return -1;
-                } else {
-                    return 0;
-                }
+        Queue<Integer> heap = new PriorityQueue<Integer>(k, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer value1, Integer value2) {
+                return -Double.compare(Math.abs((double) value1 - target), Math.abs((double) value2 - target));
             }
         });
         
-        Stack<TreeNode> stack = new Stack<TreeNode>();
+        Stack<TreeNode> stack = new Stack<>();
         
-        while(!stack.isEmpty() || root != null){
-            while(root != null){
+        // inorder traversal, this part total time is O(n*logk)
+        while(root != null || !stack.isEmpty()) {
+            while(root != null) {
                 stack.push(root);
                 root = root.left;
             }
             
             root = stack.pop();
-            heap.offer(new Pair(root.val, Math.abs((double) root.val - target)));
+            heap.offer(root.val);   // O(logk)
+            
+            if(heap.size() > k) {     // O(logk)
+                heap.poll();
+            }
+            
             root = root.right;
         }
         
-        for(int i = 0; i < k; i++){
-            ans.add(heap.poll().value);
+        while(!heap.isEmpty()) {      // O(klogk)
+            ans.add(0, heap.poll());
         }
         
         return ans;
-    }
-    
-    class Pair {
-        int value;
-        double diff;
-        
-        public Pair (int v, double d){
-            value = v;
-            diff = d;
-        }
     }
 	
     
     
-    
-	// follow up: solution 2: using two stack + merge sort, time complexity is O(logn)
-	public List<Integer> closestKValues2(TreeNode root, double target, int k) {
-        List<Integer> ans = new ArrayList<Integer>();
-        
-        if(root == null){
-            return ans;
-        }
-        
-        Stack<TreeNode> pred = new Stack<TreeNode>();
-        Stack<TreeNode> succ = new Stack<TreeNode>();
-        
-        initializeSuccessorStack(root, target, succ);
-        initializePredecessorStack(root, target, pred);
-        
-        if(!pred.isEmpty() && !succ.isEmpty() && pred.peek().val == succ.peek().val){   // 注意这一步必须有 ！！！
-            getNextPredecessor(pred);
-        }
-        
-        while(k-- > 0){
-            if(succ.isEmpty()){
-                ans.add(getNextPredecessor(pred));
-            } else if(pred.isEmpty()){
-                ans.add(getNextSuccessor(succ));
-            } else {
-                double succ_diff = Math.abs((double)succ.peek().val - target);
-                double pred_diff = Math.abs((double)pred.peek().val - target);
-                
-                if(succ_diff < pred_diff) {
-                    ans.add(getNextSuccessor(succ));
-                } else {
-                    ans.add(getNextPredecessor(pred));
-                }
-            }
-        }
-        
-        return ans;
-    }
-    
-    public void initializeSuccessorStack(TreeNode root, double target, Stack<TreeNode> succ){
-        if(root == null){
-            return;
-        }
-        
-        while(root != null){
-            if(root.val == target){
-                succ.push(root);
-                break;
-            } else if(root.val > target){
-                succ.push(root);
-                root = root.left;
-            } else {
-                root = root.right;
-            }
-        }
-    }
-    
-    private void initializePredecessorStack(TreeNode root, double target, Stack<TreeNode> pred) {
-        if(root == null){
-            return;
-        }
-        
-        while(root != null){
-            if(root.val == target){
-                pred.push(root);
-                break;
-            } else if(root.val < target){
-                pred.push(root);
-                root = root.right;
-            } else {
-                root = root.left;
-            }
-        }
-    }
-    
-    public int getNextSuccessor(Stack<TreeNode> succ) {
-        TreeNode node = succ.pop();
-        int ans = node.val;        
-        node = node.right;
-        
-        while(node != null){
-            succ.push(node);
-            node = node.left;
-        }
-        
-        return ans;
-    }
-    
-    private int getNextPredecessor(Stack<TreeNode> pred) {
-        TreeNode node = pred.pop();
-        int ans = node.val;       
-        node = node.left;
-        
-        while(node != null){
-            pred.push(node);
-            node = node.right;
-        }
-        
-        return ans;
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /******************************************************************************************************************************
+	/******************************************************************************************************************************
      * The idea is to compare the predecessors and successors of the closest node to the target, 
      * we can use two stacks to track the predecessors and successors, then like what we do in merge sort, 
      * we compare and pick the closest one to the target and put it to the result list.
@@ -200,39 +70,142 @@ public class Q272_Closest_Binary_Search_Tree_Value_II {
      * We can use iterative inorder traversal rather than recursion, but to keep the code clean, here is the recursion version.
      * 
      *******************************************************************************************************************************/
-    // by other using heap, time complexity O(n + k)
-    public List<Integer> closestKValues3(TreeNode root, double target, int k) {
-    	  List<Integer> res = new ArrayList<>();
+    // solution 2: using two stacks + inorder traversal, time complexity O(n + k)
+    public List<Integer> closestKValues2(TreeNode root, double target, int k) {
+    	  List<Integer> ans = new ArrayList<>();
+    	  
+    	  if(root == null || k <= 0) {
+              return ans;
+          }
 
-    	  Stack<Integer> s1 = new Stack<>(); // predecessors
-    	  Stack<Integer> s2 = new Stack<>(); // successors
+    	  Stack<Integer> predStack = new Stack<>(); // predecessors
+    	  Stack<Integer> succStack = new Stack<>(); // successors
 
-    	  inorder(root, target, false, s1);
-    	  inorder(root, target, true, s2);
+    	  inorder(root, target, false, predStack);
+    	  inorder(root, target, true, succStack);
     	  
     	  while (k-- > 0) {
-    	    if (s1.isEmpty())
-    	      res.add(s2.pop());
-    	    else if (s2.isEmpty())
-    	      res.add(s1.pop());
-    	    else if (Math.abs(s1.peek() - target) < Math.abs(s2.peek() - target))
-    	      res.add(s1.pop());
-    	    else
-    	      res.add(s2.pop());
+    	    if (predStack.isEmpty()) {
+    	      ans.add(succStack.pop());
+    	    } else if (succStack.isEmpty()) {
+    	      ans.add(predStack.pop());
+    	    } else if (Math.abs(predStack.peek() - target) < Math.abs(succStack.peek() - target)) {
+    	      ans.add(predStack.pop());
+    	    } else {
+    	      ans.add(succStack.pop());
+    	    }
     	  }
     	  
-    	  return res;
+    	  return ans;
     	}
 
     	// inorder traversal
     	void inorder(TreeNode root, double target, boolean reverse_flag, Stack<Integer> stack) {
-    	  if (root == null) return;
+    	  if (root == null) {
+    		  return;
+    	  }
 
     	  inorder(reverse_flag ? root.right : root.left, target, reverse_flag, stack);
+    	  
     	  // early terminate, no need to traverse the whole tree
-    	  if ((reverse_flag && root.val <= target) || (!reverse_flag && root.val > target)) return;  // 需要注意这里有等号 root.val <= target
+    	  if ((reverse_flag && root.val <= target) || (!reverse_flag && root.val > target)) { // 需要注意这里有等号 root.val <= target
+    		  return;  
+    	  }
+    	  
     	  // track the value of current node
     	  stack.push(root.val);
     	  inorder(reverse_flag ? root.left : root.right, target, reverse_flag, stack);
     	}
+	
+	
+    
+	// follow up: solution 3: using two stack + merge sort, time complexity is O(klogn + k)
+	public List<Integer> closestKValues3(TreeNode root, double target, int k) {
+        List<Integer> ans = new ArrayList<>();
+        
+        if(root == null || k <= 0) {
+            return ans;
+        }
+        
+        Stack<TreeNode> succStack = new Stack<>();
+        Stack<TreeNode> predStack = new Stack<>();
+        initialStack(root, target, succStack, true);
+        initialStack(root, target, predStack, false);
+        
+        if(!succStack.isEmpty() && !predStack.isEmpty() && succStack.peek().val == predStack.peek().val) {
+            getNextNode(succStack, true);
+        }
+        
+        while(k > 0) {
+            if(!succStack.isEmpty() && !predStack.isEmpty()) {
+                double diff1 = Math.abs((double) succStack.peek().val - target);
+                double diff2 = Math.abs((double) predStack.peek().val - target);
+                
+                if(diff1 < diff2) {
+                    ans.add(getNextNode(succStack, true));        
+                } else {
+                    ans.add(getNextNode(predStack, false));
+                }
+            } else if(!succStack.isEmpty()) {
+                ans.add(getNextNode(succStack, true));       
+            } else {
+                ans.add(getNextNode(predStack, false));
+            }
+            
+            k--;
+        }
+        
+        return ans;
+    }
+    
+    public void initialStack(TreeNode root, double target, Stack<TreeNode> stack, boolean successorFlag) {
+        if(successorFlag) {
+            while(root != null) {
+                if(root.val > target) {
+                    stack.push(root);
+                    root = root.left;
+                } else if(root.val < target) {
+                    root = root.right;
+                } else {
+                    stack.push(root);
+                    break;
+                }
+            }
+        } else {
+            while(root != null) {
+                if(root.val > target) {
+                    root = root.left;
+                } else if(root.val < target) {
+                    stack.push(root);
+                    root = root.right;
+                } else {
+                    stack.push(root);
+                    break;
+                }
+            }
+        }
+    }
+    
+    public int getNextNode(Stack<TreeNode> stack, boolean successorFlag) {
+        TreeNode node = stack.pop();
+        int ans = node.val;
+        
+        if(successorFlag) {
+            node = node.right;
+            
+            while(node != null) {
+                stack.push(node);
+                node = node.left;
+            }
+        } else {
+            node = node.left;
+            
+            while(node != null) {
+                stack.push(node);
+                node = node.right;
+            }
+        }
+        
+        return ans;
+    }
 }

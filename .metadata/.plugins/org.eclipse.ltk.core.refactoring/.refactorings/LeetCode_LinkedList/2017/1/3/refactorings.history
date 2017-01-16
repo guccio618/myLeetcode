@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Q369_Plus_One_Linked_List&apos; to &apos;Le_369_Plus_One_Linked_List&apos;&#x0A;- Original project: &apos;LeetCode_LinkedList&apos;&#x0A;- Original element: &apos;Q369_Plus_One_Linked_List&apos;&#x0A;- Renamed element: &apos;Le_369_Plus_One_Linked_List&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Q369_Plus_One_Linked_List&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{Q369_Plus_One_Linked_List.java[Q369_Plus_One_Linked_List" matchStrategy="1" name="Le_369_Plus_One_Linked_List" qualified="false" references="true" similarDeclarations="false" stamp="1484501601637" textual="false" version="1.0"/>
+</session>

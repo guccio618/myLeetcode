@@ -23,3 +23,5 @@
 1484236799726	Rename local variable 'len'
 1484236817713	Rename local variable 'strsLen'
 1484237689796	Rename local variable 'n'
+1484323933401	Rename local variable 's1'
+1484323944116	Rename local variable 's2'

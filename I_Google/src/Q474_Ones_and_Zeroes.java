@@ -123,5 +123,6 @@ public class Q474_Ones_and_Zeroes {
     	
     	
     	System.out.println(t.findMaxForm(strs, m, n));
+    	System.out.println(t.findMaxForm2(strs, m, n));
     }
 }

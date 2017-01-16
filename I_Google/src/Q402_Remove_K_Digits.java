@@ -146,8 +146,9 @@ public class Q402_Remove_K_Digits {
 	/*********************************************************/
 	public static void main(String[] args){
 		Q402_Remove_K_Digits t = new Q402_Remove_K_Digits();
-		String num = "1234567890";
-		int k = 9;
+//		String num = "1234567890";
+		String num = "1230456";
+		int k = 3;
 		System.out.println(t.removeKdigits(num, k));
 	}
 }

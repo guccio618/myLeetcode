@@ -37,13 +37,10 @@ public class Q354_Russian_Doll_Envelopes {
             return 1;
         }
         
-        Arrays.sort(envelopes, new Comparator<int[]>(){   
-            public int compare(int[] array1, int[] array2) {
-                if(array1[0] != array2[0]) {
-                    return array1[0] - array2[0];
-                } else {
-                    return array2[1] - array1[1];
-                }
+        Arrays.sort(envelopes, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] array1, int[] array2) {   // 这里的顺序是 先 array1[0] - array2[0] 再 array2[1] - array1[1] ！！！
+                return array1[0] != array2[0] ? array1[0] - array2[0] : array2[1] - array1[1];
             }
         });
         
@@ -70,38 +67,33 @@ public class Q354_Russian_Doll_Envelopes {
 	
 	// solution 2: using binarySearch, time O(nlogn), space O(n)
 	public int maxEnvelopes2(int[][] envelopes) {
-        if(envelopes == null || envelopes.length == 0 || envelopes[0].length == 0){
+		if(envelopes == null || envelopes.length == 0 || envelopes[0].length == 0) {
             return 0;
+        } else if(envelopes.length == 1) {
+            return 1;
         }
         
         Arrays.sort(envelopes, new Comparator<int[]>(){
-            public int compare(int[] left, int[] right){
-                if(left[0] != right[0]){
-                    return left[0] - right[0];      // 这里的顺序是 left[0] - right[0] ！！！
-                } else {
-                    return right[1] - left[1];      // 这里的顺序是 right[1] - left[1] ！！！
-                }
+            public int compare(int[] array1, int[] array2) {     // 这里的顺序是 先 array1[0] - array2[0] 再 array2[1] - array1[1] ！！！
+                return array1[0] != array2[0] ? array1[0] - array2[0] : array2[1] - array1[1];
             }
         });
-                
-        int[] dp = new int[envelopes.length];
-        int increaseListLength = 0;
         
-        for(int[] envelope : envelopes){
-            int index = Arrays.binarySearch(dp, 0, increaseListLength, envelope[1]);
-            
-            if(index < 0){
-                index = -(index + 1);
-            }
-            
+        int len = envelopes.length;
+        int[] dp = new int[len];
+        int maxLen = 0;
+        
+        for(int[] envelope : envelopes) {
+            int index = Arrays.binarySearch(dp, 0, maxLen, envelope[1]);
+            index = (index < 0) ? -(index + 1) : index;
             dp[index] = envelope[1];
             
-            if(index == increaseListLength){                      // index == dpLen时，dpLen++ ！！！
-                increaseListLength++;
+            if(index == maxLen) {       // index == dpLen时，dpLen++ ！！！
+                maxLen++;
             }
         }
         
-        return increaseListLength;
+        return maxLen;
     }
     
 

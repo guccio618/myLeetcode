@@ -81,7 +81,7 @@ public class Q391_Perfect_Rectangle {
             x2 = Math.max(rect[2], x2);
             y2 = Math.max(rect[3], y2);
             
-            area += (rect[2] - rect[0]) * (rect[3] - rect[1]);
+            area += (rect[2] - rect[0]) * (rect[3] - rect[1]);  // area 累加 ！！！
             
             String s1 = rect[0] + " " + rect[1];    // 以此种方法存在set里；或者可以用Arrays.hashCode()来获取 ！！！
             String s2 = rect[0] + " " + rect[3];
@@ -97,7 +97,7 @@ public class Q391_Perfect_Rectangle {
         if (!set.contains(x1 + " " + y1) || !set.contains(x1 + " " + y2) || !set.contains(x2 + " " + y1) || !set.contains(x2 + " " + y2) || set.size() != 4){
         	return false;
         } else {
-        	return area == (x2-x1) * (y2-y1);
+        	return area == (x2-x1) * (y2-y1);    // 总面积相等
         }
     }
 	

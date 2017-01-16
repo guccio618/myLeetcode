@@ -24,6 +24,8 @@ The input is always valid. You may assume that evaluating the queries will resul
  * */
 
 public class Q399_Evaluate_Division {
+	// test case: [], [1, 1]
+	
 	// using DFS
 	private Map<String, Set<String>> graph = new HashMap<String, Set<String>>();
 	private Map<String, Double> resultMap = new HashMap<String, Double>();

@@ -94,10 +94,6 @@ public class Q369_Plus_One_Linked_List {
     		slower = slower.next;
     	}
     	
-    	if(dummy.val == 1) {    // test case: [9]
-    		return dummy;
-    	} else {
-    		return dummy.next;
-    	}
+    	return (dummy.val == 1) ?  dummy : dummy.next;    // test case: [9]
     }
 }

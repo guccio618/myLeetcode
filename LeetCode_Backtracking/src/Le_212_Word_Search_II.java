@@ -24,12 +24,12 @@ You may assume that all inputs are consist of lowercase letters a-z.
 
 
 public class Le_212_Word_Search_II {
-	private Trie root = new Trie();
-  
+	private TrieNode root = new TrieNode();
+    
     public List<String> findWords(char[][] board, String[] words) {
         List<String> ans = new ArrayList<>();
         
-        if (board == null || board.length == 0 || board[0].length == 0 || words == null || words.length == 0) {
+        if(board == null || board.length == 0 || board[0].length == 0 || words == null || words.length == 0) {
             return ans;
         }
         
@@ -42,42 +42,42 @@ public class Le_212_Word_Search_II {
         
         for(int i = 0; i < row; i++) {
             for(int j = 0; j < col; j++) {
-                backtrack(ans, board, i, j, visited, root, "");
+                DFS(ans, board, visited, i, j, "", root);
             }
         }
         
         return ans;
     }
     
-    public void backtrack(List<String> ans, char[][] board, int x, int y, boolean[][] visited, Trie node, String solution) {
+    public void DFS(List<String> ans, char[][] board, boolean[][] visited, int x, int y, String solution, TrieNode node) {
         if(visited[x][y] == true) {
-            return ;
+            return;
         } 
         
         int pos = board[x][y] - 'a';
         
-        if(node.child[pos] == null || node.child[pos].value != board[x][y]) {
-            return ;
+        if(node.children[pos] == null) {
+            return;
         } 
         
+        node = node.children[pos];
         solution += board[x][y];
-        node = node.child[pos];
         
         if(node.isWord == true) {
             ans.add(solution);
             node.isWord = false;
         }
         
+        int[] dx = {0, 0, 1, -1};
+        int[] dy = {1, -1, 0, 0};
         visited[x][y] = true;
-        int[] dx = {1, -1, 0, 0};
-        int[] dy = {0, 0, 1, -1};
         
         for(int i = 0; i < 4; i++) {
             int newX = x + dx[i];
             int newY = y + dy[i];
             
-            if(newX >= 0 && newX < board.length && newY >= 0 && newY < board[0].length) {
-                backtrack(ans, board, newX, newY, visited, node, solution);
+            if(newX >= 0 && newX < board.length && newY >= 0 && newY < board[0].length && !visited[newX][newY]) {
+                DFS(ans, board, visited, newX, newY, solution, node);
             }
         }
         
@@ -85,34 +85,38 @@ public class Le_212_Word_Search_II {
     }
     
     public void addWord(String word) {
+        TrieNode node = root;
         char[] letters = word.toCharArray();
-        Trie node = root;
         
         for(int i = 0; i < letters.length; i++) {
             int pos = letters[i] - 'a';
             
-            if(node.child[pos] == null) {
-                node.child[pos] = new Trie();
-                node.child[pos].value = letters[i];
+            if(node.children[pos] == null) {
+                node.children[pos] = new TrieNode();
+                node.children[pos].value = letters[i];
             }
             
-            node = node.child[pos];
+            node = node.children[pos];
         }
         
         node.isWord = true;
     }
-        
-    class Trie {
+    
+    
+    class TrieNode {
         char value;
+        TrieNode[] children;
         boolean isWord;
-        Trie[] child;
         
-        public Trie() {
-            value = ' ';
+        public TrieNode() {
+            this.value = ' ';
+            children = new TrieNode[26];
             isWord = false;
-            child = new Trie[26];
         }
-    }
+    } 
+    
+    
+    
     
     
     

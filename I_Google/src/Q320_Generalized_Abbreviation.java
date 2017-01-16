@@ -14,12 +14,18 @@ Example:
 public class Q320_Generalized_Abbreviation {
 	// using backtrack
 	public List<String> generateAbbreviations(String word) {
-        List<String> ans = new ArrayList<>();
+		List<String> ans = new ArrayList<>();
+        
+        if(word == null || word.length() == 0) {
+            ans.add("");
+            return ans;
+        }
+        
         backtrack(ans, word, 0, "", 0);
         return ans;
     }
     
-    public void backtrack(List<String> ans, String word, int start, String solution, int count) {
+	public void backtrack(List<String> ans, String word, int start, String solution, int count) {
         if(start == word.length()) {
             solution += (count > 0) ? count : "";
             ans.add(solution);

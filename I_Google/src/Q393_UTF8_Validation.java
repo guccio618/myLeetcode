@@ -50,7 +50,7 @@ public class Q393_UTF8_Validation {
         
         for(int elem : data) {
             if(count == 0) {
-                if((elem >> 5) == 0b110) {
+                if((elem >> 5) == 0b110) {        // 顺序很重要，从高位开始判断 ！！！
                     count = 1;
                 } else if((elem >> 4) == 0b1110) {
                     count = 2;
