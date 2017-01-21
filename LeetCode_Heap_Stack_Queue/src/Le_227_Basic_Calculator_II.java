@@ -20,52 +20,67 @@ Some examples:
 
 public class Le_227_Basic_Calculator_II {
 	public int calculate(String s) {
-        if(s == null || s.length() == 0){
+        if (s == null || s.length() == 0) {
             return 0;
         }
         
-        int n = s.length();
+        int len = s.length();
         Stack<Integer> stack = new Stack<Integer>();
+        int ans = 0;
         int num = 0;
-        char preSign = ' ';
+        char prevSign = ' ';
         
-        for(int i = 0; i < n; ++i){
+        for (int i = 0; i < len; i++) {
             char c = s.charAt(i);
             
-            if(Character.isDigit(c)){
-                num = num * 10 + (int)(c - '0');
-            }
+            if (Character.isDigit(c)) {
+                num = num * 10 + (int) (c - '0');
+            }  
             
-            if(!Character.isDigit(c) && c != ' ' || i == n - 1){  // 这里不能用else，防止test case: [1]
-                if(preSign == '+'){
+            if ( (!Character.isDigit(c) && c != ' ') || i == len - 1) {
+                if (prevSign == '+') {
                     stack.push(num);
-                } else if(preSign == '-'){
+                } else if (prevSign == '-') {
                     stack.push(-num);
-                } else if(preSign == '*'){
-                    stack.push(stack.pop() * num);
-                } else if(preSign == '/'){
-                    stack.push(stack.pop() / num);
-                } else {                   // 此步用于清理最后一个位，test case: [1] 
+                } else if (prevSign == '*') {
+                    if (!stack.isEmpty()) {
+                        stack.push(stack.pop() * num);    
+                    } else {
+                        break;
+                    }
+                } else if (prevSign == '/') {
+                    if (!stack.isEmpty()) {
+                        stack.push(stack.pop() / num);    
+                    } else {
+                        break;
+                    }
+                } else {
                     stack.push(num);
                 }
                 
-                preSign = c;
+                prevSign = c;
                 num = 0;
-            }            
+            }
         }
         
-        num = 0;
-        
-        while(!stack.isEmpty()){
-            num += stack.pop();
+        while (!stack.isEmpty()) {
+            ans += stack.pop();
         }
         
-        return num;
+        return ans;
     }
 	
 	
 	
-	/*************************************************/
+	
+	
+	
+	
+	
+	
+	
+	
+	/*********************** main function **************************/
 	// by Jackie
 	public int calculate2(String s) {
         if(s == null || s.length() == 0){

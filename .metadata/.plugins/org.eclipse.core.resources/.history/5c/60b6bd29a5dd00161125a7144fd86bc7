@@ -1,0 +1,43 @@
+import java.util.*;
+
+public class Q12_1_Average_Double_Array {
+	public double findAverageOfDoubleArray(double[] nums) {
+		if(nums == null || nums.length == 0) {
+			return 0;
+		} else if(nums.length == 1){
+			return nums[0];
+		}
+		
+		double sum = 0;
+		int len = nums.length;
+		Arrays.sort(nums);
+		
+		for(double num : nums) {
+			if(num > 0 && Double.MAX_VALUE - num / len < sum) {
+				return Double.MAX_VALUE;
+			}
+			if(num < 0 && Double.MIN_VALUE - num / len > sum) {
+				return Double.MIN_VALUE;
+			}
+			
+			sum += num / len;
+		}
+		
+		return sum;
+	}
+	
+	
+	
+	
+	
+	
+	/***************************** main function ********************************/
+	
+	public static void main(String[] args) {
+		Q12_1_Average_Double_Array t = new Q12_1_Average_Double_Array();
+//		double[] nums = {1.0,2.0,3.0,4.0,5.0};
+		double[] nums = {Double.MAX_VALUE/3, Double.MAX_VALUE/3, Double.MAX_VALUE/3, -5.0, 1.0, 2.0};
+		System.out.println(Double.MAX_VALUE);
+		System.out.println(t.findAverageOfDoubleArray(nums));
+	}
+}

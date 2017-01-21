@@ -10,7 +10,7 @@ public class Q482_License_Key_Formatting {
         
         for (int i = s.length() - 1; i >= 0; i--) {
             if (s.charAt(i) != '-') {
-                sb.append(sb.length() % (k + 1) == k ? '-' : "").append(s.charAt(i));
+                sb.append(sb.length() % (k + 1) == k ? '-' : "").append(s.charAt(i));   // the number of character in current group is n !!!
             }
         }
         

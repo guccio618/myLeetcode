@@ -38,32 +38,38 @@ public class Le_459_Repeated_Substring_Pattern {
         
         int len = str.length();
         
-        for(int i = 0; i < len / 2; i++) {
-            if(len % (i + 1) != 0) {
+        for(int subLen = 1; subLen <= len/2; subLen++) {
+            if(len % subLen != 0) {
                 continue;
             }
             
             int start = 0;
-            int subLen = i + 1;
-            String newStr = str.substring(0, subLen);
-            
-            while(start > -1 && start + subLen < len) {
-                int nextStart = str.indexOf(newStr, start + subLen);
+            String subStr = str.substring(start, start + subLen);
+        
+            while(start + subLen <= len) {
+                int index = str.indexOf(subStr, start);
                 
-                if(start + subLen != nextStart) {
+                if(index != start) {
                     break;
                 } else {
-                    start = nextStart;
+                    start += subLen;
                 }
             }
             
-            if(start + subLen == len) {
+            if(start == len) {
                 return true;
             }
         }
         
         return false;
     }
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

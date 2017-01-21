@@ -1,5 +1,3 @@
-import javax.rmi.CORBA.Tie;
-
 public class Find_Duplicate_Number_More_Than_1_Time {
 	public int findDuplicate(int[] nums) {
         if (nums == null || nums.length <= 1) {

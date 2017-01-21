@@ -38,6 +38,8 @@ public class Q010_Regular_Expression_Matching {
 	 * (4). 相似题目 44
 	 **************************************************************************************/
 	
+	//test case: [abcd, d*]
+	
 	public boolean isMatch(String s, String p) {
 		if(s == null && p == null) {
             return true;

@@ -76,7 +76,7 @@ private TrieNode root = new TrieNode();
             int newX = x + dx[i];
             int newY = y + dy[i];
             
-            if(newX >= 0 && newX < board.length && newY >= 0 && newY < board[0].length && !visited[newX][newY]) {
+            if(newX >= 0 && newX < board.length && newY >= 0 && newY < board[0].length) {
                 DFS(ans, board, visited, newX, newY, solution, node);
             }
         }

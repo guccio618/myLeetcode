@@ -85,7 +85,7 @@ public class Q315_Count_of_Smaller_Numbers_After_Self {
         int len = nums.length;
         int[] array = new int[len];
         Integer[] position = new Integer[len];
-        int arrayLen = 0;
+        int arrayLen = 0;	
         
         for(int i = len - 1; i >= 0; i--) {
             int pos = Arrays.binarySearch(array, 0, arrayLen, nums[i]);            

@@ -1,0 +1,13 @@
+import java.util.*;
+
+public class Q3_1 {
+	public List<String> getButtonPremutaion(int n) {
+		List<String> ans = new ArrayList<>();
+		
+		if(n <= 0) {
+			return ans;
+		}
+		
+		
+	}
+}

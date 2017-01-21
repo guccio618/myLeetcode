@@ -1,0 +1,6 @@
+
+public class Q12_1_Average_Double_Array {
+	public double findAverageOfDoubleArray() {
+		
+	}
+}

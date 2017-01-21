@@ -48,6 +48,7 @@ public class Factory_Candy {
 		
 		int availFactory = factoryNum - candyNum;
 		int len = candyNeed.length;
+		
 		PriorityQueue<Pair> maxHeap = new PriorityQueue<Pair>(len, new Comparator<Pair>() {
 			@Override
 			public int compare(Pair p1, Pair p2) {

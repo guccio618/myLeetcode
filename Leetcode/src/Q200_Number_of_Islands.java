@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.*;
 
 /******
  * 
@@ -120,93 +120,85 @@ public class Q200_Number_of_Islands {
    
      
     // solution 3: using Union_Find
-    public int numIslands3(char[][] grid) {
-        if(grid == null || grid.length == 0){
-            return 0;
-        }
-        
-        int row = grid.length;
-        int col = grid[0].length;
-        unionFind uf = new unionFind(row, col);
-        int count = 0;
-        int[] dx = {0, -1};
-        int[] dy = {-1, 0};
-        int newX = 0, newY = 0;
-        
-        for(int i = 0; i < row; ++i){
-            for(int j = 0; j < col; ++j){
-                if(grid[i][j] == '1'){
-                    count++;
-                    for(int k = 0; k < 2; ++k){
-                        newX = i + dx[k];
-                        newY = j + dy[k];
-                        if(newX >= 0 && newX < row && newY >= 0 && newY < col && grid[newX][newY] == '1'){
-                            int curId = convertedtoId(i, j, col);
-                            int newId = convertedtoId(newX, newY, col);
-                            int curFa = uf.find(curId);
-                            int newFa = uf.find(newId);
-                            if(curFa != newFa){
-                                uf.union(curFa, newFa);
-                                count--;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        
-        return count;
-    }
-    
-    public int convertedtoId(int x, int y, int col){
-        return x * col + y;
-    }
-    
-    class unionFind{
-        HashMap<Integer, Integer> father = new HashMap<Integer, Integer>();
-        
-        public unionFind(int row, int col){
-            for(int i = 0; i < row; ++i){
-                for(int j = 0; j < col; ++j){
-                    int id = convertedtoId(i, j, col);
-                    father.put(id, id);
-                }
-            }
-        }
-        
-        public int find(int x){
-            int parent = father.get(x);
-            while(parent != father.get(parent)){
-                parent = father.get(parent);
-            }
-            return parent;
-        }
-        
-        public int compressed_find(int x){
-            int parent = father.get(x);
-            while(parent != father.get(parent)){
-                parent = father.get(parent);
-            }
-            
-            int tempNode = -1;
-            int fa = x;
-            
-            while(fa != father.get(fa)){
-                tempNode = father.get(fa);
-                father.put(fa, parent);
-                fa = tempNode;
-            }
-            
-            return parent;
-        }
-        
-        public void union(int x, int y){
-            int parentX = find(x);
-            int parentY = find(y);
-            
-            if(parentX != parentY){
-                father.put(parentX, parentY);
-            }
-        }
-    }
+     public int numIslands3(char[][] grid) {
+         if(grid == null || grid.length == 0 || grid[0].length == 0) {
+             return 0;
+         }
+         
+         int row = grid.length, col = grid[0].length;
+         int count = 0;
+         UnionFind uf = new UnionFind(row, col);
+         int[] dx = {0, -1};
+         int[] dy = {-1, 0};
+         
+         for(int x = 0; x < row; x++) {
+             for(int y = 0; y < col; y++) {
+                 if(grid[x][y] == '1') {
+                     count++;
+                     int curId = x * col + y;
+                     
+                     for(int k = 0; k < 2; k++) {
+                         int newX = x + dx[k];
+                         int newY = y + dy[k];
+                         
+                         if(newX >= 0 && newX < row && newY >= 0 && newY < col && grid[newX][newY] == '1') {
+                             int newId = newX * col + newY;
+                             int curFa = uf.find(curId);
+                             int newFa = uf.find(newId);
+                             
+                             if(curFa != newFa) {
+                                 uf.union(curFa, newFa);
+                                 count--;
+                             }
+                         }
+                     }
+                 }
+             }
+         }
+         
+         return count;
+     }
+     
+     class UnionFind {
+         private Map<Integer, Integer> father;
+         
+         public UnionFind(int row, int col) {
+             father = new HashMap<>();
+             
+             for(int x = 0; x < row; x++) {
+                 for(int y = 0; y < col; y++) {
+                     int id = x * col + y;
+                     father.put(id, id);
+                 }
+             }
+         }
+         
+         public int find(int x) {
+             int parent = father.get(x);
+             
+             while(parent != father.get(parent)) {
+                 parent = father.get(parent);
+             }
+             
+             int temp = -1;
+             int fa = x;
+             
+             while(fa != father.get(fa)) {
+                 temp = father.get(fa);
+                 father.put(fa, parent);
+                 fa = temp;
+             }
+             
+             return parent;
+         }
+         
+         public void union(int x, int y) {
+             int fa_x = find(x);
+             int fa_y = find(y);
+             
+             if(fa_x != fa_y) {
+                 father.put(fa_x, fa_y);
+             }
+         }
+     }
 }	

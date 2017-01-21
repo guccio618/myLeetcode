@@ -19,10 +19,11 @@ public class Q363_Max_Sum_of_Rectangle_No_Larger_Than_K {
 		// indicating sum up in every row or every column
 		int ans = Integer.MIN_VALUE;
 
+		// start from column between i and j, row from 0 to row
 		for (int i = 0; i < col; i++) {
 			int[] sum = new int[row];  // compress sum of each row into an array
 			
-			// sum row:[0, row - 1], col: [i, col-1]
+			// sum row:[0, row - 1], col: [i, j]
 			// sum from col i to col - 1
 			for (int j = i; j < col; j++) {
 				int curSum = 0;

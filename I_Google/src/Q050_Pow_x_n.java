@@ -11,8 +11,44 @@ public class Q050_Pow_x_n {
     // x == 1, x == -1
     // n == 0
 	
-	// time is O(logn)
+	// solution 1: recursive, time is O(logn)
 	public double myPow(double x, int n) {
+        if(x == 1 || n == 0) {
+            return 1;
+        } else if(x == -1) {
+            return (n % 2 == 0) ? 1 : -1;
+        } else if(x == 0 || n >= Integer.MAX_VALUE || n <= Integer.MIN_VALUE) {
+            return 0;
+        } else if(n == 1) {
+            return x;
+        }
+        
+        int flag_x = 1;
+        int flag_n = n > 0 ? 1 : -1;
+        
+        if(x < 0 && n % 2 == 1) {
+            flag_x = -1;
+        }
+        
+        n = Math.abs(n);
+        x = Math.abs(x);
+        
+        double product = myPow(x, n/2);
+        double sum = product * product;
+        sum *= (n%2 == 1) ? x : 1;
+        sum = sum * flag_x;
+        
+        if(flag_n > 0) {
+            return sum;
+        } else {
+            return 1 / sum;
+        }
+    }
+	
+	
+	
+	// solution 2: iterator, time is O(logn)
+	public double myPow2(double x, int n) {
 		if(n == 0 || x == 1){
             return 1;
         } else if(x == -1){
@@ -49,6 +85,17 @@ public class Q050_Pow_x_n {
         }
     }
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*********************************** main function *************************************/
 	
 	public static void main(String[] args){
 		Q050_Pow_x_n t = new Q050_Pow_x_n();

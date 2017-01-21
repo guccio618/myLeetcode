@@ -1,3 +1,4 @@
+import java.util.Stack;
 /*******
  * 
 Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.
@@ -13,7 +14,7 @@ Follow up:
  * */
 
 public class Le_230_Kth_Smallest_Element_in_a_BST {
-	// solution 1: using inorder travel, time is O(n)
+	// solution 1: using inorder travel + recursive, time is O(k)
 	int ans = Integer.MAX_VALUE;
 	int count = 0;
 	
@@ -43,19 +44,50 @@ public class Le_230_Kth_Smallest_Element_in_a_BST {
     }
     
     
-       
-    // solution 2: using binary search, time is O(logn + n);
+    
+    // solution 2: using inorder + iterator, time is O(k)
     public int kthSmallest2(TreeNode root, int k) {
+        if(root == null) {
+            return 0;      
+        }
+        
+        Stack<TreeNode> stack = new Stack<>();
+        int count = 0;
+        int ans = 0;
+        
+        while(!stack.isEmpty() || root != null) {
+            while(root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            
+            root = stack.pop();
+            
+            if(++count == k) {
+                ans = root.val;
+                break;
+            }
+            
+            root = root.right;
+        }
+        
+        return ans;
+    }
+       
+    
+    
+    // solution 3: using binary search, time is O(logn + n);
+    public int kthSmallest3(TreeNode root, int k) {
         if (root == null || k <= 0) {
             return -1;
         }
         
         int count = getCount(root.left);
         
-        if(k <= count) {
+        if(k < count + 1) {
             return kthSmallest(root.left, k);
         } else if(k > count + 1) {
-        	return kthSmallest(root.right, k - (count + 1));
+            return kthSmallest(root.right, k - (count + 1));
         } else {
             return root.val;
         }

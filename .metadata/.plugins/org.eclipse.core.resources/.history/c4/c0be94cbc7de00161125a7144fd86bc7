@@ -1,0 +1,27 @@
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Q27_1_Find_Employer {
+	private Map<String, List<String>> map = new HashMap<>();
+	
+	public Q27_1_Find_Employer(String s) {
+		if(s == null || s.length() == 0) {
+			return;
+		}
+		
+		String[] strs = s.split("\n");
+		
+		System.out.println(strs.length);
+	}
+	
+	
+	
+	
+	
+	public static void main(String[] args) {
+		String s = "AAA\n BBB\n CCC\n  DDD\n EEE";
+		System.out.println(s);
+		Q27_1_Find_Employer t = new Q27_1_Find_Employer(s);
+	}
+}

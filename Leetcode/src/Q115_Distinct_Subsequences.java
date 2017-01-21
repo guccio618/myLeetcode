@@ -29,7 +29,7 @@ public class Q115_Distinct_Subsequences {
 	 * 
 	 **************************************************************************************************************************************************/
 	
-	public int numDistinct(String s, String t) {
+	public int numDistinct(String s, String t) {		
         if(s == null || s.length() == 0 || t == null || t.length() == 0){
             return 0;
         }

@@ -1,0 +1,45 @@
+import java.util.*;
+
+public class Q3_1 {
+	public List<String> getButtonPremutaion(int n) {
+		List<String> ans = new ArrayList<>();
+		
+		if(n <= 0) {
+			return ans;
+		}
+		
+		boolean[] visited = new boolean[n + 1];
+		backtrack(ans, "", 0, n, visited, 1);
+		return ans;
+	}
+	
+	public void backtrack(List<String> ans, String solution, int addNum, int n, boolean[] visited, int start) {
+		if(addNum == n) {
+			solution = (solution.charAt(solution.length() - 1) == '-') ? solution.substring(0, solution.length() - 1) : solution;
+			ans.add(solution);
+			return;
+		}
+		
+		for(int i = 1; i <= n; i++) {
+			if(!visited[i]) {
+				visited[i] = true;
+				backtrack(ans, solution + i, addNum + 1, n, visited, i);
+				backtrack(ans, solution + i + "-", addNum + 1, n, visited, i);
+				visited[i] = false;
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	public static void main(String[] args) {
+		Q3_1 t = new Q3_1();
+		List<String> ans = t.getButtonPremutaion(4);
+		
+		for(String str : ans) {
+			System.out.println(str);
+		}
+	}
+}

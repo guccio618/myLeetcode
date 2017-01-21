@@ -1,0 +1,121 @@
+/*******************************************************************
+ * Rotate an array of n elements to the right by k steps.
+ * For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] 
+ * is rotated to [5,6,7,1,2,3,4].
+ *******************************************************************/
+
+public class Q189_Rotate_Array {
+	/*****************************************************/
+	// by other, faster but not in place
+	public void rotate(int[] nums, int k) {
+        int n = nums.length;
+        int[] newList = new int[n];
+        if (n > 1) {
+            k = k % n;
+            System.arraycopy(nums, n - k, newList, 0, k);
+            System.arraycopy(nums, 0, newList, k, n - k);
+            System.arraycopy(newList, 0, nums, 0, n);
+        }
+    }
+	
+	
+	
+	
+	
+	public void rotate2(int[] nums, int k) {
+        if(nums == null || nums.length == 0 || k <= 0) {
+            return;
+        }
+        
+        int len = nums.length;
+        int steps = gcd(k, len);
+        
+        for(int i = len - 1; i >= len - steps; i--) {
+            int faster = (i - k >= 0) ? i - k : len + (i - k);
+            int slower = i;
+            int temp = nums[i];
+            
+//            System.out.println("faster = " + faster + ", slower = " + slower);
+            
+            while(faster != i) {
+//            	System.out.println("faster = " + faster);
+                nums[slower] = nums[faster];
+                slower = faster;
+                faster = (i - k >= 0) ? i - k : len + (i - k);
+                
+                if(faster != 3) {
+                	System.out.println(faster);
+                }
+            }
+            
+            nums[slower] = temp;
+        }
+    }
+    
+    public int gcd(int a, int b) {
+        if(a < b) {
+            int temp = a;
+            a = b;
+            b = temp;
+        }
+        
+        return (a % b == 0) ? b : gcd(b, a % b);
+    }
+	
+//	/*****************************************************/
+//	// by other, in place and O(1)
+//	public void rotate2(int[] nums, int k) {
+//        if(nums == null || k == 0) return;
+//        int len = nums.length;
+//        k %= len;
+//        int d = gcd(k, len);
+//        
+//        System.out.println("d = " + d);
+//        
+//        System.out.println("d = " + d);
+//        
+//        for(int i = 0; i < d; ++i){
+//            int record = nums[i];
+//            int idx = i + k;
+//            idx %= len;
+//            
+//            System.out.println("1: idx = " + idx);
+//            print(nums);
+//            
+//            while(idx != i){
+//                int temp = record;
+//                record = nums[idx];
+//                nums[idx] = temp;
+//                idx += k;
+//                idx %= len;
+//                
+//                System.out.println("2: idx = " + idx);
+//                print(nums);
+//                
+//            }
+//            int temp = record;
+//            record = nums[idx];
+//            nums[idx] = temp;
+//        }
+//    }
+    
+//    public int gcd(int a, int b) {
+//        if(a % b == 0) return b;
+//        else return gcd(b, a % b);
+//    }
+    
+    public void print(int[] array){
+    	for(int i = 0; i < array.length; ++i)
+    		System.out.print(array[i] + ", ");
+    	System.out.println();
+    }
+    
+    
+    public static void main(String[] args){
+    	Q189_Rotate_Array t = new Q189_Rotate_Array();
+    	int[] nums = {1,2,3,4,5,6,7};
+    	t.rotate2(nums, 3);
+    	t.print(nums);
+    }
+    
+}
