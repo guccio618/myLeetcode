@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Q353_Design_Snake_Game&apos; to &apos;Le_353_Design_Snake_Game&apos;&#x0A;- Original project: &apos;Leetcode_Design&apos;&#x0A;- Original element: &apos;Q353_Design_Snake_Game&apos;&#x0A;- Renamed element: &apos;Le_353_Design_Snake_Game&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Q353_Design_Snake_Game&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{Q353_Design_Snake_Game.java[Q353_Design_Snake_Game" matchStrategy="1" name="Le_353_Design_Snake_Game" qualified="false" references="true" similarDeclarations="false" stamp="1485191516283" textual="false" version="1.0"/>
+</session>

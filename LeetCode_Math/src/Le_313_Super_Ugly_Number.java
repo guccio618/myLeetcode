@@ -44,7 +44,7 @@ public class Le_313_Super_Ugly_Number {
 	        // remove duplicated num
 	        while(heap.peek().value == ugly[i]) {
 	            Pair p = heap.poll();
-	            heap.offer(new Pair(ugly[p.index] * p.prime, p.index + 1, p.prime));
+	            heap.offer(new Pair(ugly[p.index + 1] * p.prime, p.index + 1, p.prime));
 	        }
 	    }
 	    

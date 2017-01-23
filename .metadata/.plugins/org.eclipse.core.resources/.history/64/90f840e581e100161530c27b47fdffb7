@@ -1,0 +1,116 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Queue;
+
+/*********
+ * 
+ * Given a non-empty array of integers, return the k most frequent elements.
+ * 
+ * For example, Given [1,1,1,2,2,3] and k = 2, return [1,2].
+ * 
+ * Note: You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
+ * Your algorithm's time complexity must be better than O(n log n), where n is
+ * the array's size.
+ * 
+ * 
+ */
+
+public class Q347_Top_K_Frequent_Elements {
+	// solution 1: using heap, time complexity is O(nlogn)
+	public List<Integer> topKFrequent(int[] nums, int k) {
+		List<Integer> ans = new ArrayList<Integer>();
+		if (nums == null || nums.length == 0) {
+			return ans;
+		}
+
+		Queue<Pair> heap = new PriorityQueue<Pair>(1, new Comparator<Pair>() {
+			public int compare(Pair left, Pair right) {
+				if (left.count != right.count) {
+					return right.count - left.count;
+				} else {
+					return left.val - right.val;
+				}
+			}
+		});
+
+		Arrays.sort(nums);
+		int n = nums.length;
+		int front = 0, back = 0;
+
+		while (front < n) {
+			while (front < n && nums[front] == nums[back]) {
+				front++;
+			}
+			
+			heap.offer(new Pair(nums[back], front - back));
+			back = front;
+		}
+
+		for (int i = 0; i < k; i++) {
+			ans.add(heap.poll().val);
+		}
+
+		return ans;
+	}
+
+	class Pair {
+		int val;
+		int count;
+
+		public Pair(int v, int c) {
+			val = v;
+			count = c;
+		}
+	}
+
+	
+	
+	
+	// solution 2: using bucket sort, time complexity is O(n)
+	public List<Integer> topKFrequent2(int[] nums, int k) {
+		List<Integer> ans = new ArrayList<Integer>();
+		if (nums == null || nums.length == 0) {
+			return ans;
+		}
+
+		int n = nums.length;
+		List<Integer>[] bucket = new List[n + 1];
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+
+		for (int num : nums) {
+			map.put(num, map.getOrDefault(num, 0) + 1);
+		}
+
+		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+			int frequency = entry.getValue();
+			if (bucket[frequency] == null) {
+				bucket[frequency] = new ArrayList<Integer>();
+			}
+			bucket[frequency].add(entry.getKey());
+		}
+
+		int index = n;
+
+		while (k > 0) {
+			if (index >= 0 && bucket[index] != null) {
+				for (int num : bucket[index]) {
+					ans.add(num);
+					k--;
+
+					if (k == 0) {
+						return ans;
+					}
+				}
+			}
+
+			index--;
+		}
+
+		return ans;
+	}
+}

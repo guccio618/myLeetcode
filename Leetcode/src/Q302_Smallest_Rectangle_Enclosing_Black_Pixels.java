@@ -60,25 +60,31 @@ public class Q302_Smallest_Rectangle_Enclosing_Black_Pixels {
 	
 	// solution 2: using binary search, time is O(m*logn + n*logm);
 	public int minArea(char[][] image, int x, int y) {
-	    int left = findMinBound(image, 0, y, true);
-	    int right = findMaxBound(image, y, image[0].length - 1, true);
-	    int top = findMinBound(image, 0, x, false);
-	    int bottom = findMaxBound(image, x, image.length - 1, false);
-	    return (right - left + 1) * (bottom - top + 1);
+		if(image == null || image.length == 0 || image[0].length == 0) {
+            return 0;
+        }
+        
+        int left = findMinBound(image, 0, y, true);
+        int right = findMaxBound(image, y, image[0].length - 1, true);
+        
+        int top = findMaxBound(image, x, image.length - 1, false);
+        int bottom = findMinBound(image, 0, x, false);
+ 
+        return (right - left + 1) * (top - bottom + 1);
 	}
 
 	public int findMinBound(char[][] image, int min, int max, boolean horizontal) {
 	    while (min + 1 < max) {
 	        int mid = min + (max - min) / 2;
 	        
-	        if (!hasBlack(image, mid, horizontal)) {
+	        if (!hasBlackPixel(image, mid, horizontal)) {
 				min = mid;
 			} else {				
 				max = mid;
 			}
 	    }
 	    
-	    if(hasBlack(image, min, horizontal)) {
+	    if(hasBlackPixel(image, min, horizontal)) {
 	        return min;
 	    } else {
 	        return max;
@@ -89,21 +95,21 @@ public class Q302_Smallest_Rectangle_Enclosing_Black_Pixels {
 	    while (min + 1 < max) {
 	        int mid = min + (max - min) / 2;
 	        
-	        if (!hasBlack(image, mid, horizontal)) {
+	        if (!hasBlackPixel(image, mid, horizontal)) {
 	            max = mid;
 	        } else {
 	            min = mid;
 	        }
 	    }
 	    
-	    if(hasBlack(image, max, horizontal)) {
+	    if(hasBlackPixel(image, max, horizontal)) {
 	        return max;
 	    } else {
 	        return min;
 	    }
 	}
 
-	public boolean hasBlack(char[][] image, int mid, boolean horizontal) {
+	public boolean hasBlackPixel(char[][] image, int mid, boolean horizontal) {
 	    if (horizontal) {
 	        for (int i = 0; i < image.length; i++) {
 	            if (image[i][mid] == '1') {

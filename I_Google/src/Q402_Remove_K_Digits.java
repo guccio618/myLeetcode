@@ -27,7 +27,7 @@ Example 3:
 
 
 public class Q402_Remove_K_Digits {
-	// test case: [9] [1],  [112] [1],  
+	// test case: [9] [1],  [112] [1],  k == num.length()
 	
 	// solution 1: using stack, time is O(n), space is O(n)
 	public String removeKdigits(String num, int k) {
@@ -58,7 +58,7 @@ public class Q402_Remove_K_Digits {
             sb.insert(0, stack.pop());
         }
         
-        return sb.length() == 0 ? "0" : sb.substring(0, sb.length() - k + count);   // 防止test case: [112, 1]
+        return sb.length() == 0 ? "0" : sb.substring(0, sb.length() - (k - count));   // 防止test case: [112, 1]
 	}
 	
 	

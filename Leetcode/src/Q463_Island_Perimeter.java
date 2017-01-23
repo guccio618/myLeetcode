@@ -80,11 +80,11 @@ public class Q463_Island_Perimeter {
                 if (grid[i][j] == 1) {
                     islands++;      // count islands
                     
-                    if (i < grid.length - 1 && grid[i + 1][j] == 1) {    // count down neighbours
+                    if (i + 1 < grid.length && grid[i + 1][j] == 1) {    // count down neighbours
                     	neighbours++; 
                     }
                     
-                    if (j < grid[i].length - 1 && grid[i][j + 1] == 1) {  // count right neighbours
+                    if (j + 1 < grid[i].length && grid[i][j + 1] == 1) {  // count right neighbours
                     	neighbours++; 
                     }
                 }

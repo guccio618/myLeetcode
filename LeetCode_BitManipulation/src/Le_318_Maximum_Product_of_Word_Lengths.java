@@ -22,22 +22,26 @@ No such pair of words.
 public class Le_318_Maximum_Product_of_Word_Lengths {
 	// using bit manipulation
 	public int maxProduct(String[] words) {
-        int[] checker = new int[words.length];
+		if(words == null || words.length == 0) {
+            return 0;
+        }
+		
+        int[] checkStatus = new int[words.length];
         int max = 0;
         
         // populating the checker array with their respective numbers
-        for (int i = 0; i < checker.length; i++) {
-            int num = 0;
+        for (int i = 0; i < checkStatus.length; i++) {
+            int status = 0;
             
             for (int j = 0; j < words[i].length(); j++) {
-                num |= 1 << (words[i].charAt(j) - 'a');   // 标记上0-26中的某一个字母出现过
+                status |= 1 << (words[i].charAt(j) - 'a');   // 标记上0-26中的某一个字母出现过
             }
-            checker[i] = num;
+            checkStatus[i] = status;
         }
 
         for (int i = 0, len = words.length; i < len-1; i++) {
             for (int j = i + 1; j < len; j++) {
-                if ((checker[i] & checker[j]) == 0) // checking if the two strings have common character
+                if ((checkStatus[i] & checkStatus[j]) == 0) // checking if the two strings have common character
                     max = Math.max(max, words[i].length() * words[j].length());
             }
         }  

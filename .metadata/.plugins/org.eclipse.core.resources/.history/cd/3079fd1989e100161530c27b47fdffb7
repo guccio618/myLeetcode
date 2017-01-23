@@ -1,0 +1,60 @@
+import java.util.*;
+
+
+public class Q494_Target_Sum {
+	public int findTargetSumWays(int[] nums, int target) {
+        if(nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int len = nums.length;
+        Set<Integer> prevPlus = new HashSet<>();
+        Set<Integer> prevSubtract = new HashSet<>();
+        Set<Integer> curPlus = null, curSubtract = null;
+        prevPlus.add(nums[0]);
+        prevSubtract.add(-nums[0]);
+        int count = 0;
+        
+        for(int i = 1; i < len; i++) {
+            curPlus = new HashSet<>();
+            curSubtract = new HashSet<>();
+            
+            for(int num : prevPlus) {
+                curPlus.add(num + nums[i]);
+                curSubtract.add(num - nums[i]);
+                
+                if(i == len - 1) {
+                    count += (num + nums[i] == target) ? 1 : 0;
+                    count += (num - nums[i] == target) ? 1 : 0;
+                }
+            }
+            
+            for(int num : prevSubtract) {
+                curPlus.add(num + nums[i]);
+                curSubtract.add(num - nums[i]);
+                
+                if(i == len - 1) {
+                    count += (num + nums[i] == target) ? 1 : 0;
+                    count += (num - nums[i] == target) ? 1 : 0;
+                }
+            }
+            
+            prevPlus = curPlus;
+            prevSubtract = curSubtract;
+        }
+        
+        return count;
+    }
+	
+	
+	
+	
+	
+	
+	public static void main(String[] args) {
+		Q494_Target_Sum t = new Q494_Target_Sum();
+		int[] nums = {1,1,1,1,1};
+		int target = 3;
+		System.out.println(t.findTargetSumWays(nums, target));
+	}
+}

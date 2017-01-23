@@ -1,22 +1,4 @@
 import java.util.*;
-/********
- * 
-Given a non-empty 2D matrix matrix and an integer k, find the max sum of a rectangle in the matrix such that its sum is no larger than k.
-
-Example:
-Given matrix = [
-  [1,  0, 1],
-  [0, -2, 3]
-]
-k = 2
-The answer is 2. Because the sum of rectangle [[0, 1], [-2, 3]] is 2 and 2 is the max number no larger than k (k = 2).
-
-Note:
-The rectangle inside the matrix must have an area > 0.
-What if the number of rows is much larger than the number of columns?
-
- * 
- * */
 
 public class Q363_Max_Sum_of_Rectangle_No_Larger_Than_K {
 	/***
@@ -28,7 +10,6 @@ public class Q363_Max_Sum_of_Rectangle_No_Larger_Than_K {
 	 * from col i to col j then use 1D array solution.
 	 * 
 	 ***/
-	// solution 1: using treeSet
 	public int maxSumSubmatrix(int[][] matrix, int target) {
 		if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
 			return 0;
@@ -39,25 +20,25 @@ public class Q363_Max_Sum_of_Rectangle_No_Larger_Than_K {
 		int ans = Integer.MIN_VALUE;
 
 		// start from column between i and j, row from 0 to row
-		for (int i = 0; i < col; i++) { 
-			int[] sum = new int[row];  // compress sum of each row into an array
+		for (int colStart = 0; colStart < col; colStart++) {
+			int[] rowSum = new int[row];  // compress sum of each row into an array
 			
-			// sum row:[0, row - 1], col: [i, col-1]
+			// sum row:[0, row - 1], col: [i, j]
 			// sum from col i to col - 1
-			for (int j = i; j < col; j++) {
+			for (int colEnd = colStart; colEnd < col; colEnd++) {
 				int curSum = 0;
 				TreeSet<Integer> set = new TreeSet<Integer>();
 				set.add(0);
 
 				// traverse every row and sum up
 				for (int k = 0; k < row; k++) {
-					sum[k] += matrix[k][j];
-					curSum += sum[k];
+					rowSum[k] += matrix[k][colEnd];
+					curSum += rowSum[k];
 					
 					// use TreeMap to binary search previous sum to get possible result
 					Integer subResult = set.ceiling(curSum - target);
 
-					if (null != subResult) {
+					if (subResult != null) {
 						ans = Math.max(ans, curSum - subResult);
 					}
 
