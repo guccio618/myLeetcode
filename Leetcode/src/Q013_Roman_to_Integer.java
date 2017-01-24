@@ -1,10 +1,14 @@
-import java.util.HashMap;
-import java.util.Map;
-
+import java.util.*;
+/*******
+ * 
+Given a roman numeral, convert it to an integer.
+Input is guaranteed to be within the range from 1 to 3999.
+ * 
+ * */
 
 public class Q013_Roman_to_Integer {
 	/*******************************************/
-	// by Jackie using int[] hash
+	// solution1: using int[] hash
 	public int romanToInt(String s) {
         if (s == null || s.length()==0) {
 	    	return 0;
@@ -37,9 +41,8 @@ public class Q013_Roman_to_Integer {
     }
 	
 	
-	
-	/*******************************************/
-	// by other
+
+	// solution 2: using hashmap
 	public int romanToInt2(String s) {
 	    if (s == null || s.length()==0) {
 	    	return 0;

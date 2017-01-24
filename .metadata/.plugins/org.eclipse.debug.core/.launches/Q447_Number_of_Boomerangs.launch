@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/I_Google/src/Q447_Number_of_Boomerangs.java"/>
+<listEntry value="/I_Google_LeetCode/src/Q447_Number_of_Boomerangs.java"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="Q447_Number_of_Boomerangs"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="I_Google"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="I_Google_LeetCode"/>
 </launchConfiguration>

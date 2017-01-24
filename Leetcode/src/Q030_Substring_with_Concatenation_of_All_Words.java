@@ -1,8 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import java.util.*;
 /**************************************
 You are given a string, s, and a list of words, words, that are all of the same length. 
 Find all starting indices of substring(s) in s that is a concatenation of each word in 
@@ -24,13 +20,13 @@ You should return the indices: [0,9].
 
 public class Q030_Substring_with_Concatenation_of_All_Words {
 	public List<Integer> findSubstring(String s, String[] words) {
-        List<Integer> ans = new ArrayList();
+        List<Integer> ans = new ArrayList<>();
         
         if(s == null || s.length() == 0 || words == null || words.length == 0) {
             return ans;
         }
         
-        Map<String, Integer> map = new HashMap();
+        Map<String, Integer> map = new HashMap<>();
         int sLen = s.length();
         int wordLen = words[0].length();
         int wordNum = words.length;
@@ -40,7 +36,7 @@ public class Q030_Substring_with_Concatenation_of_All_Words {
         }
         
         for(int start = 0; start <= sLen - wordNum * wordLen; start++) {
-            Map<String, Integer> copyMap = new HashMap(map);
+            Map<String, Integer> copyMap = new HashMap<>(map);
             
             for(int j = 0; j < wordNum; j++) {
                 String newWord = s.substring(start + j * wordLen, start + (j+1) * wordLen);

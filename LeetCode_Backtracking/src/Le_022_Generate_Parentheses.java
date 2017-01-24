@@ -23,8 +23,7 @@ For example, given n = 3, a solution set is:
 
 
 public class Le_022_Generate_Parentheses {
-	/********************************************************/
-	// by other
+	// solution 1: using backtrack
 	public List<String> generateParenthesis(int n) {
         List<String> ans = new ArrayList<>();
         
@@ -52,39 +51,8 @@ public class Le_022_Generate_Parentheses {
     }
     
     
-    
-	/********************************************************/
-	// by ninechapter
-	public ArrayList<String> generateParenthesis2(int n) {
-        ArrayList<String> result = new ArrayList<String>();
-        if (n <= 0) {
-            return result;
-        }
-        helper(result, "", n, n);
-        return result;
-    }
-    
-	public void helper(ArrayList<String> result,
-	                   String paren, // current paren
-	                   int left,     // how many left paren we need to add
-	                   int right) {  // how many right paren we need to add
-		if (left == 0 && right == 0) {
-			result.add(paren);
-			return;
-		}
-		
-        if (left > 0) {                     // 先把left的遍历一遍 
-		    helper(result, paren + "(", left - 1, right);
-        }
-        
-        if (right > 0 && left < right) {    // left需求比right多时
-		    helper(result, paren + ")", left, right - 1);
-        }
-	}
 	
-	
-	/********************************************************/
-	// by Jackie, but exceed time limit
+	// solution 2: using backtrack, but exceed time limit
 	private List<String> res = new LinkedList<String>();
 	private HashSet<String> set = new HashSet<String>();
 	
@@ -143,6 +111,15 @@ public class Le_022_Generate_Parentheses {
         return (s.size() == 0);
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    /********************************* main function ***************************************/
     
     public static void main(String[] args){
     	Le_022_Generate_Parentheses t = new Le_022_Generate_Parentheses();

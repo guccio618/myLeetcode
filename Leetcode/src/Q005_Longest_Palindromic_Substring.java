@@ -7,7 +7,7 @@ public class Q005_Longest_Palindromic_Substring {
 	
 	******************************************************************/
 	
-	//by other using string operation, faster !!!
+	// solution 1: using string operation
 	private int maxLen = 0;
 	private int startIndex = 0;
 
@@ -40,7 +40,7 @@ public class Q005_Longest_Palindromic_Substring {
 	
 	
 	
-	//by Jackie using DP
+	// solution 2: using DP
 	public String longestPalindrome2(String s) {
 		if(s == null || s.length() <= 1){
             return s;
@@ -79,6 +79,17 @@ public class Q005_Longest_Palindromic_Substring {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/********************************** main function ****************************************/
 	
 	public static void main(String[] args){
 		Q005_Longest_Palindromic_Substring test = new Q005_Longest_Palindromic_Substring();

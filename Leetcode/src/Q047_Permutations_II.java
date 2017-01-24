@@ -1,9 +1,20 @@
 import java.util.*;
+/*******
+ * 
+Given a collection of numbers that might contain duplicates, return all possible unique permutations.
 
+For example,
+[1,1,2] have the following unique permutations:
+[
+  [1,1,2],
+  [1,2,1],
+  [2,1,1]
+]
+ * 
+ * */
 
 public class Q047_Permutations_II {
-	/********************************************************/
-	// by Jackie
+	
 	public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> ans = new ArrayList<List<Integer>>();
         
@@ -40,6 +51,15 @@ public class Q047_Permutations_II {
         }
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    /**************************** main function ***********************************/
     
     public static void main(String[] args){
     	Q047_Permutations_II t = new Q047_Permutations_II();

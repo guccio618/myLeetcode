@@ -1,9 +1,4 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.Stack;
-
+import java.util.*;
 /*****
 Given a string containing just the characters '(', ')', '{', '}', '[' and ']', 
 determine if the input string is valid.
@@ -13,7 +8,6 @@ The brackets must close in the correct order,
 
  * 
  * */
-
 
 public class Q020_Valid_Parentheses {
 	public boolean isValid(String s) {

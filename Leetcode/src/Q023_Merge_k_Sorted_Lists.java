@@ -1,8 +1,4 @@
-import java.util.Comparator;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
-
+import java.util.*;
 /******
  * 
  * Merge k sorted linked lists and return it as one sorted list. 
@@ -57,6 +53,7 @@ public class Q023_Merge_k_Sorted_Lists {
 		return dummy.next;
 	}
 
+	
 	
 	// Solution 2: using priorityQueue
 	public ListNode mergeKLists2(ListNode[] lists) {

@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.*;
 /******
  * 
 Given a digit string, return all possible letter combinations that the number could represent.

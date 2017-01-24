@@ -70,6 +70,18 @@ public class Le_015_3Sum {
         return ans;
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/******************************** main function ***************************************/
+	
 	public static void main(String[] args){
 		Le_015_3Sum s = new Le_015_3Sum();
 		int[] array = {-2,0,1,1,2};

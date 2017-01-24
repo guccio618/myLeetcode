@@ -1,12 +1,26 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+/*******
+ * 
+Given a collection of distinct numbers, return all possible permutations.
 
+For example,
+[1,2,3] have the following permutations:
+[
+  [1,2,3],
+  [1,3,2],
+  [2,1,3],
+  [2,3,1],
+  [3,1,2],
+  [3,2,1]
+]
+ * 
+ * */
 
 public class Q046_Permutations {
 	// test case:
     // nums is empty
     
+	// using backtrack
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> ans = new ArrayList<List<Integer>>();
         
@@ -38,38 +52,16 @@ public class Q046_Permutations {
 
 	
 	
-	/******************************************************/
-	// by Jackie using backtrack
-	private LinkedList<LinkedList<Integer>> res = new LinkedList<LinkedList<Integer>>();
     
-    public LinkedList<LinkedList<Integer>> permute2(int[] nums) {
-        if(nums == null) return res;
-        backtrack(nums, 0);
-        return res;
-    }
     
-    public void backtrack(int[] nums, int curPos){
-    	if(curPos == nums.length){
-            LinkedList<Integer> path = new LinkedList<Integer>();
-            for(int i = 0, len = nums.length; i < len; ++i)
-            	path.add(nums[i]);
-            res.add(new LinkedList<Integer>(path));
-    	}
-    	else{
-    		for(int i = curPos, len = nums.length; i < len; ++i){
-    			swap(nums, curPos, i);
-    			backtrack(nums, curPos+1);
-    			swap(nums, curPos, i);
-    		}
-    	}
-    }
     
-    public void swap(int[] nums, int x, int y){
-    	int temp = nums[x];
-    	nums[x] = nums[y];
-    	nums[y] = temp;
-    }
     
+    
+    
+    
+    
+    
+	/**************************** main function **************************/
     
     public static void main(String[] args){
     	Q046_Permutations t = new Q046_Permutations();

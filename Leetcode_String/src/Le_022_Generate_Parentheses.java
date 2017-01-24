@@ -4,68 +4,55 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
+/*******
+ * 
+Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+
+For example, given n = 3, a solution set is:
+
+[
+  "((()))",
+  "(()())",
+  "(())()",
+  "()(())",
+  "()()()"
+]
+
+ * 
+ * */
+
 
 public class Le_022_Generate_Parentheses {
-	/********************************************************/
-	// by other
+	// solution 1: using backtrack
 	public List<String> generateParenthesis(int n) {
-        List<String> ans = new ArrayList<String>();
-        if(n <= 0){
+        List<String> ans = new ArrayList<>();
+        
+        if (n <= 0) {
             return ans;
         }
         
-        backtrack(ans, "", 0, 0, n);
+        helper(ans, "", 0, 0, n);
         return ans;
     }
     
-    public void backtrack(List<String> ans, String str, int openNum, int closeNum, int n){
-        if(str.length() == n * 2){
-            ans.add(str);
+    public void helper(List<String> ans, String solution, int openNum, int closeNum, int n) {
+        if (n * 2 == solution.length()) {
+            ans.add(solution);
             return ;
         }
         
-        if(openNum < n){
-            backtrack(ans, str + "(", openNum + 1, closeNum, n);
-        }
-        if(closeNum < openNum){        // closeNum 对比的对象是 openNum, 表示紧跟"("， 一旦少于"("数，则马上加上")"
-            backtrack(ans, str + ")", openNum, closeNum + 1, n);
-        }
-    }
-    
-    
-    
-	/********************************************************/
-	// by ninechapter
-	public ArrayList<String> generateParenthesis2(int n) {
-        ArrayList<String> result = new ArrayList<String>();
-        if (n <= 0) {
-            return result;
-        }
-        helper(result, "", n, n);
-        return result;
-    }
-    
-	public void helper(ArrayList<String> result,
-	                   String paren, // current paren
-	                   int left,     // how many left paren we need to add
-	                   int right) {  // how many right paren we need to add
-		if (left == 0 && right == 0) {
-			result.add(paren);
-			return;
-		}
-		
-        if (left > 0) {                     // 先把left的遍历一遍 
-		    helper(result, paren + "(", left - 1, right);
-        }
+        if (openNum < n) {
+            helper(ans, solution + "(", openNum + 1, closeNum, n);
+        } 
         
-        if (right > 0 && left < right) {    // left需求比right多时
-		    helper(result, paren + ")", left, right - 1);
+        if (closeNum < openNum) {
+            helper(ans, solution + ")", openNum, closeNum + 1, n);
         }
-	}
+    }
+    
+    
 	
-	
-	/********************************************************/
-	// by Jackie, but exceed time limit
+	// solution 2: using backtrack, but exceed time limit
 	private List<String> res = new LinkedList<String>();
 	private HashSet<String> set = new HashSet<String>();
 	
@@ -124,6 +111,15 @@ public class Le_022_Generate_Parentheses {
         return (s.size() == 0);
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    /********************************* main function ***************************************/
     
     public static void main(String[] args){
     	Le_022_Generate_Parentheses t = new Le_022_Generate_Parentheses();

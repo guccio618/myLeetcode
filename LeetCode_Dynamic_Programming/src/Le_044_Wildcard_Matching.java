@@ -22,7 +22,6 @@ Some examples:
  * 
  * */
 
-
 public class Le_044_Wildcard_Matching {
 	/*******************************************************************
 	 * State: canMatch[i][j] means that s.substring(0, i) and p.substring(0, j) can match;
@@ -31,8 +30,9 @@ public class Le_044_Wildcard_Matching {
 	 * answer:  canMatch[sLen][pLen] 
 	 *  
 	 *******************************************************************/
-	// by other, time complexity O(n^2), space O(n^2)
 	// test case: "" 2
+	
+	// using DP, time complexity O(n^2), space O(n^2)
 	public boolean isMatch(String s, String p) {
 		if(s == null && p == null) {
             return true;

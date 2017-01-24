@@ -1,6 +1,8 @@
-import java.util.*;
-
-/*****
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+/********
+ * 
 Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.
 
 Note: The solution set must not contain duplicate quadruplets.
@@ -13,15 +15,13 @@ A solution set is:
   [-2, -1, 1, 2],
   [-2,  0, 0, 2]
 ]
- * 
- * 
+
  * 
  * */
 
-
 public class Le_018_4Sum {
 	public List<List<Integer>> fourSum(int[] nums, int target) {
-		List<List<Integer>> res = new LinkedList<List<Integer>>();
+        List<List<Integer>> res = new LinkedList<>();
 		
         if(nums == null || nums.length == 0) {
         	return res;
@@ -76,6 +76,12 @@ public class Le_018_4Sum {
 	
 	
 	
+	
+	
+	
+	
+	
+	/*********************************** main function ****************************************/
 	
 	public static void main(String[] args){
 		Le_018_4Sum t = new Le_018_4Sum();

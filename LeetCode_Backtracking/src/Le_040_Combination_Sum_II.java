@@ -1,7 +1,23 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+/********
+ * 
+Given a collection of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.
 
+Each number in C may only be used once in the combination.
+
+Note:
+All numbers (including target) will be positive integers.
+The solution set must not contain duplicate combinations.
+For example, given candidate set [10, 1, 2, 7, 6, 1, 5] and target 8, 
+A solution set is: 
+[
+  [1, 7],
+  [1, 2, 5],
+  [2, 6],
+  [1, 1, 6]
+]
+ * 
+ * */
 
 public class Le_040_Combination_Sum_II {
 	public List<List<Integer>> combinationSum2(int[] candidates, int target) {
@@ -26,6 +42,7 @@ public class Le_040_Combination_Sum_II {
             if(candidates[i] > target){
                 return;
             }
+            
             list.add(candidates[i]);
             backtrack(ans, list, candidates, i + 1, target - candidates[i]);
             list.remove(list.size() - 1);
