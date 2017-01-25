@@ -13,16 +13,16 @@ public class Q270_Closest_Binary_Search_Tree_Value {
         int ans = 0;
         
         while(root != null) {
-            double currentDiff = Math.abs(root.value - target);
+            double currentDiff = Math.abs(root.val - target);
             
             if(currentDiff < diff) {
                 diff = currentDiff;
-                ans = root.value;
+                ans = root.val;
             }
             
-            if(root.value > target) {
+            if(root.val > target) {
                 root = root.left;
-            } else if(root.value < target) {
+            } else if(root.val < target) {
                 root = root.right;
             } else {
                 break;

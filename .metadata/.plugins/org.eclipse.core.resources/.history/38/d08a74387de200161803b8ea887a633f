@@ -1,0 +1,49 @@
+
+public class Q434_Number_of_Segments_in_a_String {
+	// test case: [],  [a],  [ab, ac],  [, ab, ],  [, ,]
+    
+    public int countSegments(String s) {
+        if(s == null || s.length() == 0) {
+            return 0;
+        }
+        
+        s = s.trim();
+        
+        String[] str = s.split("\\s+");
+        
+        System.out.println(str[0] + " " + str[1]);
+        
+        System.out.println(str.length);
+        
+        return 0;
+        
+//        return s.split("{\\s}").length;
+//        int count = 0;
+//        int index = 0, len = s.length();
+//        
+//        while(index < len) {
+//            while(index < len && !Character.isLetter(s.charAt(index)) && !Character.isDigit(s.charAt(index))) {
+//                index++;
+//            } 
+//            
+//            if(index < len) {
+//            	count++;
+//            	
+//            	while(index < len && Character.isLetter(s.charAt(index)) || Character.isDigit(s.charAt(index))) {
+//                    index++;
+//                }
+//            }
+//        }
+//        
+//        return count;
+    }
+    
+    
+    
+    
+    public static void main(String[] args) {
+    	Q434_Number_of_Segments_in_a_String t = new Q434_Number_of_Segments_in_a_String();
+    	String s = "Hello, my name is John";
+    	System.out.println(t.countSegments(s));
+    }
+}

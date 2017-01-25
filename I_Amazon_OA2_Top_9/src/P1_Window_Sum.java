@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class P1_Window_Sum {
-	// time complexity O(n)
+	// solution 1: time complexity O(n)
 	public static List<Integer> GetSum(List<Integer> list, int windowSize) {		
 		List<Integer> ans = new ArrayList<>();
 		
@@ -31,12 +31,7 @@ public class P1_Window_Sum {
 
 	
 	
-	
-	
-	
-	
-	/*******************************************/
-	// time complexity O(n^2)
+	// solution 2: time complexity O(n^2)
 	public List<Integer> GetSum2(List<Integer> A, int k) {
 		ArrayList<Integer> result = new ArrayList<>();
 		if (A == null || A.size() == 0 || k <= 0) {
@@ -44,19 +39,35 @@ public class P1_Window_Sum {
 		}
 
 		int count = 0;
+		
 		for (int i = 0; i < A.size(); i++) {
 			count++;
+			
 			if (count >= k) {
 				int sum = 0;
+				
 				for (int j = i; j >= i - k + 1; j--) {
 					sum += A.get(j);
 				}
+				
 				result.add(sum);
 			}
 		}
+		
 		return result;
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/************************************* main function ***************************************/
+	
 	public static void main(String[] args) {
 		P1_Window_Sum t = new P1_Window_Sum();
 		List<Integer> A = new ArrayList<Integer>();

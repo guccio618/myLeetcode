@@ -1,20 +1,34 @@
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
+/*********
+ * 
+	Find K points which are closest to (0, 0)
+ * 
+ * */
 
+class Point {
+	int x, y;
+	
+	public Point(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+}
 
 public class P1_Kclose {
+	// solution 1: using priority queue, time is O(nlogk), space is O(k)
 	public static Cpoint[] findKClose_Heap(Cpoint[] list, int k) {
 		if (list == null || list.length == 0 || k <= 0 || k > list.length) {
 			return new Cpoint[0];
 		} 
 
-		Cpoint[] res = new Cpoint[k];
+		Cpoint[] ans = new Cpoint[k];
 		
 		PriorityQueue<Cpoint> maxHeap = new PriorityQueue<>(k, new Comparator<Cpoint>() {
 			@Override
 			public int compare(Cpoint p1, Cpoint p2) {
-				return -Double.compare(Math.sqrt(p1.x*p1.x + p1.y * p1.y), Math.sqrt(p2.x * p2.x + p2.y * p2.y));
+				return -Double.compare(Math.sqrt(p1.x * p1.x + p1.y * p1.y), Math.sqrt(p2.x * p2.x + p2.y * p2.y));
 			}
 		});
 
@@ -26,17 +40,16 @@ public class P1_Kclose {
 			}
 		}
 
-		for (int i = res.length - 1; i >= 0 && !maxHeap.isEmpty(); i--) {
-			res[i] = maxHeap.poll();
+		for (int i = ans.length - 1; i >= 0 && !maxHeap.isEmpty(); i--) {
+			ans[i] = maxHeap.poll();
 		}
 
-		return res;
+		return ans;
 	}
 
 
-	
-	
-	
+		
+	// solution 2: using sort, time is O(nlogn), space is O(n)
 	public static Cpoint[] findKClose_Sort(Cpoint[] list, int k) {
 		if (list == null || list.length == 0 || k <= 0 || k > list.length) {
 			return new Cpoint[0];
@@ -73,7 +86,9 @@ public class P1_Kclose {
 
 	
 	
-	/*******************************************/
+	
+	/****************************************** main function *******************************************/
+	
 	public static void main(String[] args) {
 		Cpoint[] list = new Cpoint[7];
 		int k = 3;

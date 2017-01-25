@@ -86,11 +86,11 @@ class RandomListNode {
 };
 
 class TreeNode {
-	int value;
+	int val;
 	TreeNode left, right;
 	
 	public TreeNode (int value) {
-		this.value = value;
+		this.val = value;
 		left = right = null;
 	}
 }

@@ -86,10 +86,10 @@ public class Q314_Binary_Tree_Vertical_Order_Traversal {
             rightBound = Math.max(rightBound, temp.col);
             
             if(map.containsKey(temp.col)){
-                map.get(temp.col).add(temp.node.value);
+                map.get(temp.col).add(temp.node.val);
             } else {
                 List<Integer> list = new ArrayList<Integer>();
-                list.add(temp.node.value);
+                list.add(temp.node.val);
                 map.put(temp.col, list);
             }
             

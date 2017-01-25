@@ -44,7 +44,7 @@ public class Q297_Serialize_and_Deserialize_Binary_Tree {
             TreeNode node = q.poll();
             
             if(node != null){
-                serial.append(node.value).append(",");
+                serial.append(node.val).append(",");
                 q.add(node.left);
                 q.add(node.right);
                 lastPos = serial.length() - 2;

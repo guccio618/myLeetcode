@@ -37,7 +37,7 @@ public class Q173_Binary_Search_Tree_Iterator {
             root = root.left;
         }
         root = s.pop();
-        int val = root.value;
+        int val = root.val;
         root = root.right;
         return val;
     }

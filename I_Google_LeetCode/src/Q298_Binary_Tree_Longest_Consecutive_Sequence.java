@@ -46,11 +46,11 @@ public class Q298_Binary_Tree_Longest_Consecutive_Sequence {
         int right = DFS(node.right);
         int current = 1;
         
-        if(node.left != null && node.value + 1 == node.left.value) {
+        if(node.left != null && node.val + 1 == node.left.val) {
             current = Math.max(current, left + 1);
         }
         
-        if(node.right != null && node.value + 1 == node.right.value) {
+        if(node.right != null && node.val + 1 == node.right.val) {
             current = Math.max(current, right + 1);
         }
         

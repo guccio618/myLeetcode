@@ -44,7 +44,7 @@ public class Q272_Closest_Binary_Search_Tree_Value_II {
             }
             
             root = stack.pop();
-            heap.offer(root.value);   // O(logk)
+            heap.offer(root.val);   // O(logk)
             
             if(heap.size() > k) {     // O(logk)
                 heap.poll();
@@ -108,12 +108,12 @@ public class Q272_Closest_Binary_Search_Tree_Value_II {
     	  inorder(reverse_flag ? root.right : root.left, target, reverse_flag, stack);
     	  
     	  // early terminate, no need to traverse the whole tree
-    	  if ((reverse_flag && root.value <= target) || (!reverse_flag && root.value > target)) { // 需要注意这里有等号 root.val <= target
+    	  if ((reverse_flag && root.val <= target) || (!reverse_flag && root.val > target)) { // 需要注意这里有等号 root.val <= target
     		  return;  
     	  }
     	  
     	  // track the value of current node
-    	  stack.push(root.value);
+    	  stack.push(root.val);
     	  inorder(reverse_flag ? root.left : root.right, target, reverse_flag, stack);
     	}
 	
@@ -132,14 +132,14 @@ public class Q272_Closest_Binary_Search_Tree_Value_II {
         initialStack(root, target, succStack, true);
         initialStack(root, target, predStack, false);
         
-        if(!succStack.isEmpty() && !predStack.isEmpty() && succStack.peek().value == predStack.peek().value) {
+        if(!succStack.isEmpty() && !predStack.isEmpty() && succStack.peek().val == predStack.peek().val) {
             getNextNode(succStack, true);
         }
         
         while(k > 0) {
             if(!succStack.isEmpty() && !predStack.isEmpty()) {
-                double diff1 = Math.abs((double) succStack.peek().value - target);
-                double diff2 = Math.abs((double) predStack.peek().value - target);
+                double diff1 = Math.abs((double) succStack.peek().val - target);
+                double diff2 = Math.abs((double) predStack.peek().val - target);
                 
                 if(diff1 < diff2) {
                     ans.add(getNextNode(succStack, true));        
@@ -161,10 +161,10 @@ public class Q272_Closest_Binary_Search_Tree_Value_II {
     public void initialStack(TreeNode root, double target, Stack<TreeNode> stack, boolean successorFlag) {
         if(successorFlag) {
             while(root != null) {
-                if(root.value > target) {
+                if(root.val > target) {
                     stack.push(root);
                     root = root.left;
-                } else if(root.value < target) {
+                } else if(root.val < target) {
                     root = root.right;
                 } else {
                     stack.push(root);
@@ -173,9 +173,9 @@ public class Q272_Closest_Binary_Search_Tree_Value_II {
             }
         } else {
             while(root != null) {
-                if(root.value > target) {
+                if(root.val > target) {
                     root = root.left;
-                } else if(root.value < target) {
+                } else if(root.val < target) {
                     stack.push(root);
                     root = root.right;
                 } else {
@@ -188,7 +188,7 @@ public class Q272_Closest_Binary_Search_Tree_Value_II {
     
     public int getNextNode(Stack<TreeNode> stack, boolean successorFlag) {
         TreeNode node = stack.pop();
-        int ans = node.value;
+        int ans = node.val;
         
         if(successorFlag) {
             node = node.right;

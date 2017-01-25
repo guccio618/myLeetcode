@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.lang.ArrayStoreException"/>
 <fullyQualifiedTypeName name="Cpoint"/>
 <fullyQualifiedTypeName name="java.util.prefs.BackingStoreException"/>
 <fullyQualifiedTypeName name="Q474_Ones_and_Zeroes.Pair"/>
@@ -38,7 +37,6 @@
 <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
 <fullyQualifiedTypeName name="java.lang.Double"/>
 <fullyQualifiedTypeName name="java.lang.Boolean"/>
-<fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="Q15_1_Longest_SubString"/>
 <fullyQualifiedTypeName name="org.w3c.dom.ls.LSException"/>
 <fullyQualifiedTypeName name="TreeNode"/>
@@ -59,5 +57,7 @@
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="UndirectedGraphNode"/>
 <fullyQualifiedTypeName name="java.security.KeyStore.PrivateKeyEntry"/>
+<fullyQualifiedTypeName name="javax.print.attribute.standard.NumberUpSupported"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
 </qualifiedTypeNameHistroy>

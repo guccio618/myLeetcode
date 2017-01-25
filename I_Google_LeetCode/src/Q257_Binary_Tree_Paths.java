@@ -39,9 +39,9 @@ public class Q257_Binary_Tree_Paths {
         } 
         
         if(solution.length() == 0){
-            solution = Integer.toString(node.value);
+            solution = Integer.toString(node.val);
         } else {
-            solution = solution + "->" + Integer.toString(node.value);
+            solution = solution + "->" + Integer.toString(node.val);
         }
         
         if(node.left == null && node.right == null){
@@ -98,9 +98,9 @@ public class Q257_Binary_Tree_Paths {
         
         for(TreeNode node : list){
             if(builder.length() == 0){
-                builder.append(node.value);
+                builder.append(node.val);
             } else {
-                builder.append("->").append(node.value);
+                builder.append("->").append(node.val);
             }
         }
         

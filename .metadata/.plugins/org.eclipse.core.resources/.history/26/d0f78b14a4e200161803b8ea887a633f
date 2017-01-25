@@ -1,0 +1,112 @@
+import java.util.*;
+
+class Order {
+	String orderName;
+	
+	public Order(String orderName) {
+		this.orderName = orderName;
+	}
+}
+
+class OrderDependency {
+	Order order;
+	Order dependency;
+	
+	public OrderDependency(Order order, Order dependency) {
+		this.order = order;
+		this.dependency = dependency;
+	}
+}
+
+
+public class P2_Order_Dependency {
+	public ArrayList<Order> findOrder(ArrayList<OrderDependency> dependencies) {
+		ArrayList<Order> ans = new ArrayList<>();
+		
+		if(dependencies == null || dependencies.size() == 0) {
+			return ans;
+		}
+		
+		HashMap<String, Order> orderMap = new HashMap<>();  // order name to order object
+		HashMap<String, HashSet<String>> graph = new HashMap<>();
+		HashMap<String, Integer> indegree = new HashMap<>();
+		Queue<String> queue = new LinkedList<>();
+		
+		for(OrderDependency elem : dependencies) {	
+			orderMap.put(elem.order.orderName, elem.order);
+			orderMap.put(elem.dependency.orderName, elem.dependency);
+			
+			if(!graph.containsKey(elem.dependency.orderName)) {
+				graph.put(elem.dependency.orderName, new HashSet<String>());
+			}
+			
+			HashSet<String> set = graph.get(elem.dependency.orderName);
+			
+			if(!set.contains(elem.order.orderName)) {
+				set.add(elem.order.orderName);
+				
+				if(indegree.containsKey(elem.order.orderName)) {
+					indegree.put(elem.order.orderName, indegree.get(elem.order.orderName) + 1);		
+				} else {
+					indegree.put(elem.order.orderName, 1);
+				}				
+			}
+			
+			graph.put(elem.dependency.orderName, set);
+		}
+		
+		for(String order : orderMap.keySet()) {
+			if(!indegree.containsKey(order)) {
+				queue.offer(order);
+			}
+		}
+		
+		while(!queue.isEmpty()) {
+			String name = queue.poll();
+			ans.add(orderMap.get(name));
+			
+			if(!graph.containsKey(name)) {
+				continue;
+			}
+			
+			for(String next : graph.get(name)) {
+				int count = indegree.get(next);
+				
+				if(count == 1) {
+					queue.offer(next);
+//					indegree.remove(next);
+				} else {
+					indegree.put(next, count - 1);
+				}
+			}
+		}
+		
+		return ans.size() == orderMap.size() ? ans : new ArrayList<Order>();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/********************************** main function *****************************************/
+	
+	public static void main(String[] args) {
+		P2_Order_Dependency t = new P2_Order_Dependency();	
+		ArrayList<OrderDependency> dependencies = new ArrayList<>();
+		dependencies.add(new OrderDependency(new Order("D"), new Order("A")));
+		dependencies.add(new OrderDependency(new Order("D"), new Order("B")));
+		dependencies.add(new OrderDependency(new Order("D"), new Order("C")));
+		dependencies.add(new OrderDependency(new Order("C"), new Order("A")));
+		dependencies.add(new OrderDependency(new Order("C"), new Order("B")));
+		
+		ArrayList<Order> ans = t.findOrder(dependencies);
+		
+		for(Order order : ans) {
+			System.out.print(order.orderName + " ");
+		}
+	}
+}

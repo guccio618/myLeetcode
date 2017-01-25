@@ -36,7 +36,7 @@ public class Q230_Kth_Smallest_Element_in_a_BST {
         count++;
         
         if(count == k){
-        	ans = node.value;
+        	ans = node.val;
         	return;
         }
         
@@ -64,7 +64,7 @@ public class Q230_Kth_Smallest_Element_in_a_BST {
             root = stack.pop();
             
             if(++count == k) {
-                ans = root.value;
+                ans = root.val;
                 break;
             }
             
@@ -89,7 +89,7 @@ public class Q230_Kth_Smallest_Element_in_a_BST {
         } else if(k > count + 1) {
             return kthSmallest(root.right, k - (count + 1));
         } else {
-            return root.value;
+            return root.val;
         }
     }
     
