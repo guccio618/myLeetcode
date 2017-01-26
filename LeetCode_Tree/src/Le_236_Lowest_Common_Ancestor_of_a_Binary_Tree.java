@@ -33,7 +33,7 @@ public class Le_236_Lowest_Common_Ancestor_of_a_Binary_Tree {
 	 *      
 	 **********************************************************/	
 	
-	// using recursive
+	// solution 1: using recursive
 	public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
 		if (root == null || root == p || root == q) {
             return root;
@@ -57,7 +57,7 @@ public class Le_236_Lowest_Common_Ancestor_of_a_Binary_Tree {
 	
 	
 	
-	// using DFS
+	// solution 2: using DFS
 	public TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q) {
 		if(root == null || p == null || q == null){
             return null;

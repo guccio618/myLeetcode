@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Q067_Add_Binary.java&apos; to &apos;LeetCode_Math/src/(default package)&apos;&#x0A;- Original project: &apos;I_Facebook_LeetCode&apos;&#x0A;- Destination element: &apos;LeetCode_Math/src/(default package)&apos;&#x0A;- Original element: &apos;Q067_Add_Binary.java&apos;" description="Copy compilation unit" destination="=LeetCode_Math/src&lt;" element1="/src&lt;{Q067_Add_Binary.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1485403442171" units="1" version="1.0"/>
+</session>

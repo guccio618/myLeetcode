@@ -1,5 +1,4 @@
 import java.util.*;
-
 /********
  * 
 There are a row of n houses, each house can be painted with one of the k colors.
@@ -12,17 +11,17 @@ costs[1][2] is the cost of painting house 1 with color 2, and so on...
 Find the minimum cost to paint all houses.
 
 Note:
-All costs are positive integers.
+	All costs are positive integers.
 
 Follow up:
-Could you solve it in O(nk) runtime?
+	Could you solve it in O(nk) runtime?
 
  * 
  * */
 
 
 public class Le_265_Paint_House_II {
-	// Time complexity is O(nklogk), space complexity is O(nk)
+	// solution 1: Time complexity is O(nklogk), space complexity is O(nk)
 	public int minCostII_1(int[][] costs) {
 		if (costs == null || costs.length == 0 || costs[0].length == 0) {
 			return 0;
@@ -80,8 +79,7 @@ public class Le_265_Paint_House_II {
 	
 		
 	
-	
-	// Time complexity is O(nk), space complexity is O(nk)
+	// solution 2: Time complexity is O(nk), space complexity is O(nk)
 	public int minCostII_2(int[][] costs) {
         if (costs == null || costs.length == 0 || costs[0].length == 0) {
             return 0;
@@ -119,7 +117,8 @@ public class Le_265_Paint_House_II {
     }
 	
 	
-	// Time complexity is O(nk), space complexity is O(1)
+	
+	// solution 3: Time complexity is O(nk), space complexity is O(1)
 	public int minCostII_3(int[][] costs) {
         if(costs == null || costs.length == 0 || costs[0].length == 0){
             return 0;
@@ -160,7 +159,7 @@ public class Le_265_Paint_House_II {
 	
 	
 	
-	/************************************************************************/
+	/********************************** main function **************************************/
 	public void print(int[][] nums){
 		for(int i = 0; i < nums.length; i++){
 			for(int j = 0; j < nums[i].length; j++){

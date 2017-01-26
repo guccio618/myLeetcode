@@ -1,30 +1,47 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+/******
+ * 
+Given a collection of integers that might contain duplicates, nums, return all possible subsets.
+Note: The solution set must not contain duplicate subsets.
 
+For example,
+If nums = [1,2,2], a solution is:
+
+[
+  [2],
+  [1],
+  [1,2,2],
+  [2,2],
+  [1,2],
+  []
+]
+
+ * 
+ * */
 
 public class Le_090_Subsets_II {
+	// using backtrack
 	public List<List<Integer>> subsetsWithDup(int[] nums) {
-        List<List<Integer>> ans = new ArrayList<List<Integer>>();
-        if(nums == null || nums.length == 0){
+        List<List<Integer>> ans = new ArrayList<>();
+        
+        if(nums == null || nums.length == 0) {
             return ans;
         }
         
-        ArrayList<Integer> list = new ArrayList<Integer>();
         Arrays.sort(nums);
-        helper(ans, list, nums, 0);
+        backtrack(ans, new ArrayList<Integer>(), nums, 0);
         return ans;
     }
     
-    public void helper(List<List<Integer>> ans, ArrayList<Integer> list, int[] nums, int pos){
+    public void backtrack(List<List<Integer>> ans, List<Integer> list, int[] nums, int start) {
         ans.add(new ArrayList<Integer>(list));
         
-        for(int i = pos; i < nums.length; i++){
+        for(int i = start; i < nums.length; i++) {
             list.add(nums[i]);
-            helper(ans, list, nums, i + 1);
+            backtrack(ans, list, nums, i + 1);
             list.remove(list.size() - 1);
             
-            while(i + 1 < nums.length && nums[i] == nums[i + 1]){
+            while(i + 1 < nums.length && nums[i] == nums[i + 1]) {
                 i++;
             }
         }

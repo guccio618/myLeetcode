@@ -1,0 +1,36 @@
+
+public class Singleton {
+	// private的构造函数
+	private static Singleton instance = null;
+	private Singleton(){};
+	
+	// 普通模式
+	public static Singleton getInstance() {
+		if (instance == null) {
+			instance = new Singleton();
+		}
+		return instance;
+	}
+	
+	// 适用于多线程模式，高效
+	public static Singleton getInstance2() {
+		if (instance == null) {
+			lock();
+			if (instance == null) {
+				instance = new Singleton();
+			}
+			unlock();
+		}
+		return instance;
+	}
+	
+	
+	
+	public static void lock(){
+		
+	}
+	
+	public static void unlock(){
+		
+	}
+}

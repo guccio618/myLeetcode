@@ -17,14 +17,11 @@ Example 2:
  * 
  * */
 
-
-
-/****************************************************
- * 这里有level的概念，因此考虑用层序遍历
- * 
- ****************************************************/
-
 public class Le_339_Nested_List_Weight_Sum {
+	/****************************************************
+	 * 这里有level的概念，因此考虑用层序遍历
+	 * 
+	 ****************************************************/
 	// solution 1: using recursion
 	public int depthSum(List<NestedInteger> nestedList) {
         if(nestedList == null || nestedList.size() == 0) {
@@ -99,7 +96,9 @@ public class Le_339_Nested_List_Weight_Sum {
     
     
     
-    /**************************************/
+    
+    
+    /******************* class *******************/
     
     class NestedInteger{
     	int val;

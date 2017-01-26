@@ -51,7 +51,14 @@ public class Le_213_House_Robber_II {
 	
 	
 	
-	/*****************************************************/
+	
+	
+	
+	
+	
+	
+	
+	/************************* main function ****************************/
 	//by jackie using DP
 	public int rob2(int[] nums) {
         if(nums == null || nums.length == 0) return 0;

@@ -1,6 +1,60 @@
+/********
+ * 
+ Given two strings S and T, determine if they are both one edit distance apart.
+ * 
+ * */
 
 public class Le_161_One_Edit_Distance {
+	// solution 1:
 	public boolean isOneEditDistance(String s, String t) {
+		if(s == null || t == null){
+            if(s == null && t != null && t.length() == 1){
+                return true;
+            } else if(t == null && s != null && s.length() == 1){
+                return true;
+            } else {
+                return false;
+            }
+        } else if(t.equals(s) == true){
+            return false;
+        } else if(Math.abs(t.length() - s.length()) > 1){
+            return false;
+        }
+        
+        int sLen = s.length(), tLen = t.length();
+        int len = Math.min(sLen, tLen);
+        int index = 0;
+        
+        while(index < len){
+            if(s.charAt(index) != t.charAt(index)){
+                break;
+            } else {
+                index++;
+            }
+        }
+
+        if(sLen == tLen){
+            return s.substring(index + 1).equals(t.substring(index + 1));
+        } else if(sLen > tLen){
+            return s.substring(index + 1).equals(t.substring(index));
+        } else {
+            return s.substring(index).equals(t.substring(index + 1));
+        }
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*************************** main function ****************************/
+	// by Jackie
+	public boolean isOneEditDistance2(String s, String t) {
         if(s == null || t == null){
             if(s == null && t == null){
                 return false;
@@ -45,9 +99,11 @@ public class Le_161_One_Edit_Distance {
         return true;
     }
 	
-    
 	
-	public boolean isOneEditDistance2(String s, String t) {
+	
+    /*******************************************************/
+    // by other
+	public boolean isOneEditDistance3(String s, String t) {
         if(s == null){
             if(t == null || t.length() == 1){
                 return true;

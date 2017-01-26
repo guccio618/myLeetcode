@@ -64,7 +64,7 @@ public class Le_041_First_Missing_Positive {
 	
 	
 	
-	// by Jackie using sort, time is O(n), space is O(1)
+	// solution 3: using sort, time is O(n), space is O(1)
 	public int firstMissingPositive3(int[] nums) {
         if(nums == null || nums.length == 0) {
             return 1;

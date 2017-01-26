@@ -17,7 +17,7 @@ All costs are positive integers.
 
 
 public class Le_256_Paint_House {
-	// solution 2: improve space, time O(n), space(1)
+	// solution 1: improve space, time O(n), space(1)
 	public int minCost(int[][] costs) {
         if (costs == null || costs.length == 0) {
             return 0;

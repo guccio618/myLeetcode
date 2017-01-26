@@ -1,3 +1,12 @@
+/********
+ * 
+Find the contiguous subarray within an array (containing at least one number) which has the largest product.
+
+For example, given the array [2,3,-2,4],
+	the contiguous subarray [2,3] has the largest product = 6.
+	
+ * 
+ * */
 
 public class Le_152_Maximum_Product_Subarray {
 	// solution 1: using dp, time O(n), space O(n)
@@ -26,8 +35,6 @@ public class Le_152_Maximum_Product_Subarray {
         
         return globalMax;
     }
-	
-	
 	
 	
 	
@@ -62,7 +69,12 @@ public class Le_152_Maximum_Product_Subarray {
 	
 	
 	
-	/****************************************************************/
+	
+	
+	
+	
+	
+	/****************************** main function **********************************/
 	public static boolean isProduct(int[] nums, int target) {
 		if(nums == null || nums.length == 0){
 			return false;

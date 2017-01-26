@@ -1,0 +1,10 @@
+
+public class Data_Structure_Definition {
+	
+}
+
+class ListNode {
+	int val;
+	ListNode next;
+	ListNode(int x) { val = x; }
+}

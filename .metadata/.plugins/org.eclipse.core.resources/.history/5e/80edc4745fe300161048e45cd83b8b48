@@ -1,0 +1,7 @@
+
+
+public class Snippet {
+	public static void main(String[] args) {
+		Q295_Find_Median_from_Data_Stream
+	}
+}
